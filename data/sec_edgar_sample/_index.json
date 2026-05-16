@@ -1,0 +1,44 @@
+[
+  {
+    "ticker": "AAPL",
+    "company_name": "Apple Inc.",
+    "accession": "0000320193-25-000079",
+    "file": "AAPL_10K.json",
+    "excerpt_chars": 1
+  },
+  {
+    "ticker": "MSFT",
+    "company_name": "Microsoft Corp.",
+    "accession": "0000950170-25-100235",
+    "file": "MSFT_10K.json",
+    "excerpt_chars": 8000
+  },
+  {
+    "ticker": "NVDA",
+    "company_name": "NVIDIA Corp.",
+    "accession": "0001045810-26-000021",
+    "file": "NVDA_10K.json",
+    "excerpt_chars": 8
+  },
+  {
+    "ticker": "GOOGL",
+    "company_name": "Alphabet Inc.",
+    "accession": "0001652044-26-000018",
+    "file": "GOOGL_10K.json",
+    "excerpt_chars": 7999
+  },
+  {
+    "ticker": "META",
+    "company_name": "Meta Platforms",
+    "accession": "0001628280-26-003942",
+    "file": "META_10K.json",
+    "excerpt_chars": 1
+  },
+  {
+    "ticker": "TSLA",
+    "company_name": "Tesla Inc.",
+    "accession": "0001628280-26-003952",
+    "file": "TSLA_10K.json",
+    "excerpt_chars": 1
+  }
+]
