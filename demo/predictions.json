@@ -1,0 +1,86 @@
+{
+  "project": "graphrag-sec-edgar",
+  "generated_at": "2026-05-16T00:00:00Z",
+  "predictions": [
+    {
+      "ticket": "Which companies in the portfolio compete with NVIDIA in AI accelerators?",
+      "top_intent": "multi-entity competitive lookup",
+      "confidence": 0.91,
+      "alternatives": [
+        {
+          "intent": "2 companies traced (MSFT, GOOGL)",
+          "confidence": 0.0
+        },
+        {
+          "intent": "3 graph hops",
+          "confidence": 0.0
+        }
+      ],
+      "inference_ms": 2840.0
+    },
+    {
+      "ticket": "What are Apple's stated supply-chain risks in their latest 10-K?",
+      "top_intent": "single-entity risk traversal",
+      "confidence": 0.94,
+      "alternatives": [
+        {
+          "intent": "3 risks extracted",
+          "confidence": 0.0
+        },
+        {
+          "intent": "1 graph hop",
+          "confidence": 0.0
+        }
+      ],
+      "inference_ms": 1980.0
+    },
+    {
+      "ticket": "Compare data-center revenue trajectories between META and GOOGL.",
+      "top_intent": "multi-entity financial comparison",
+      "confidence": 0.83,
+      "alternatives": [
+        {
+          "intent": "2 companies traced",
+          "confidence": 0.0
+        },
+        {
+          "intent": "4 product nodes touched",
+          "confidence": 0.0
+        }
+      ],
+      "inference_ms": 3120.0
+    },
+    {
+      "ticket": "Who is Tesla's CFO and what risks did they call out in 2024?",
+      "top_intent": "person-entity + risk join",
+      "confidence": 0.88,
+      "alternatives": [
+        {
+          "intent": "TSLA entity resolved",
+          "confidence": 0.0
+        },
+        {
+          "intent": "2 graph hops",
+          "confidence": 0.0
+        }
+      ],
+      "inference_ms": 2410.0
+    },
+    {
+      "ticket": "Which companies in this set list LLM models as a strategic product?",
+      "top_intent": "category-wide product scan",
+      "confidence": 0.87,
+      "alternatives": [
+        {
+          "intent": "3 companies match (MSFT, GOOGL, META)",
+          "confidence": 0.0
+        },
+        {
+          "intent": "1 graph hop",
+          "confidence": 0.0
+        }
+      ],
+      "inference_ms": 2680.0
+    }
+  ]
+}
