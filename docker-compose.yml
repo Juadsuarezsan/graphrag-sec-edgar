@@ -1,0 +1,33 @@
+services:
+  neo4j:
+    image: neo4j:5.25-enterprise
+    environment:
+      NEO4J_AUTH: neo4j/neo4j_dev
+      NEO4J_PLUGINS: '["apoc", "graph-data-science"]'
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+    ports: ["7474:7474", "7687:7687"]
+    volumes: [neo4j-data:/data]
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment: { POSTGRES_USER: gsec, POSTGRES_PASSWORD: gsec_dev, POSTGRES_DB: gsec }
+    ports: ["5432:5432"]
+    volumes: [postgres-data:/var/lib/postgresql/data]
+    healthcheck: { test: ["CMD-SHELL","pg_isready -U gsec"], interval: 5s, retries: 10 }
+  api:
+    build: .
+    env_file: .env
+    environment:
+      NEO4J_URI: bolt://neo4j:7687
+      NEO4J_USER: neo4j
+      NEO4J_PASSWORD: neo4j_dev
+      DATABASE_URL: postgresql://gsec:gsec_dev@postgres:5432/gsec
+
+    depends_on:
+      postgres: { condition: service_healthy }
+      neo4j:    { condition: service_started }
+
+    ports: ["8000:8000"]
+    volumes: [./src:/app/src, ./data:/app/data]
+volumes:
+  postgres-data:
+  neo4j-data:
