@@ -1,57 +1,65 @@
-"""GraphRAG SEC EDGAR — placeholder until v0.1.0 build out."""
+"""GraphRAG SEC EDGAR API."""
 from __future__ import annotations
 
 from contextlib import asynccontextmanager
 
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 
 load_dotenv()
 
+from src.api.schemas import GraphAnswer, GraphQuery
 from src.config import get_settings
+from src.engine.graphrag import answer
+from src.graph.fixture import build_demo_graph
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    app.state.graph = build_demo_graph()
     yield
 
 
 app = FastAPI(
     title="GraphRAG SEC EDGAR",
-    version="0.1.0",
-    description="GraphRAG over SEC EDGAR — Neo4j + multi-hop Cypher + vector hybrid",
+    version="0.5.0",
+    description="In-memory knowledge graph over S&P 500 fixture; routes lookup/multi_hop/aggregation.",
     lifespan=lifespan,
 )
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 
 @app.get("/health")
-async def health() -> dict:
+async def health() -> dict[str, str]:
     s = get_settings()
+    g = app.state.graph
     return {
-        "status": "ok",
-        "version": "0.1.0",
-        "stage": "scaffolding",
-        "llm_enabled": "yes" if s.anthropic_api_key else "no",
+        "status": "ok", "version": "0.5.0", "stage": "substantive",
+        "neo4j_uri": s.neo4j_uri, "nodes": str(g.n_nodes), "edges": str(g.n_edges),
     }
-
-class GraphQuery(BaseModel):
-    question: str
-    max_hops: int = 2
-    k: int = 5
-
-
-class GraphAnswer(BaseModel):
-    question: str
-    answer: str = ""
-    cited_nodes: list[dict] = []
-    reasoning_path: list[str] = []
-    classified_kind: str = ""  # lookup | multi_hop | aggregation | hybrid
-    latency_ms: int = 0
 
 
 @app.post("/api/query", response_model=GraphAnswer)
-async def graph_query(q: GraphQuery) -> GraphAnswer:
-    return GraphAnswer(question=q.question, answer="not_yet_implemented")
+async def query(q: GraphQuery) -> GraphAnswer:
+    try:
+        return await answer(app.state.graph, q.question, k=q.k, max_hops=q.max_hops)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@app.get("/api/graph")
+async def graph_snapshot() -> dict:
+    g = app.state.graph
+    return {
+        "nodes": [{"id": n["id"], "type": n["type"], "name": n["name"],
+                   "properties": n["properties"]}
+                  for n in g._nodes.values()],
+        "edges": [{"from": e["from"], "to": e["to"], "type": e["type"]} for e in g._edges],
+    }
+
+
+@app.get("/api/eval/run")
+async def eval_endpoint() -> dict:
+    from src.eval.runner import run_eval
+    return await run_eval()
