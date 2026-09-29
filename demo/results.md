@@ -1,6 +1,6 @@
 # Resultados de evaluación — GraphRAG sobre SEC EDGAR
 
-Generado por `python -m eval.run` a partir de `/home/user/trabajo/graphrag-sec-edgar/eval/runs/2026-09-29-fixture-deterministic.json` (2026-09-29T02:37:45+00:00).
+Generado por `python -m eval.run` a partir de `eval/runs/2026-09-29-fixture-deterministic.json` (2026-09-29T02:38:23+00:00).
 
 > **Alcance declarado.** Corrida **sin LLM**: síntesis por plantilla determinista, extracción por reglas. 
 > Grafo evaluado: 279 nodos / 451 aristas construidos a partir del fixture curado a mano 
@@ -24,7 +24,7 @@ Hit = todos los ids esperados están en la respuesta (lookup / multi-hop) o el c
 
 | Sistema | Hit global | Precisión media (ids) | Routing acc. | p50 ms | p95 ms | Tokens in/out | Costo USD |
 |---|---|---|---|---|---|---|---|
-| Vector RAG (TF-IDF, mismo corpus) | 42.0 % | 40.0 % | 20.0 % | 23 | 24 | 0/0 | 0.0000 |
+| Vector RAG (TF-IDF, mismo corpus) | 42.0 % | 40.0 % | 20.0 % | 22 | 23 | 0/0 | 0.0000 |
 | GraphRAG (este sistema) | 100.0 % | 100.0 % | 96.0 % | 0 | 0 | 0/0 | 0.0000 |
 | Hybrid: Graph + Vector | 97.0 % | 97.0 % | 96.0 % | 0 | 0 | 0/0 | 0.0000 |
 | Ablation: GraphRAG sin traversal multi-hop (max_hops=1) | 58.0 % | 58.0 % | 96.0 % | 0 | 0 | 0/0 | 0.0000 |

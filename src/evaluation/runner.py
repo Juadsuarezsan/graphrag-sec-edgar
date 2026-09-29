@@ -241,7 +241,7 @@ def render_results_md(run_path: Path) -> str:
     lines.append("# Resultados de evaluación — GraphRAG sobre SEC EDGAR")
     lines.append("")
     lines.append(
-        f"Generado por `python -m eval.run` a partir de `{run_path.as_posix()}` ({run['generated_at']})."
+        f"Generado por `python -m eval.run` a partir de `eval/runs/{run_path.name}` ({run['generated_at']})."
     )
     lines.append("")
     lines.append(
