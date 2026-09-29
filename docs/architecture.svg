@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 640" width="1180" height="640" font-family="system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#475569"/></marker>
+    <style>
+      .box{fill:#ffffff;stroke:#94a3b8;stroke-width:1.2;rx:10}
+      .ing{fill:#eff6ff;stroke:#2563eb}
+      .qry{fill:#f0fdfa;stroke:#0d9488}
+      .store{fill:#fff7ed;stroke:#f97316}
+      .ext{fill:#fdf4ff;stroke:#c026d3;stroke-dasharray:5 3}
+      .t{fill:#0f172a}
+      .s{fill:#475569;font-size:11px}
+      .h{fill:#0f172a;font-weight:600;font-size:14px}
+      .l{stroke:#475569;stroke-width:1.4;fill:none;marker-end:url(#a)}
+    </style>
+  </defs>
+  <rect width="1180" height="640" fill="#f8fafc"/>
+  <text x="24" y="34" class="h" font-size="18">GraphRAG sobre SEC EDGAR — arquitectura</text>
+  <text x="24" y="54" class="s">Ingesta (una vez por filing) arriba · Consulta (por request) abajo · Grafo compartido al centro</text>
+
+  <!-- Ingesta -->
+  <rect x="24" y="80" width="1132" height="150" rx="14" fill="#eff6ff" fill-opacity="0.5" stroke="#bfdbfe"/>
+  <text x="36" y="100" class="h" fill="#1d4ed8">Fase de ingesta</text>
+
+  <rect x="40" y="118" width="150" height="88" class="box ing"/>
+  <text x="52" y="140" class="t" font-weight="600">SEC EDGAR</text>
+  <text x="52" y="158" class="s">10-K · Exhibit 21 · DEF 14A</text>
+  <text x="52" y="174" class="s">download_data.py</text>
+  <text x="52" y="190" class="s">10 req/s · tenacity · SHA-256</text>
+
+  <rect x="220" y="118" width="170" height="88" class="box ing"/>
+  <text x="232" y="140" class="t" font-weight="600">Parser + Chunker</text>
+  <text x="232" y="158" class="s">html_to_text (lxml, sin XBRL)</text>
+  <text x="232" y="174" class="s">split_sections Item 1/1A/7</text>
+  <text x="232" y="190" class="s">chunk_text 2 000 c · solape</text>
+
+  <rect x="420" y="118" width="190" height="88" class="box ing"/>
+  <text x="432" y="140" class="t" font-weight="600">EntityExtractor</text>
+  <text x="432" y="158" class="s">RuleBasedExtractor (EX-21, DEF 14A)</text>
+  <text x="432" y="174" class="s">ClaudeExtractor · tool use forzado</text>
+  <text x="432" y="190" class="s">Pydantic: tipos cerrados + firmas</text>
+
+  <rect x="640" y="118" width="170" height="88" class="box ing"/>
+  <text x="652" y="140" class="t" font-weight="600">Graph Merger</text>
+  <text x="652" y="158" class="s">MERGE por id / (from,to,type)</text>
+  <text x="652" y="174" class="s">embeddings por lote</text>
+  <text x="652" y="190" class="s">source_filing_date · evidence</text>
+
+  <rect x="840" y="118" width="150" height="88" class="box ing"/>
+  <text x="852" y="140" class="t" font-weight="600">Staleness</text>
+  <text x="852" y="158" class="s">updated_at</text>
+  <text x="852" y="174" class="s">source_filing_date</text>
+  <text x="852" y="190" class="s">stale = edad &gt; 365 d</text>
+
+  <rect x="1010" y="118" width="130" height="88" class="box ext"/>
+  <text x="1022" y="140" class="t" font-weight="600">Claude API</text>
+  <text x="1022" y="158" class="s">claude-sonnet-4-5-</text>
+  <text x="1022" y="172" class="s">20250929</text>
+  <text x="1022" y="190" class="s">opcional (mock en tests)</text>
+
+  <path d="M190 162H218" class="l"/><path d="M390 162H418" class="l"/><path d="M610 162H638" class="l"/><path d="M810 162H838" class="l"/>
+  <path d="M610 140C640 100 980 100 1010 140" class="l" stroke-dasharray="4 3"/>
+
+  <!-- Grafo -->
+  <rect x="330" y="262" width="520" height="104" class="box store"/>
+  <text x="346" y="286" class="h" fill="#c2410c">GraphStore (Protocol)</text>
+  <text x="346" y="306" class="s">Company · Person · Subsidiary · Product · Risk · Market</text>
+  <text x="346" y="322" class="s">CEO_OF · DIRECTOR_OF · SUBSIDIARY_OF · SUPPLIED_BY · COMPETES_WITH · MENTIONS_RISK · OFFERS_PRODUCT · OPERATES_IN</text>
+  <text x="346" y="348" class="s">InMemoryGraph  |  NetworkXGraphStore (JSON)  |  Neo4jGraphStore (Cypher MERGE, índice vectorial, [*1..k])</text>
+  <path d="M725 206V260" class="l"/>
+  <path d="M590 366V402" class="l"/>
+
+  <!-- Consulta -->
+  <rect x="24" y="404" width="1132" height="214" rx="14" fill="#f0fdfa" fill-opacity="0.5" stroke="#99f6e4"/>
+  <text x="36" y="424" class="h" fill="#0f766e">Fase de consulta</text>
+
+  <rect x="40" y="442" width="140" height="80" class="box qry"/>
+  <text x="52" y="464" class="t" font-weight="600">FastAPI</text>
+  <text x="52" y="482" class="s">422 · slowapi 429</text>
+  <text x="52" y="498" class="s">CORS por env · X-Trace-Id</text>
+  <text x="52" y="514" class="s">/api/query · /api/graph</text>
+
+  <rect x="210" y="442" width="150" height="80" class="box qry"/>
+  <text x="222" y="464" class="t" font-weight="600">Entity Linker</text>
+  <text x="222" y="482" class="s">alias más largo primero</text>
+  <text x="222" y="498" class="s">posesivos · plurales · tickers</text>
+  <text x="222" y="514" class="s">fallback vectorial (hybrid)</text>
+
+  <rect x="390" y="442" width="160" height="80" class="box qry"/>
+  <text x="402" y="464" class="t" font-weight="600">Planner</text>
+  <text x="402" y="482" class="s">cues → tipos de arista</text>
+  <text x="402" y="498" class="s">dirección por firmas</text>
+  <text x="402" y="514" class="s">intersección · share · count</text>
+
+  <rect x="580" y="442" width="160" height="80" class="box qry"/>
+  <text x="592" y="464" class="t" font-weight="600">Traversal + Agg</text>
+  <text x="592" y="482" class="s">neighbors(edge_type, dir)</text>
+  <text x="592" y="498" class="s">hasta max_hops</text>
+  <text x="592" y="514" class="s">filtros tipo / S&amp;P / sector</text>
+
+  <rect x="770" y="442" width="170" height="80" class="box qry"/>
+  <text x="782" y="464" class="t" font-weight="600">Synthesizer</text>
+  <text x="782" y="482" class="s">TemplateSynthesizer (default)</text>
+  <text x="782" y="498" class="s">ClaudeSynthesizer + citas [id]</text>
+  <text x="782" y="514" class="s">sanitize_text</text>
+
+  <rect x="970" y="442" width="170" height="80" class="box qry"/>
+  <text x="982" y="464" class="t" font-weight="600">Respuesta</text>
+  <text x="982" y="482" class="s">answer_ids · plan · seeds</text>
+  <text x="982" y="498" class="s">subgraph → demo canvas</text>
+  <text x="982" y="514" class="s">metrics: latencia, tokens, cost</text>
+
+  <path d="M180 482H208" class="l"/><path d="M360 482H388" class="l"/><path d="M550 482H578" class="l"/><path d="M740 482H768" class="l"/><path d="M940 482H968" class="l"/>
+
+  <rect x="210" y="540" width="530" height="62" class="box" fill="#f1f5f9"/>
+  <text x="222" y="562" class="t" font-weight="600">Baseline Vector RAG (mismo corpus)</text>
+  <text x="222" y="580" class="s">cada nodo + sus aristas → pasaje · TfidfHashingEmbedder 1 024 d · top-k → entidades nombradas · mismas métricas de hit</text>
+  <text x="222" y="596" class="s">eval/run.py: Vector RAG vs GraphRAG vs Hybrid vs ablación (max_hops=1) → eval/runs/*.json → eval/RESULTS.md</text>
+
+  <rect x="770" y="540" width="370" height="62" class="box" fill="#f1f5f9"/>
+  <text x="782" y="562" class="t" font-weight="600">Observabilidad</text>
+  <text x="782" y="580" class="s">loguru + trace_id · RequestMetrics (latencia, tokens, cost_usd)</text>
+  <text x="782" y="596" class="s">LangSmithTracer (REST, sólo con LANGSMITH_API_KEY)</text>
+</svg>

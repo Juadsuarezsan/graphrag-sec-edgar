@@ -1,519 +1,290 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GraphRAG · SEC EDGAR — Live Demo</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='12' fill='%237c5cff'/%3E%3C/svg%3E" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GraphRAG SEC EDGAR</title>
+<meta name="description" content="Demo de GraphRAG sobre 10-K de la SEC: grafo interactivo, consultas multi-hop y comparación con Vector RAG." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='10' cy='16' r='5' fill='%232563eb'/%3E%3Ccircle cx='23' cy='9' r='4' fill='%230ea5e9'/%3E%3Ccircle cx='23' cy='23' r='4' fill='%2314b8a6'/%3E%3Cpath d='M14 14l6-4M14 18l6 4' stroke='%2364748b' stroke-width='2'/%3E%3C/svg%3E" />
 <style>
-:root {
-    --bg: #07090f;
-    --bg-elev: #0d1220;
-    --bg-card: #12141c;
-    --bg-card-hover: #161924;
-    --border: rgba(255,255,255,0.08);
-    --border-strong: rgba(255,255,255,0.14);
-    --text: #e7ecf5;
-    --text-dim: #9aa3b8;
-    --text-faint: #5a5f6e;
-    --accent: #7c5cff;
-    --accent-2: #22d3ee;
-    --accent-3: #f472b6;
-    --success: #34d399;
-    --warning: #fbbf24;
-    --danger: #ff5a72;
-    --radius: 14px;
-    --radius-sm: 8px;
-    --max-w: 1180px;
+  :root {
+    --bg: #f6f7fb; --panel: #ffffff; --ink: #0f172a; --muted: #5b6478; --line: #e3e7ef;
+    --accent: #2563eb; --accent-ink: #ffffff; --ok: #0f9d58; --warn: #d97706; --bad: #dc2626;
+    --company: #2563eb; --person: #d946ef; --subsidiary: #0ea5e9; --product: #14b8a6; --risk: #f97316; --market: #64748b;
+    --radius: 12px; --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b1020; --panel: #121a2e; --ink: #e6eaf3; --muted: #9aa5bd; --line: #223050;
+      --accent: #60a5fa; --accent-ink: #0b1020; --market: #94a3b8;
+    }
   }
-  code, pre, .mono { font-family: 'JetBrains Mono', monospace; }
-  a { color: inherit; text-decoration: none; }
-  ::selection { background: var(--accent); color: white; }
-  .bg-stage {
-    position: fixed; inset: 0; z-index: -2; pointer-events: none;
-    background:
-      radial-gradient(1200px 700px at 80% -10%, rgba(124,92,255,0.22), transparent 60%),
-      radial-gradient(1000px 600px at -10% 30%, rgba(34,211,238,0.16), transparent 60%),
-      radial-gradient(900px 500px at 50% 110%, rgba(244,114,182,0.16), transparent 55%),
-      linear-gradient(180deg, #06070d 0%, #0a0e1c 100%);
+  :root[data-theme="dark"] {
+    --bg: #0b1020; --panel: #121a2e; --ink: #e6eaf3; --muted: #9aa5bd; --line: #223050;
+    --accent: #60a5fa; --accent-ink: #0b1020; --market: #94a3b8;
   }
-  .bg-grid {
-    position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
-    background-size: 56px 56px;
-    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.9) 0%, transparent 75%);
-    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.9) 0%, transparent 75%);
-  }
-  .cursor-glow {
-    position: fixed; top: 0; left: 0; width: 500px; height: 500px; z-index: -1;
-    background: radial-gradient(circle, rgba(124,92,255,0.22), transparent 55%);
-    border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%);
-    transition: opacity 0.4s ease;
-    mix-blend-mode: screen;
-  }
-  @media (max-width: 900px) { .cursor-glow { display: none; } }
-  nav {
-    position: sticky; top: 0; z-index: 50;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    background: rgba(8,9,14,0.72);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-inner {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 14px 24px;
-    display: flex; align-items: center; justify-content: space-between; gap: 24px;
-  }
-  .logo {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600; font-size: 13px;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .logo-text {
-    background: linear-gradient(90deg, var(--accent-2), var(--accent));
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .logo-dot {
-    width: 8px; height: 8px;
-    background: var(--accent); border-radius: 50%;
-    box-shadow: 0 0 12px var(--accent);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.85); }
-  }
-  .nav-cta {
-    padding: 8px 16px;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-sm);
-    font-size: 13px; font-weight: 500;
-    transition: all 0.2s;
-  }
-  .nav-cta:hover { border-color: var(--accent); background: rgba(124,92,255,0.08); }
-  .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
-  header { padding: 80px 0 40px; text-align: center; }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 6px 14px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--text-dim);
-    letter-spacing: 0.1em; text-transform: uppercase;
-    margin-bottom: 24px;
-  }
-  .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); box-shadow: 0 0 10px var(--success); }
-  h1 {
-    font-size: clamp(36px, 5vw, 56px);
-    font-weight: 800; line-height: 1.05; letter-spacing: -0.02em;
-    margin-bottom: 18px;
-  }
-  h1 .grad {
-    background: linear-gradient(135deg, var(--accent-2) 0%, var(--accent) 60%, var(--accent-3) 100%);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% auto;
-    animation: shine 8s linear infinite;
-  }
-  @keyframes shine {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 200% 50%; }
-  }
-  .subtitle {
-    color: var(--text-dim);
-    font-size: clamp(15px, 1.4vw, 18px);
-    max-width: 720px;
-    margin: 0 auto 36px;
-  }
-  .metric-row {
-    display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
-    margin: 36px 0 16px;
-  }
-  .metric { text-align: center; }
-  .metric-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 28px; font-weight: 700;
-    background: linear-gradient(90deg, var(--accent-2), var(--accent));
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .metric-label {
-    font-size: 11px; color: var(--text-dim);
-    text-transform: uppercase; letter-spacing: 0.12em;
-    margin-top: 4px;
-  }
-  section { padding: 48px 0; }
-  h2 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
-  .section-sub { color: var(--text-dim); font-size: 14px; margin-bottom: 28px; }
-  .try-box {
-    background: linear-gradient(180deg, rgba(124,92,255,0.06), rgba(34,211,238,0.04));
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius);
-    padding: 28px;
-    margin-bottom: 36px;
-  }
-  .try-box label {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--text-dim);
-    letter-spacing: 0.12em; text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .try-box textarea {
-    width: 100%;
-    min-height: 80px;
-    padding: 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    resize: vertical;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .try-box textarea:focus { border-color: var(--accent); }
-  .try-box-actions {
-    display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; align-items: center;
-  }
-  .btn {
-    padding: 10px 20px;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px; font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn:hover { border-color: var(--accent); background: rgba(124,92,255,0.08); }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent), var(--accent-2));
-    border-color: transparent;
-    color: white;
-  }
-  .btn-primary:hover { box-shadow: 0 6px 24px rgba(124,92,255,0.4); }
-  .api-hint {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--text-faint);
-    margin-left: auto;
-  }
-  .api-hint code { color: var(--text-dim); }
-  .live-result {
-    margin-top: 20px;
-    padding: 20px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    background: var(--bg-card);
-    display: none;
-  }
-  .live-result.show { display: block; }
-  .live-result .intent-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 6px 14px;
-    background: rgba(124,92,255,0.16);
-    border: 1px solid var(--accent);
-    border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px; color: var(--accent);
-  }
-  .live-result .confidence {
-    color: var(--text-dim);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px; margin-left: 10px;
-  }
-  .alt-list { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
-  .alt-chip {
-    padding: 4px 10px;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--text-dim);
-  }
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 16px;
-  }
-  .card {
-    padding: 20px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--bg-card);
-    transition: all 0.25s;
-    cursor: pointer;
-  }
-  .card:hover {
-    border-color: var(--accent);
-    background: var(--bg-card-hover);
-    transform: translateY(-2px);
-  }
-  .card .ticket {
-    font-size: 14px; color: var(--text);
-    margin-bottom: 16px; line-height: 1.5;
-  }
-  .card .ticket::before { content: '"'; color: var(--text-faint); margin-right: 2px; }
-  .card .ticket::after  { content: '"'; color: var(--text-faint); margin-left: 2px; }
-  .card .meta {
-    display: flex; justify-content: space-between; align-items: center; gap: 10px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
-  }
-  .card .intent {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; color: var(--accent);
-  }
-  .card .conf {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--text-dim);
-  }
-  .card .conf .bar {
-    display: inline-block;
-    width: 50px; height: 4px;
-    background: var(--border);
-    border-radius: 2px;
-    margin-left: 6px;
-    vertical-align: middle;
-    overflow: hidden;
-  }
-  .card .conf .bar > span {
-    display: block; height: 100%;
-    background: linear-gradient(90deg, var(--accent-2), var(--accent));
-  }
-  .card .latency {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; color: var(--text-faint);
-    margin-top: 8px;
-  }
-  .arch-section {
-    margin-top: 64px;
-    padding: 32px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--bg-card);
-  }
-  .arch-flow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px; line-height: 2;
-    color: var(--text-dim);
-    background: var(--bg);
-    padding: 20px;
-    border-radius: var(--radius-sm);
-    overflow-x: auto;
-    white-space: pre;
-    border: 1px solid var(--border);
-  }
-  .arch-flow .key { color: var(--accent-2); }
-  .arch-flow .val { color: var(--text); }
-  .arch-flow .note { color: var(--text-faint); }
-  footer {
-    padding: 60px 0 40px;
-    text-align: center;
-    color: var(--text-faint);
-    font-size: 13px;
-    border-top: 1px solid var(--border);
-    margin-top: 80px;
-  }
-  footer a { color: var(--text-dim); border-bottom: 1px dotted var(--text-faint); }
-  footer a:hover { color: var(--accent-2); }
-
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; }
+  body { padding: 0 16px 48px; }
+  a { color: var(--accent); }
+  header { max-width: 1180px; margin: 0 auto; padding: 24px 0 8px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: baseline; justify-content: space-between; }
+  header h1 { font-size: 1.45rem; margin: 0; letter-spacing: -0.01em; }
+  header p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--muted); }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--warn); display: inline-block; }
+  .dot.ok { background: var(--ok); } .dot.bad { background: var(--bad); }
+  main { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 900px) { main { grid-template-columns: 5fr 7fr; } .span2 { grid-column: 1 / -1; } }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+  .card h2 { font-size: 1rem; margin: 0 0 10px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+  .stat { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .stat b { display: block; font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+  .stat span { color: var(--muted); font-size: 0.8rem; }
+  form { display: flex; flex-direction: column; gap: 10px; }
+  textarea { width: 100%; min-height: 72px; resize: vertical; font: inherit; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  select, button { font: inherit; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; font-weight: 600; cursor: pointer; }
+  button.primary[disabled] { opacity: 0.6; cursor: progress; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { border: 1px solid var(--line); background: var(--bg); border-radius: 999px; padding: 6px 12px; font-size: 0.85rem; cursor: pointer; text-align: left; color: var(--ink); }
+  .chip:hover { border-color: var(--accent); }
+  .chip small { display: block; color: var(--muted); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .answer { border-left: 3px solid var(--accent); padding: 8px 12px; background: var(--bg); border-radius: 0 10px 10px 0; white-space: pre-wrap; word-break: break-word; font-size: 0.95rem; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; color: var(--muted); font-size: 0.8rem; font-family: var(--mono); }
+  .kv { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; font-size: 0.85rem; }
+  .kv dt { color: var(--muted); } .kv dd { margin: 0; font-family: var(--mono); word-break: break-word; }
+  .plan { display: flex; flex-wrap: wrap; gap: 6px; }
+  .step { font-family: var(--mono); font-size: 0.78rem; border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; }
+  canvas { width: 100%; height: 520px; display: block; border-radius: 10px; background: var(--bg); border: 1px solid var(--line); touch-action: none; }
+  @media (max-width: 899px) { canvas { height: 380px; } }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 0.8rem; color: var(--muted); margin-top: 8px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+  .legend i.hollow { background: transparent !important; border: 2px dashed var(--warn); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .hit { color: var(--ok); font-weight: 600; } .miss { color: var(--bad); font-weight: 600; }
+  .spinner { width: 16px; height: 16px; border: 2px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; display: none; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .error { color: var(--bad); font-size: 0.9rem; }
+  .muted { color: var(--muted); font-size: 0.85rem; }
+  footer { max-width: 1180px; margin: 24px auto 0; color: var(--muted); font-size: 0.8rem; }
+  .sr { position: absolute; left: -9999px; }
 </style>
 </head>
 <body>
-<div class="bg-stage"></div>
-<div class="bg-grid"></div>
-<div class="cursor-glow" id="cursorGlow"></div>
-
-<nav>
-  <div class="nav-inner">
-    <a href="../" class="logo">
-      <span class="logo-dot"></span>
-      <span class="logo-text">GRAPHRAG·SEC·EDGAR</span>
-    </a>
-    <a href="https://github.com/Juadsuarezsan/graphrag-sec-edgar" class="nav-cta" target="_blank" rel="noopener">Repo →</a>
+<header>
+  <div>
+    <h1>GraphRAG sobre SEC EDGAR</h1>
+    <p>Grafo de conocimiento de 10-K del S&amp;P 500 · consultas multi-hop · comparación con Vector RAG</p>
   </div>
-</nav>
+  <div class="row">
+    <span class="status"><span class="dot" id="dot"></span><span id="statusText">Conectando con la API…</span></span>
+    <a href="https://github.com/Juadsuarezsan/graphrag-sec-edgar" rel="noopener">Repositorio en GitHub</a>
+  </div>
+</header>
 
-<div class="container">
-  <header>
-    <div class="eyebrow"><span class="eyebrow-dot"></span> Neo4j-compatible · entity extraction · GraphRAG retrieval</div>
-    <h1>Financial questions answered by walking<br/><span class="grad">a knowledge graph built from 10-Ks.</span></h1>
-    <p class="subtitle">Ingests real 10-K business sections, builds a typed knowledge graph (Company → Product → Risk → Person), and answers questions via graph traversal + Claude.</p>
-    <div class="metric-row"><div class="metric"><div class="metric-value">6</div><div class="metric-label">Real 10-Ks ingested</div></div><div class="metric"><div class="metric-value">142</div><div class="metric-label">Graph nodes</div></div><div class="metric"><div class="metric-value">389</div><div class="metric-label">Edges</div></div><div class="metric"><div class="metric-value">0.86</div><div class="metric-label">Answer faithfulness</div></div></div>
-  </header>
-
-  <section>
-    <h2>Try it yourself</h2>
-    <p class="section-sub">Type an input. If the project's FastAPI backend is running on <code>localhost:8000</code>, this calls it live; otherwise it shows the nearest pre-baked example.</p>
-    <div class="try-box">
-      <label for="ticket-input">Input</label>
-      <textarea id="ticket-input" placeholder="Which companies in the portfolio compete with NVIDIA in AI accelerators?"></textarea>
-      <div class="try-box-actions">
-        <button class="btn btn-primary" id="classify-btn">Run →</button>
-        <button class="btn" id="random-btn">Try a random example</button>
-        <span class="api-hint">backend: <code>http://localhost:8000</code></span>
+<main>
+  <section class="card">
+    <h2>Consulta</h2>
+    <form id="form">
+      <label class="sr" for="q">Pregunta</label>
+      <textarea id="q" placeholder="Which CEOs lead companies that share a supplier with Apple?" required minlength="3" maxlength="1000"></textarea>
+      <div class="row">
+        <label>Modo <select id="mode"><option value="graph">graph (GraphRAG)</option><option value="hybrid">hybrid</option><option value="vector">vector (baseline)</option></select></label>
+        <label>Saltos <select id="hops"><option>1</option><option>2</option><option selected>3</option><option>4</option></select></label>
+        <button class="primary" id="ask" type="submit">Preguntar</button>
+        <span class="spinner" id="spin" aria-hidden="true"></span>
       </div>
-      <div class="live-result" id="live-result"></div>
+      <p class="error" id="err" role="alert"></p>
+    </form>
+    <h2 style="margin-top:14px">Consultas pre-calculadas (4 categorías)</h2>
+    <div class="chips" id="chips"></div>
+    <p class="muted" id="prebakedNote"></p>
+  </section>
+
+  <section class="card">
+    <h2>Grafo</h2>
+    <div class="stats" id="stats"></div>
+    <canvas id="graph" aria-label="Visualización del grafo de conocimiento"></canvas>
+    <div class="legend">
+      <span><i style="background:var(--company)"></i>Company</span><span><i style="background:var(--person)"></i>Person</span>
+      <span><i style="background:var(--subsidiary)"></i>Subsidiary</span><span><i style="background:var(--product)"></i>Product</span>
+      <span><i style="background:var(--risk)"></i>Risk</span><span><i style="background:var(--market)"></i>Market</span>
+      <span><i class="hollow"></i>stale (&gt;365 días)</span>
+    </div>
+    <p class="muted" id="graphNote">Arrastra los nodos; toca uno para ver su nombre. Al responder una pregunta se resalta el subgrafo recorrido.</p>
+  </section>
+
+  <section class="card span2" id="result" hidden>
+    <h2>Respuesta</h2>
+    <div class="answer" id="answer"></div>
+    <div class="meta" id="meta"></div>
+    <dl class="kv" style="margin-top:10px">
+      <dt>Tipo</dt><dd id="kind"></dd>
+      <dt>Seeds</dt><dd id="seeds"></dd>
+      <dt>Plan</dt><dd><div class="plan" id="plan"></div></dd>
+      <dt>Ids respuesta</dt><dd id="ids"></dd>
+    </dl>
+    <div id="compare"></div>
+  </section>
+
+  <section class="card span2">
+    <h2>Resultados guardados (eval/RESULTS.md)</h2>
+    <p class="muted">Corrida <code>python -m eval.run</code> sin LLM: síntesis por plantilla determinista. Hit = todos los ids esperados presentes (lookup / multi-hop) o conteo exacto (aggregation). Faithfulness pendiente (requiere <code>ANTHROPIC_API_KEY</code>).</p>
+    <div style="overflow-x:auto">
+    <table id="results"><thead><tr><th>Sistema</th><th>Lookup</th><th>2-hop</th><th>3-hop</th><th>Aggregation</th><th>Faithfulness</th></tr></thead><tbody></tbody></table>
     </div>
   </section>
-
-  <section>
-    <h2>Pre-baked examples</h2>
-    <p class="section-sub">Real inputs the project handles, with outputs captured ahead of time. Click any card to drop it into the try-box above.</p>
-    <div class="grid" id="cards-grid"></div>
-  </section>
-
-  <section>
-    <div class="arch-section">
-      <h2>Pipeline</h2>
-      <p class="section-sub">How an input becomes a decision.</p>
-      <div class="arch-flow"><span class="key">in:</span>  <span class="val">natural-language question</span>
-  <span class="note">↓</span>
-<span class="key">step 1:</span>  <span class="val">entity linker matches question entities to graph</span>
-  <span class="note">↓</span>
-<span class="key">step 2:</span>  <span class="val">graph traversal — multi-hop subgraph extraction</span>
-  <span class="note">↓</span>
-<span class="key">step 3:</span>  <span class="val">subgraph serialized to context</span>
-  <span class="note">↓</span>
-<span class="key">step 4:</span>  <span class="val">Claude answers with citation back to graph paths</span>
-  <span class="note">↓</span>
-<span class="key">step 5:</span>  <span class="val">faithfulness check — every claim must trace to a graph edge</span>
-  <span class="note">↓</span>
-<span class="key">out:</span>  <span class="val">answer + cited graph path</span></div>
-    </div>
-  </section>
-</div>
-
-<footer>
-  Part of <a href="https://juadsuarezsan.github.io/ai-portfolio/">the Juan David Suárez portfolio</a> ·
-  <a href="https://github.com/Juadsuarezsan/graphrag-sec-edgar">Source code</a>
-</footer>
+</main>
+<footer>Juan David Suárez Sánchez · juadsuarezsan@unal.edu.co · Datos: SEC EDGAR (dominio público) + fixture curado a mano (directores sintéticos marcados). Sin CDN: toda la visualización es código propio en esta página.</footer>
 
 <script>
-  const cursorGlow = document.getElementById('cursorGlow');
-  document.addEventListener('mousemove', (e) => {
-    cursorGlow.style.left = e.clientX + 'px';
-    cursorGlow.style.top = e.clientY + 'px';
-  });
+(function () {
+  "use strict";
+  const API = (location.pathname.startsWith("/demo") ? "" : (localStorage.getItem("graphrag.api") || "http://localhost:8000"));
+  const $ = (id) => document.getElementById(id);
+  const COLORS = { Company: "--company", Person: "--person", Subsidiary: "--subsidiary", Product: "--product", Risk: "--risk", Market: "--market" };
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  let online = false, prebaked = null, graphData = null, highlight = { nodes: new Set(), edges: new Set() };
 
-  let predictions = [];
-  const API_BASE = 'http://localhost:8000';
-
-  fetch('predictions.json').then(r => r.json()).then(data => {
-    predictions = data.predictions;
-    renderCards();
-  });
-
-  function renderCards() {
-    const grid = document.getElementById('cards-grid');
-    grid.innerHTML = '';
-    predictions.forEach(p => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      const confPct = Math.round(p.confidence * 100);
-      card.innerHTML = `
-        <div class="ticket">${escapeHtml(p.ticket)}</div>
-        <div class="meta">
-          <span class="intent">${escapeHtml(p.top_intent)}</span>
-          <span class="conf">${confPct}%<span class="bar"><span style="width:${confPct}%"></span></span></span>
-        </div>
-        <div class="latency">latency: ${p.inference_ms.toFixed(0)} ms · alt: ${p.alternatives.map(a => a.intent).join(' · ')}</div>
-      `;
-      card.addEventListener('click', () => {
-        document.getElementById('ticket-input').value = p.ticket;
-        document.getElementById('ticket-input').scrollIntoView({behavior: 'smooth', block: 'center'});
-      });
-      grid.appendChild(card);
-    });
+  // ---------- status / stats ----------
+  function setStatus(ok, text) { $("dot").className = "dot " + (ok ? "ok" : "bad"); $("statusText").textContent = text; online = ok; }
+  function renderStats(g, extra) {
+    const byType = {};
+    g.nodes.forEach((n) => { byType[n.type] = (byType[n.type] || 0) + 1; });
+    const stale = g.nodes.filter((n) => n.stale).length;
+    const items = [["Nodos", g.total_nodes || g.nodes.length], ["Aristas", g.total_edges || g.edges.length], ["Empresas", byType.Company || 0], ["Personas", byType.Person || 0], ["Subsidiarias", byType.Subsidiary || 0], ["Nodos stale", stale]];
+    $("stats").innerHTML = items.map(([k, v]) => `<div class="stat"><b>${v}</b><span>${k}</span></div>`).join("");
+    if (extra) $("graphNote").textContent = extra;
   }
 
-  document.getElementById('classify-btn').addEventListener('click', classifyLive);
-  document.getElementById('random-btn').addEventListener('click', () => {
-    if (!predictions.length) return;
-    const p = predictions[Math.floor(Math.random() * predictions.length)];
-    document.getElementById('ticket-input').value = p.ticket;
-  });
+  // ---------- force simulation (own implementation, no libraries) ----------
+  const canvas = $("graph"), ctx = canvas.getContext("2d");
+  let sim = null, dragging = null, hover = null, dpr = 1;
+  function resize() {
+    const rect = canvas.getBoundingClientRect(); dpr = window.devicePixelRatio || 1;
+    canvas.width = rect.width * dpr; canvas.height = rect.height * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (sim) { sim.w = rect.width; sim.h = rect.height; }
+  }
+  function buildSim(g) {
+    const rect = canvas.getBoundingClientRect();
+    const nodes = g.nodes.map((n, i) => ({ ...n, x: rect.width / 2 + Math.cos(i * 2.399) * (60 + (i % 13) * 14), y: rect.height / 2 + Math.sin(i * 2.399) * (60 + (i % 11) * 14), vx: 0, vy: 0, r: n.type === "Company" ? 7 : n.type === "Person" ? 4.5 : 4 }));
+    const index = new Map(nodes.map((n) => [n.id, n]));
+    const edges = g.edges.filter((e) => index.has(e.from) && index.has(e.to)).map((e) => ({ ...e, s: index.get(e.from), t: index.get(e.to) }));
+    const degree = new Map(); edges.forEach((e) => { degree.set(e.from, (degree.get(e.from) || 0) + 1); degree.set(e.to, (degree.get(e.to) || 0) + 1); });
+    nodes.forEach((n) => { n.r += Math.min(6, Math.sqrt(degree.get(n.id) || 0)); });
+    return { nodes, edges, index, w: rect.width, h: rect.height, alpha: 1 };
+  }
+  function step() {
+    if (!sim) return;
+    const { nodes, edges } = sim, k = 0.6, alpha = sim.alpha;
+    // repulsion with a coarse grid (O(n) buckets, good enough for < 2k nodes)
+    const cell = 60, grid = new Map();
+    nodes.forEach((n) => { const key = ((n.x / cell) | 0) + "," + ((n.y / cell) | 0); (grid.get(key) || grid.set(key, []).get(key)).push(n); });
+    nodes.forEach((a) => {
+      const gx = (a.x / cell) | 0, gy = (a.y / cell) | 0;
+      for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+        const bucket = grid.get((gx + dx) + "," + (gy + dy)); if (!bucket) continue;
+        for (const b of bucket) { if (a === b) continue; let ddx = a.x - b.x, ddy = a.y - b.y, d2 = ddx * ddx + ddy * ddy + 0.01; if (d2 > cell * cell) continue; const f = (900 * alpha) / d2; a.vx += ddx * f / Math.sqrt(d2); a.vy += ddy * f / Math.sqrt(d2); }
+      }
+    });
+    edges.forEach((e) => { const dx = e.t.x - e.s.x, dy = e.t.y - e.s.y, d = Math.sqrt(dx * dx + dy * dy) + 0.01, f = (d - 38) * 0.03 * alpha; e.s.vx += dx / d * f; e.s.vy += dy / d * f; e.t.vx -= dx / d * f; e.t.vy -= dy / d * f; });
+    nodes.forEach((n) => { n.vx += (sim.w / 2 - n.x) * 0.004 * alpha; n.vy += (sim.h / 2 - n.y) * 0.004 * alpha; if (n !== dragging) { n.vx *= k; n.vy *= k; n.x += n.vx; n.y += n.vy; } n.x = Math.max(8, Math.min(sim.w - 8, n.x)); n.y = Math.max(8, Math.min(sim.h - 8, n.y)); });
+    sim.alpha = Math.max(0.02, alpha * 0.985);
+    draw(); requestAnimationFrame(step);
+  }
+  function draw() {
+    const { nodes, edges } = sim; ctx.clearRect(0, 0, sim.w, sim.h);
+    const anyHighlight = highlight.nodes.size > 0;
+    edges.forEach((e) => { const hl = highlight.edges.has(e.from + "|" + e.to + "|" + e.type); ctx.strokeStyle = hl ? css("--accent") : css("--line"); ctx.lineWidth = hl ? 2 : 1; ctx.globalAlpha = anyHighlight && !hl ? 0.35 : 1; ctx.beginPath(); ctx.moveTo(e.s.x, e.s.y); ctx.lineTo(e.t.x, e.t.y); ctx.stroke(); });
+    nodes.forEach((n) => { const hl = highlight.nodes.has(n.id); ctx.globalAlpha = anyHighlight && !hl ? 0.3 : 1; ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2); ctx.fillStyle = css(COLORS[n.type] || "--market"); ctx.fill(); if (n.stale) { ctx.setLineDash([3, 3]); ctx.strokeStyle = css("--warn"); ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]); } if (hl) { ctx.strokeStyle = css("--ink"); ctx.lineWidth = 2; ctx.stroke(); } });
+    ctx.globalAlpha = 1; ctx.font = "12px " + css("--sans"); ctx.fillStyle = css("--ink"); ctx.textBaseline = "middle";
+    nodes.forEach((n) => { if (n === hover || highlight.nodes.has(n.id) || (n.type === "Company" && n.r > 10)) { ctx.fillText(n.name, n.x + n.r + 4, n.y); } });
+  }
+  function pick(ev) { const rect = canvas.getBoundingClientRect(); const x = (ev.clientX - rect.left), y = (ev.clientY - rect.top); return sim.nodes.find((n) => (n.x - x) ** 2 + (n.y - y) ** 2 <= (n.r + 6) ** 2) || null; }
+  canvas.addEventListener("pointerdown", (ev) => { if (!sim) return; dragging = pick(ev); if (dragging) { canvas.setPointerCapture(ev.pointerId); sim.alpha = Math.max(sim.alpha, 0.3); } });
+  canvas.addEventListener("pointermove", (ev) => { if (!sim) return; if (dragging) { const rect = canvas.getBoundingClientRect(); dragging.x = ev.clientX - rect.left; dragging.y = ev.clientY - rect.top; dragging.vx = dragging.vy = 0; } else { hover = pick(ev); } });
+  canvas.addEventListener("pointerup", (ev) => { if (dragging) { hover = dragging; } dragging = null; });
+  window.addEventListener("resize", resize);
 
-  async function classifyLive() {
-    const text = document.getElementById('ticket-input').value.trim();
-    const result = document.getElementById('live-result');
-    if (!text) {
-      result.innerHTML = '<span style="color:var(--warning)">Please enter some text first.</span>';
-      result.classList.add('show');
-      return;
+  function showGraph(g, note) { graphData = g; resize(); sim = buildSim(g); renderStats(g, note); requestAnimationFrame(step); }
+  function highlightSubgraph(sub) {
+    highlight = { nodes: new Set((sub.nodes || []).map((n) => n.id)), edges: new Set((sub.edges || []).map((e) => e.from + "|" + e.to + "|" + e.type)) };
+    if (sim) { sim.alpha = Math.max(sim.alpha, 0.2); }
+  }
+
+  // ---------- answers ----------
+  function renderAnswer(a, expected) {
+    $("result").hidden = false;
+    $("answer").textContent = a.answer;
+    const m = a.metrics || {};
+    $("meta").innerHTML = [`modo=${a.mode}`, `latencia=${m.latency_ms ?? "?"} ms`, `tokens=${m.tokens_in ?? 0}/${m.tokens_out ?? 0}`, `cost_usd=${m.cost_usd ?? 0}`, `síntesis=${a.synthesizer}`, `trace=${m.trace_id ?? "-"}`].map((s) => `<span>${s}</span>`).join("");
+    $("kind").textContent = a.classified_kind + (a.count != null ? ` · count=${a.count}` : "");
+    $("seeds").textContent = (a.seeds || []).join(", ") || "—";
+    $("plan").innerHTML = (a.plan || []).length ? a.plan.map((p) => `<span class="step">${p.edge_types.join("|")} (${p.direction})</span>`).join("") : "<span class='muted'>sin traversal</span>";
+    $("ids").textContent = (a.answer_ids || []).join(", ") || "—";
+    let cmp = "";
+    if (expected) {
+      const exp = new Set(expected.expected_ids || []); const got = new Set(a.answer_ids || []);
+      const hit = expected.expected_count != null ? a.count === expected.expected_count : [...exp].every((x) => got.has(x));
+      cmp += `<p class="muted">Ground truth manual: ${expected.expected_count != null ? "count = " + expected.expected_count : [...exp].join(", ")} → <span class="${hit ? "hit" : "miss"}">${hit ? "HIT" : "MISS"}</span></p>`;
     }
-    result.innerHTML = '<span style="color:var(--text-dim)">Running…</span>';
-    result.classList.add('show');
-
+    if (expected && expected.vector) { cmp += `<p class="muted">Vector RAG (baseline TF-IDF, mismos datos): ${expected.vector.count != null ? "count = " + expected.vector.count + " · " : ""}${(expected.vector.answer_ids || []).slice(0, 12).join(", ") || "sin entidades"}</p>`; }
+    $("compare").innerHTML = cmp;
+    highlightSubgraph(a.subgraph || { nodes: [], edges: [] });
+    $("result").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+  async function ask(question, mode, hops, expected) {
+    $("err").textContent = ""; $("ask").disabled = true; $("spin").style.display = "inline-block";
     try {
-      const r = await fetch(`${API_BASE}/api/classify`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({text}),
-      });
-      if (!r.ok) throw new Error('backend non-200');
-      const data = await r.json();
-      renderLive(data, true);
+      if (online) {
+        const r = await fetch(API + "/api/query", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ question, mode, max_hops: Number(hops), k: 5 }) });
+        if (!r.ok) { const body = await r.json().catch(() => ({})); throw new Error(`HTTP ${r.status}: ${body.detail ? JSON.stringify(body.detail).slice(0, 200) : r.statusText}`); }
+        renderAnswer(await r.json(), expected);
+      } else if (expected && expected.graph && mode === "graph") {
+        renderAnswer(expected.graph, expected);
+      } else {
+        throw new Error("La API no está disponible; sin conexión sólo se muestran las respuestas pre-calculadas en modo graph.");
+      }
+    } catch (e) { $("err").textContent = e.message; }
+    finally { $("ask").disabled = false; $("spin").style.display = "none"; }
+  }
+  $("form").addEventListener("submit", (ev) => { ev.preventDefault(); ask($("q").value.trim(), $("mode").value, $("hops").value, null); });
+
+  // ---------- pre-baked ----------
+  function renderChips(p) {
+    prebaked = p;
+    $("chips").innerHTML = p.predictions.map((x, i) => `<button type="button" class="chip" data-i="${i}"><small>${x.category.replace("_", " ")}</small>${x.question}</button>`).join("");
+    $("chips").querySelectorAll(".chip").forEach((b) => b.addEventListener("click", () => { const x = p.predictions[Number(b.dataset.i)]; $("q").value = x.question; $("mode").value = "graph"; ask(x.question, "graph", $("hops").value, x); }));
+    $("prebakedNote").textContent = `Generadas por scripts/build_demo_predictions.py el ${p.generated_at} (${p.synthesis}); grafo de ${p.graph.nodes} nodos / ${p.graph.edges} aristas.`;
+  }
+  function renderResults(md) {
+    const rows = md.split("\n").filter((l) => l.startsWith("| ") && !l.startsWith("| Sistema") && !l.startsWith("|---")).map((l) => l.split("|").slice(1, -1).map((c) => c.trim())).filter((c) => c.length === 6);
+    $("results").querySelector("tbody").innerHTML = rows.map((c) => `<tr>${c.map((v) => `<td>${v}</td>`).join("")}</tr>`).join("");
+  }
+
+  // ---------- boot ----------
+  async function boot() {
+    try { const r = await fetch("predictions.json"); if (r.ok) renderChips(await r.json()); } catch (e) { $("prebakedNote").textContent = "No se pudo cargar predictions.json"; }
+    try { const r = await fetch("results.md"); if (r.ok) renderResults(await r.text()); } catch (e) { /* table stays empty */ }
+    try {
+      const h = await fetch(API + "/health", { cache: "no-store" });
+      if (!h.ok) throw new Error("health " + h.status);
+      const health = await h.json();
+      setStatus(true, `API en línea · ${health.nodes} nodos · ${health.edges} aristas · backend ${health.graph_backend}${health.llm_enabled ? " · LLM activo" : " · modo determinista"}`);
+      const g = await (await fetch(API + "/api/graph?limit=600")).json();
+      showGraph(g, g.truncated ? `Mostrando ${g.nodes.length} de ${g.total_nodes} nodos.` : null);
     } catch (e) {
-      const fallback = nearestBakedMatch(text);
-      renderLive(fallback, false);
+      setStatus(false, "API fuera de línea · mostrando snapshot pre-calculado");
+      try { const g = await (await fetch("graph.json")).json(); showGraph(g, "Snapshot estático de demo/graph.json (la API no responde)."); } catch (e2) { $("graphNote").textContent = "No hay grafo disponible."; }
     }
   }
-
-  function renderLive(d, isLive) {
-    const result = document.getElementById('live-result');
-    const confPct = Math.round(d.confidence * 100);
-    const alts = (d.alternatives || []).map(a =>
-      `<span class="alt-chip">${escapeHtml(a.intent)} (${Math.round(a.confidence*100)}%)</span>`).join('');
-    result.innerHTML = `
-      <div>
-        <span class="intent-pill">→ ${escapeHtml(d.top_intent)}</span>
-        <span class="confidence">${confPct}% confident · ${d.inference_ms ? d.inference_ms.toFixed(0) + ' ms' : 'cached'}</span>
-      </div>
-      <div class="alt-list">${alts}</div>
-      <div style="margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-faint)">
-        ${isLive ? 'source: live POST /api/classify' : 'source: nearest pre-baked example (start the backend for live inference)'}
-      </div>
-    `;
-  }
-
-  function nearestBakedMatch(text) {
-    const lo = text.toLowerCase();
-    let best = predictions[0]; let bestScore = -1;
-    predictions.forEach(p => {
-      const tokens = new Set(p.ticket.toLowerCase().split(/\W+/).filter(Boolean));
-      const myTok = new Set(lo.split(/\W+/).filter(Boolean));
-      let overlap = 0;
-      myTok.forEach(t => { if (tokens.has(t)) overlap++; });
-      if (overlap > bestScore) { bestScore = overlap; best = p; }
-    });
-    return best;
-  }
-
-  function escapeHtml(s) {
-    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  }
+  boot();
+})();
 </script>
 </body>
 </html>

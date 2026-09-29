@@ -1,51 +1,28 @@
-# Real SEC EDGAR 10-K excerpts
+# Muestra de excerpts reales de 10-K (SEC EDGAR)
 
-6 actual 10-K filings pulled from SEC EDGAR public API (no auth, free).
-For each company we keep the "Item 1 — Business" section excerpt (up to
-8000 chars) so the entity extractor + knowledge-graph ingestion can be
-demonstrated on real text instead of the 25-company synthetic fixture.
+Seis archivos descargados de la API pública de EDGAR (sin autenticación, sólo `User-Agent`) con el script regex anterior a `scripts/download_data.py`. Se conservan como **evidencia** de los tres formatos de HTML que rompían el regex y como único texto real disponible sin red a sec.gov.
 
-| Ticker | Accession | Business section chars |
-|---|---|---|
-| AAPL  | 0000320193-24-000123 | ~8000 |
-| MSFT  | 0000950170-25-100235 | ~8000 |
-| NVDA  | 0001045810-26-000021 | (HTML template differs — re-parse with `pip install sec-edgar-downloader` for full body) |
-| GOOGL | 0001652044-26-000018 | ~8000 |
-| META  | 0001628280-26-003942 | (re-parse needed) |
-| TSLA  | 0001628280-26-003952 | (re-parse needed) |
+| Ticker | Accession | Chars | Prosa utilizable | Nota |
+|---|---|---|---|---|
+| AAPL | 0000320193-25-000079 | 1 | no | regex no ancló el título (`<span><font>`) |
+| MSFT | 0000950170-25-100235 | 8000 | **no** | el regex casó la cabecera XBRL oculta (`ix:header`): tokens `us-gaap:*Member`, sin prosa |
+| NVDA | 0001045810-26-000021 | 8 | no | `&#160;` en el título |
+| GOOGL | 0001652044-26-000018 | 7999 | **sí** | Item 1 — Business: AI, Moonshots, Google Services |
+| META | 0001628280-26-003942 | 1 | no | título anidado |
+| TSLA | 0001628280-26-003952 | 1 | no | título anidado |
 
-## Why 3 of 6 came out as 1 char
+`_index.json` repite esta tabla campo por campo (`usable_prose`, `note`). El accession de AAPL es `0000320193-25-000079` en los tres sitios (JSON, índice y esta tabla); la versión anterior de este README citaba otro por error.
 
-The naive regex `Item 1. Business` doesn't anchor on every filer's HTML
-template. NVDA / META / TSLA wrap the section header inside nested
-`<span><font>...</font></span>` tags or use non-breaking spaces. The
-production solution is `unstructured-io` or the `sec-edgar-downloader`
-library with `--include-amends`. AAPL / MSFT / GOOGL came out clean
-because they use the more standard inline header format.
+## Cómo se usa
 
-## How to fetch your own
+* `src/ingestion/pipeline.load_sample_filings()` carga los excerpts como secciones Item 1, desescapa entidades HTML y descarta los que tienen menos de 500 caracteres o una proporción de prosa < 0,5 (`prose_ratio`). Hoy sólo pasa GOOGL.
+* El `RuleBasedExtractor` extrae de GOOGL nueve productos reales (Android, Chrome, Gmail, Google Drive, Google Gemini, Google Maps, Google Photos, Google Play, Search) y los fusiona en el nodo `google` del fixture. `tests/test_pipeline_e2e.py` lo verifica de extremo a extremo (ingesta → grafo → consulta).
+* Un párrafo de GOOGL está anotado a mano en `eval/extraction_gold.jsonl` para medir el F1 del extractor.
 
-```python
-import httpx
-HEADERS = {"User-Agent": "Your Name your@email.com"}  # SEC requires User-Agent
-url = "https://data.sec.gov/submissions/CIK0000320193.json"
-data = httpx.get(url, headers=HEADERS).json()
-# data["filings"]["recent"] has form / accessionNumber / primaryDocument arrays
+## Cómo obtener filings completos
+
+```bash
+python scripts/download_data.py --years 3 --limit 5      # requiere salida a sec.gov
 ```
 
-SEC rate-limits to 10 req/sec. The `scripts/fetch_sec_10k.py` (this
-project) respects that with `time.sleep(0.5)` between calls.
-
-## What goes into the graph
-
-For each parsed 10-K, the entity extractor pulls:
-- Company entity (already exists from the demo fixture; this updates its
-  embeddings with real text)
-- Person entities mentioned in the business section (CEOs, directors)
-- Product entities (named offerings)
-- Risk entities (when paired with Item 1A — not in this sample)
-- Supplier / customer / competitor relationships when those entities
-  appear together within a sentence
-
-Run `python -m src.ingestion.ingest_sec` to fold these excerpts into the
-live in-memory graph (overwrites the synthetic-only fixture).
+El script usa `data.sec.gov/submissions/CIK##########.json`, respeta 10 req/s, descarga el documento primario del 10-K, el Exhibit 21 (vía `index.json` del filing) y el DEF 14A, y escribe `data/MANIFEST.txt` con SHA-256. El parser robusto (`src/ingestion/parser.py`) resuelve los tres formatos que fallaban aquí; los tests lo comprueban con HTML sintético de cada estilo.

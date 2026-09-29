@@ -1,0 +1,12 @@
+# sha256  path  bytes  form  accession  filing_date
+# generated 2026-09-29 by scripts/build_manifest.py
+4ccf06958a255d5f953cc89d6454684f40256916b866227102eeec20d80a5470  data/sec_edgar_sample/AAPL_10K.json  285  10-K  0000320193-25-000079  -
+509aaea2553335ff891d7106b054a08a1a5c16e129110d25eccd15aa39ef6e15  data/sec_edgar_sample/GOOGL_10K.json  8293  10-K  0001652044-26-000018  -
+c50c470e7125df796083679c8e58b0e9ecde118eb853204d8200106dbd17cfb2  data/sec_edgar_sample/META_10K.json  290  10-K  0001628280-26-003942  -
+7550ea794f0e9c1b6d503fec300ebfd92909b56a734b5e5e80373303afa810e8  data/sec_edgar_sample/MSFT_10K.json  8292  10-K  0000950170-25-100235  -
+d0a286943ebdd1e0e028ed850dbc0770b823603b74d4851f967da775ef33dcbf  data/sec_edgar_sample/NVDA_10K.json  295  10-K  0001045810-26-000021  -
+476ef69b7b2c293fdb7a2991cba6d404b65fe54499cd555198da453f5694a4fb  data/sec_edgar_sample/TSLA_10K.json  286  10-K  0001628280-26-003952  -
+60e9bef0322364151b2ad1f3858e999856f6c8e5f0ffffcf52b42fd04a879819  data/sec_edgar_sample/_index.json  1619  -  -  -
+572b757d3a4a26b5d1d50f0b672ba30d778bf25221aacd85f3b47407df687b42  data/sp500_top100.csv  3886  -  -  -
+0a83769e13e631a5ac5379539d5c4a1fa5bd2804fbe31c7588dfe5330ffe3574  eval/gold.jsonl  27379  -  -  -
+eefed08033338f1f50858f671952046d8c2670db57a15df98bf5660d363a6848  eval/extraction_gold.jsonl  9148  -  -  -
