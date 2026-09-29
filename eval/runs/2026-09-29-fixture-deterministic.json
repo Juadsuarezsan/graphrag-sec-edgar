@@ -1,6 +1,6 @@
 {
   "name": "fixture-deterministic",
-  "generated_at": "2026-09-29T02:19:48+00:00",
+  "generated_at": "2026-09-29T02:37:45+00:00",
   "synthesis": "template (deterministic, no LLM)",
   "llm_enabled": false,
   "model_pinned": "claude-sonnet-4-5-20250929",
@@ -10,7 +10,7 @@
     "edges": 451
   },
   "gold": {
-    "path": "/home/user/trabajo/graphrag-sec-edgar/eval/gold.jsonl",
+    "path": "eval/gold.jsonl",
     "n": 100,
     "by_category": {
       "lookup": 30,
@@ -64,9 +64,9 @@
         }
       },
       "latency_ms": {
-        "p50": 22.0,
-        "p95": 23.0,
-        "mean": 22.8
+        "p50": 23.0,
+        "p95": 24.0,
+        "mean": 23.22
       },
       "tokens_in": 0,
       "tokens_out": 0,
@@ -110,7 +110,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 24,
+          "latency_ms": 23,
           "answer": "Satya Nadella [satya_nadella]. Evidence: Microsoft 365 (Product). category: Productivity; company: microsoft. Microsoft 365 is a product of Microsoft Corporation. Microsoft Corporation (Company). ticker: MSFT; sector: Technology; in_sp500: True; cik: 0000789019; hq_state: WA. Microsoft Corporation o"
         },
         {
@@ -209,8 +209,8 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
-          "answer": "Advanced Micro Devices, Inc. [amd], Bank of America Corporation [bofa], Ford Motor Company [ford], General Motors Company [gm], The Goldman Sachs Group, Inc. [goldman], JPMorgan Chase &amp; Co. [jpm], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm], Tesla, Inc. [tesla]. Evidence: Mary "
+          "latency_ms": 23,
+          "answer": "Advanced Micro Devices, Inc. [amd], Bank of America Corporation [bofa], Ford Motor Company [ford], General Motors Company [gm], The Goldman Sachs Group, Inc. [goldman], JPMorgan Chase & Co. [jpm], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm], Tesla, Inc. [tesla]. Evidence: Mary Barr"
         },
         {
           "id": "lk-07",
@@ -251,7 +251,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 28,
           "answer": "Albert Bourla [albert_bourla], C.C. Wei [cc_wei], Jim Farley [jim_farley]. Evidence: TSMC Arizona Corporation (Subsidiary). jurisdiction: Delaware; parent: tsmc. TSMC Arizona Corporation is a subsidiary of Taiwan Semiconductor Manufacturing Company. C.C. Wei (Person). role: CEO; company: tsmc; since"
         },
         {
@@ -274,7 +274,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 24,
           "answer": "Yelena Petrov [dir_petrov], Helle Rasmussen [dir_rasmussen], James Quincey [james_quincey], Kelly Ortberg [kelly_ortberg]. Evidence: LinkedIn Corporation (Subsidiary). jurisdiction: Delaware; parent: microsoft. LinkedIn Corporation is a subsidiary of Microsoft Corporation. The Boeing Company (Compan"
         },
         {
@@ -299,7 +299,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 21,
           "answer": "Amazon.com, Inc. [amazon], The Boeing Company [boeing], The Coca-Cola Company [ko], Lockheed Martin Corporation [lockheed], Meta Platforms, Inc. [meta], PepsiCo, Inc. [pep]. Evidence: Instagram, LLC (Subsidiary). jurisdiction: Delaware; parent: meta. Instagram, LLC is a subsidiary of Meta Platforms,"
         },
         {
@@ -350,7 +350,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 21,
           "answer": "Yelena Petrov [dir_petrov], Helle Rasmussen [dir_rasmussen], James Quincey [james_quincey], Kelly Ortberg [kelly_ortberg]. Evidence: Optum, Inc. (Subsidiary). jurisdiction: Delaware; parent: unh. Optum, Inc. is a subsidiary of UnitedHealth Group Incorporated. The Boeing Company (Company). ticker: BA"
         },
         {
@@ -398,7 +398,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "Mounjaro [prod_mounjaro], Verzenio [prod_verzenio], Zepbound [prod_zepbound]. Evidence: Eli Lilly and Company (Company). ticker: LLY; sector: Pharma; in_sp500: True; cik: 0000059478; hq_state: IN. Eli Lilly and Company offers the product Mounjaro. Eli Lilly and Company offers the product Verzenio (P"
         },
         {
@@ -430,8 +430,8 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
-          "answer": "AbbVie Inc. [abbvie], Amazon.com, Inc. [amazon], Apple Inc. [apple], The Boeing Company [boeing], Broadcom Inc. [broadcom], Alphabet Inc. [google], Johnson &amp; Johnson [jnj], Eli Lilly and Company [lilly], Lockheed Martin Corporation [lockheed], Merck &amp; Co., Inc. [merck], Meta Platforms, Inc. "
+          "latency_ms": 23,
+          "answer": "AbbVie Inc. [abbvie], Amazon.com, Inc. [amazon], Apple Inc. [apple], The Boeing Company [boeing], Broadcom Inc. [broadcom], Alphabet Inc. [google], Johnson & Johnson [jnj], Eli Lilly and Company [lilly], Lockheed Martin Corporation [lockheed], Merck & Co., Inc. [merck], Meta Platforms, Inc. [meta], "
         },
         {
           "id": "lk-16",
@@ -578,7 +578,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "Intel Corporation [intel], Mastercard Incorporated [mastercard], Visa Inc. [visa]. Evidence: Visa Inc. (Company). ticker: V; sector: Financials; in_sp500: True; cik: 0001403161; hq_state: CA. Visa Inc. mentions the risk Interest rate sensitivity in its 10-K. Visa Inc. mentions the risk Cybers Visa E"
         },
         {
@@ -608,7 +608,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 27,
           "answer": "China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Commodity price volatility [risk_commodity_prices], Interest rate sensitivity [risk_interest_rate], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions ["
         },
         {
@@ -635,7 +635,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 28,
+          "latency_ms": 23,
           "answer": "China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Commodity price volatility [risk_commodity_prices], Cybersecurity incidents [risk_cybersecurity], Interest rate sensitivity [risk_interest_rate], Supplier concentration [risk_supply_concentration], Tariffs and trade "
         },
         {
@@ -685,7 +685,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 24,
           "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Enterprise software [market_enterprise_software]. Evidence: Megapack (Product). category: Energy storage; company: tesla. Megapack is a product of Tesla, Inc.. Microsoft 365 (Product). category: Productivity; company: micr"
         },
         {
@@ -734,8 +734,8 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
-          "answer": "Chevron Corporation [chevron], Alphabet Inc. [google], The Coca-Cola Company [ko], Merck &amp; Co., Inc. [merck], Meta Platforms, Inc. [meta], Oracle Corporation [oracle], PepsiCo, Inc. [pep], Pfizer Inc. [pfizer], Salesforce, Inc. [salesforce]. Evidence: Dana Whitfield (Person). role: Director; syn"
+          "latency_ms": 22,
+          "answer": "Chevron Corporation [chevron], Alphabet Inc. [google], The Coca-Cola Company [ko], Merck & Co., Inc. [merck], Meta Platforms, Inc. [meta], Oracle Corporation [oracle], PepsiCo, Inc. [pep], Pfizer Inc. [pfizer], Salesforce, Inc. [salesforce]. Evidence: Dana Whitfield (Person). role: Director; synthet"
         },
         {
           "id": "lk-27",
@@ -758,7 +758,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "Facebook Technologies, LLC [sub_facebook_tech], Instagram, LLC [sub_instagram], WhatsApp LLC [sub_whatsapp]. Evidence: Meta Quest (Product). category: Headset; company: meta. Meta Quest is a product of Meta Platforms, Inc.. Meta Platforms, Inc. (Company). ticker: META; sector: Technology; in_sp500: "
         },
         {
@@ -884,8 +884,8 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
-          "answer": "Adobe Inc. [adobe], Albert Bourla [albert_bourla], Amazon.com, Inc. [amazon], Apple Inc. [apple], Bank of America Corporation [bofa], Costco Wholesale Corporation [costco], Dana Whitfield [dir_whitfield], The Goldman Sachs Group, Inc. [goldman], Alphabet Inc. [google], Johnson &amp; Johnson [jnj], J"
+          "latency_ms": 27,
+          "answer": "Adobe Inc. [adobe], Albert Bourla [albert_bourla], Amazon.com, Inc. [amazon], Apple Inc. [apple], Bank of America Corporation [bofa], Costco Wholesale Corporation [costco], Dana Whitfield [dir_whitfield], The Goldman Sachs Group, Inc. [goldman], Alphabet Inc. [google], Johnson & Johnson [jnj], JPMor"
         },
         {
           "id": "2h-01",
@@ -906,8 +906,8 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
-          "answer": "James Quincey [james_quincey], Jim Farley [jim_farley], Kelly Ortberg [kelly_ortberg]. Evidence: LinkedIn Corporation (Subsidiary). jurisdiction: Delaware; parent: microsoft. LinkedIn Corporation is a subsidiary of Microsoft Corporation. The Boeing Company (Company). ticker: BA; sector: Aerospace &a"
+          "latency_ms": 24,
+          "answer": "James Quincey [james_quincey], Jim Farley [jim_farley], Kelly Ortberg [kelly_ortberg]. Evidence: LinkedIn Corporation (Subsidiary). jurisdiction: Delaware; parent: microsoft. LinkedIn Corporation is a subsidiary of Microsoft Corporation. The Boeing Company (Company). ticker: BA; sector: Aerospace & "
         },
         {
           "id": "2h-02",
@@ -927,7 +927,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "James Quincey [james_quincey], Kelly Ortberg [kelly_ortberg]. Evidence: Instagram, LLC (Subsidiary). jurisdiction: Delaware; parent: meta. Instagram, LLC is a subsidiary of Meta Platforms, Inc.. Amazon Prime (Product). category: Subscription; company: amazon. Amazon Prime is a product of Amazon.com,"
         },
         {
@@ -950,7 +950,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "Yelena Petrov [dir_petrov], Helle Rasmussen [dir_rasmussen], James Quincey [james_quincey], Kelly Ortberg [kelly_ortberg]. Evidence: Waymo LLC (Subsidiary). jurisdiction: Delaware; parent: google. Waymo LLC is a subsidiary of Alphabet Inc.. The Boeing Company (Company). ticker: BA; sector: Aerospace"
         },
         {
@@ -1021,8 +1021,8 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
-          "answer": "Jamie Dimon [jamie_dimon]. Evidence: JPMorgan Chase &amp; Co. (Company). ticker: JPM; sector: Financials; in_sp500: True; cik: 0000019617; hq_state: NY. JPMorgan Chase &amp; Co. mentions the risk Interest rate sensitivity in its 10-K. JPMorgan C JPMorgan Chase Bank, N.A. (Subsidiary). jurisdiction: "
+          "latency_ms": 23,
+          "answer": "Jamie Dimon [jamie_dimon]. Evidence: JPMorgan Chase & Co. (Company). ticker: JPM; sector: Financials; in_sp500: True; cik: 0000019617; hq_state: NY. JPMorgan Chase & Co. mentions the risk Interest rate sensitivity in its 10-K. JPMorgan C JPMorgan Chase Bank, N.A. (Subsidiary). jurisdiction: United S"
         },
         {
           "id": "2h-07",
@@ -1041,7 +1041,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "James Quincey [james_quincey]. Evidence: The Coca-Cola Company (Company). ticker: KO; sector: Consumer Staples; in_sp500: True; cik: 0000021344; hq_state: GA. The Coca-Cola Company offers the product Coca-Cola Zero Sugar. The Coca-Cola Compa Coca-Cola Refreshments USA, Inc. (Subsidiary). jurisdictio"
         },
         {
@@ -1121,7 +1121,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 21,
+          "latency_ms": 22,
           "answer": "AI regulation [risk_ai_regulation], China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Cybersecurity incidents [risk_cybersecurity], Supplier concentration [risk_supply_concentration]. Evidence: Climate regulation (Risk).  Climate regulation is a risk mentioned by Ex"
         },
         {
@@ -1154,7 +1154,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "Amazon.com, Inc. [amazon], Advanced Micro Devices, Inc. [amd], Hon Hai Precision Industry Co., Ltd. [foxconn], Alphabet Inc. [google], Intel Corporation [intel], Meta Platforms, Inc. [meta], Micron Technology, Inc. [micron], Microsoft Corporation [microsoft], NVIDIA Corporation [nvidia], Oracle Corp"
         },
         {
@@ -1182,7 +1182,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "Apple Inc. [apple], Broadcom Inc. [broadcom], Hon Hai Precision Industry Co., Ltd. [foxconn], Alphabet Inc. [google], Qualcomm Incorporated [qualcomm], Samsung Electronics Co., Ltd. [samsung], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: Apple Inc. (Company). ticker: AAPL; sector: Te"
         },
         {
@@ -1203,7 +1203,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "Dana Whitfield [dir_whitfield]. Evidence: Pfizer Inc. (Company). ticker: PFE; sector: Pharma; in_sp500: True; cik: 0000078003; hq_state: NY. Pfizer Inc. offers the product Comirnaty. Pfizer Inc. offers the product Paxlovid. Pfizer Inc. offers Comirnaty (Product). category: Vaccine; company: pfizer. "
         },
         {
@@ -1269,7 +1269,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "Coca-Cola Refreshments USA, Inc. [sub_ccr], Costa Limited [sub_costa], Sikorsky Aircraft Corporation [sub_sikorsky]. Evidence: The Coca-Cola Company (Company). ticker: KO; sector: Consumer Staples; in_sp500: True; cik: 0000021344; hq_state: GA. The Coca-Cola Company offers the product Coca-Cola Zero"
         },
         {
@@ -1292,7 +1292,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 24,
           "answer": "Sikorsky Aircraft Corporation [sub_sikorsky], Visa Europe Limited [sub_visa_europe], Visa U.S.A. Inc. [sub_visa_usa]. Evidence: Sikorsky Aircraft Corporation (Subsidiary). jurisdiction: Delaware; parent: lockheed. Sikorsky Aircraft Corporation is a subsidiary of Lockheed Martin Corporation. Visa Inc"
         },
         {
@@ -1315,7 +1315,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "Doug McMillon [doug_mcmillon], Lisa Su [lisa_su]. Evidence: Lisa Su (Person). role: CEO; company: amd; since: 2014. Lisa Su is the CEO of Advanced Micro Devices, Inc.. Doug McMillon (Person). role: CEO; company: walmart; since: 2014. Doug McMillon is the CEO of Walmart Inc.. Climate regulation (Risk"
         },
         {
@@ -1342,7 +1342,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Cybersecurity incidents [risk_cybersecurity], Supplier concentration [risk_supply_concentration]. Evidence: Jensen Huang (Person). role: CEO; company: nvidia; since: 1993. Jensen Huang is the CEO of NVIDIA Corporatio"
         },
         {
@@ -1366,7 +1366,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "H100 [prod_h100], Instinct MI300 [prod_mi300]. Evidence: Satya Nadella (Person). role: CEO; company: microsoft; since: 2014. Satya Nadella is the CEO of Microsoft Corporation. Antitrust enforcement (Risk).  Antitrust enforcement is a risk mentioned by Apple Inc.. Antitrust enforcement is a risk ment"
         },
         {
@@ -1445,7 +1445,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "Amazon.com, Inc. [amazon], Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], The Boeing Company [boeing], Broadcom Inc. [broadcom], Ford Motor Company [ford], General Motors Company [gm], Alphabet Inc. [google], Micron Technology, Inc. [micron], Microsoft Corporation [microsoft], NVIDIA Corpor"
         },
         {
@@ -1475,7 +1475,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], The Boeing Company [boeing], Broadcom Inc. [broadcom], Ford Motor Company [ford], General Motors Company [gm], Micron Technology, Inc. [micron], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm], Tesla, Inc. [tesla]. Evidence: Ford "
         },
         {
@@ -1520,7 +1520,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "Ford Motor Company [ford], General Motors Company [gm], Panasonic Holdings Corporation [panasonic], Tesla, Inc. [tesla]. Evidence: Tesla, Inc. (Company). ticker: TSLA; sector: Automotive; in_sp500: True; cik: 0001318605; hq_state: TX. Tesla, Inc. offers the product Model 3. Tesla, Inc. offers the pr"
         },
         {
@@ -1540,8 +1540,8 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
-          "answer": "Dana Whitfield [dir_whitfield]. Evidence: Merck &amp; Co., Inc. (Company). ticker: MRK; sector: Pharma; in_sp500: True; cik: 0000310158; hq_state: NJ. Merck &amp; Co., Inc. offers the product Keytruda. Merck &amp; Co., Inc. offers the product Gardasil. M Pfizer Inc. (Company). ticker: PFE; sector: P"
+          "latency_ms": 22,
+          "answer": "Dana Whitfield [dir_whitfield]. Evidence: Merck & Co., Inc. (Company). ticker: MRK; sector: Pharma; in_sp500: True; cik: 0000310158; hq_state: NJ. Merck & Co., Inc. offers the product Keytruda. Merck & Co., Inc. offers the product Gardasil. M Pfizer Inc. (Company). ticker: PFE; sector: Pharma; in_sp"
         },
         {
           "id": "2h-27",
@@ -1567,7 +1567,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "ASML Holding N.V. [asml], The Boeing Company [boeing], Intel Corporation [intel], Micron Technology, Inc. [micron], Salesforce, Inc. [salesforce], Samsung Electronics Co., Ltd. [samsung], SK hynix Inc. [sk_hynix], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: TSMC Arizona Corporation "
         },
         {
@@ -1612,7 +1612,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], ASML Holding N.V. [asml], The Boeing Company [boeing], Broadcom Inc. [broadcom], Chevron Corporation [chevron], Costco Wholesale Corporation [costco], Ford Motor Company [ford], General Motors Company [gm], Intel Corporation [intel], Eli Lilly "
         },
         {
@@ -1642,7 +1642,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Commodity price volatility [risk_commodity_prices], Interest rate sensitivity [risk_interest_rate], Supplier concentration [risk_supply_concentration], Tariffs and trade restrictions [risk_tariffs]. Evidence: Ford Mo"
         },
         {
@@ -1759,7 +1759,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "737 MAX [prod_737max], CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100]. Evidence: NVIDIA Corporation (Company). ticker: NVDA; sector: Semiconductors; in_sp500: True; cik: 0001045810; hq_state: CA. NVIDIA Corporation offers the product GeForce. NVIDIA Corporation offers the product  Antitr"
         },
         {
@@ -1783,7 +1783,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "Irene Castellanos [dir_castellanos], Keiko Nakamura [dir_nakamura], Helle Rasmussen [dir_rasmussen]. Evidence: TSMC Arizona Corporation (Subsidiary). jurisdiction: Delaware; parent: tsmc. TSMC Arizona Corporation is a subsidiary of Taiwan Semiconductor Manufacturing Company. N3 process (Product). ca"
         },
         {
@@ -1838,7 +1838,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "Boeing Capital Corporation [sub_boeing_capital], Instagram, LLC [sub_instagram], Sikorsky Aircraft Corporation [sub_sikorsky], Wisk Aero LLC [sub_wisk]. Evidence: Sikorsky Aircraft Corporation (Subsidiary). jurisdiction: Delaware; parent: lockheed. Sikorsky Aircraft Corporation is a subsidiary of Lo"
         },
         {
@@ -1863,7 +1863,7 @@
           "classified_kind": "hybrid",
           "routing_ok": false,
           "latency_ms": 22,
-          "answer": "James Quincey [james_quincey], Kelly Ortberg [kelly_ortberg]. Evidence: LinkedIn Corporation (Subsidiary). jurisdiction: Delaware; parent: microsoft. LinkedIn Corporation is a subsidiary of Microsoft Corporation. The Boeing Company (Company). ticker: BA; sector: Aerospace &amp; Defense; in_sp500: Tr"
+          "answer": "James Quincey [james_quincey], Kelly Ortberg [kelly_ortberg]. Evidence: LinkedIn Corporation (Subsidiary). jurisdiction: Delaware; parent: microsoft. LinkedIn Corporation is a subsidiary of Microsoft Corporation. The Boeing Company (Company). ticker: BA; sector: Aerospace & Defense; in_sp500: True; "
         },
         {
           "id": "3h-08",
@@ -1889,7 +1889,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "Beverages [market_beverages], Aerospace and defense [market_defense], Electric vehicles [market_ev]. Evidence: Waymo LLC (Subsidiary). jurisdiction: Delaware; parent: google. Waymo LLC is a subsidiary of Alphabet Inc.. Megapack (Product). category: Energy storage; company: tesla. Megapack is a produ"
         },
         {
@@ -1939,7 +1939,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "737 MAX [prod_737max]. Evidence: Jim Farley (Person). role: CEO; company: ford; since: 2020. Jim Farley is the CEO of Ford Motor Company. Antitrust enforcement (Risk).  Antitrust enforcement is a risk mentioned by Apple Inc.. Antitrust enforcement is a risk mentioned by Alphabet Inc.. Antitrust enfo"
         },
         {
@@ -1963,8 +1963,8 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
-          "answer": "Samir Haddad [dir_haddad], Yelena Petrov [dir_petrov], Helle Rasmussen [dir_rasmussen], Dana Whitfield [dir_whitfield]. Evidence: Albert Bourla (Person). role: CEO; company: pfizer; since: 2019. Albert Bourla is the CEO of Pfizer Inc.. The Boeing Company (Company). ticker: BA; sector: Aerospace &amp"
+          "latency_ms": 24,
+          "answer": "Samir Haddad [dir_haddad], Yelena Petrov [dir_petrov], Helle Rasmussen [dir_rasmussen], Dana Whitfield [dir_whitfield]. Evidence: Albert Bourla (Person). role: CEO; company: pfizer; since: 2019. Albert Bourla is the CEO of Pfizer Inc.. The Boeing Company (Company). ticker: BA; sector: Aerospace & De"
         },
         {
           "id": "3h-12",
@@ -2033,7 +2033,7 @@
           "classified_kind": "hybrid",
           "routing_ok": false,
           "latency_ms": 23,
-          "answer": "Irene Castellanos [dir_castellanos]. Evidence: JPMorgan Chase &amp; Co. (Company). ticker: JPM; sector: Financials; in_sp500: True; cik: 0000019617; hq_state: NY. JPMorgan Chase &amp; Co. mentions the risk Interest rate sensitivity in its 10-K. JPMorgan C JPMorgan Chase Bank, N.A. (Subsidiary). juri"
+          "answer": "Irene Castellanos [dir_castellanos]. Evidence: JPMorgan Chase & Co. (Company). ticker: JPM; sector: Financials; in_sp500: True; cik: 0000019617; hq_state: NY. JPMorgan Chase & Co. mentions the risk Interest rate sensitivity in its 10-K. JPMorgan C JPMorgan Chase Bank, N.A. (Subsidiary). jurisdiction"
         },
         {
           "id": "3h-15",
@@ -2059,7 +2059,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 23,
+          "latency_ms": 22,
           "answer": "737 MAX [prod_737max], F-150 [prod_f150], Mustang Mach-E [prod_mach_e]. Evidence: Antitrust enforcement (Risk).  Antitrust enforcement is a risk mentioned by Apple Inc.. Antitrust enforcement is a risk mentioned by Alphabet Inc.. Antitrust enforcement is a risk mentioned by Meta Pl 737 MAX (Product)"
         },
         {
@@ -2115,7 +2115,7 @@
           "count": null,
           "classified_kind": "hybrid",
           "routing_ok": false,
-          "latency_ms": 22,
+          "latency_ms": 26,
           "answer": "Tim Cook [tim_cook]. Evidence: Samsung Electronics Co., Ltd. (Company). ticker: 005930.KS; sector: Conglomerate; in_sp500: False; hq_state: KR. Samsung Electronics Co., Ltd. operates in the Smartphones market. Samsung Electronics C Mellanox Technologies, Ltd. (Subsidiary). jurisdiction: Israel; pare"
         },
         {
@@ -2306,7 +2306,7 @@
           "count": 19,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "count = 19 — Advanced Micro Devices, Inc., Apple Inc., The Boeing Company, Broadcom Inc., Chevron Corporation, Costco Wholesale Corporation, Ford Motor Company, General Motors Company (+11 more)"
         },
         {
@@ -2360,7 +2360,7 @@
           "count": 4,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 21,
+          "latency_ms": 22,
           "answer": "count = 4 — DeepMind Technologies Limited, Google Ireland Limited, Waymo LLC, YouTube, LLC"
         },
         {
@@ -2414,7 +2414,7 @@
           "count": 6,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "count = 6 — Amazon.com, Inc., Broadcom Inc., Alphabet Inc., Microsoft Corporation, Oracle Corporation, Tesla, Inc."
         },
         {
@@ -2454,8 +2454,8 @@
           "count": 13,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 22,
-          "answer": "count = 13 — Advanced Micro Devices, Inc., Bank of America Corporation, Broadcom Inc., The Goldman Sachs Group, Inc., Intel Corporation, JPMorgan Chase &amp; Co., Micron Technology, Inc., NVIDIA Corporation (+5 more)"
+          "latency_ms": 23,
+          "answer": "count = 13 — Advanced Micro Devices, Inc., Bank of America Corporation, Broadcom Inc., The Goldman Sachs Group, Inc., Intel Corporation, JPMorgan Chase & Co., Micron Technology, Inc., NVIDIA Corporation (+5 more)"
         },
         {
           "id": "ag-08",
@@ -2489,8 +2489,8 @@
           "count": 11,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 21,
-          "answer": "count = 11 — Advanced Micro Devices, Inc., Bank of America Corporation, Broadcom Inc., Intel Corporation, JPMorgan Chase &amp; Co., Micron Technology, Inc., NVIDIA Corporation, Qualcomm Incorporated (+3 more)"
+          "latency_ms": 23,
+          "answer": "count = 11 — Advanced Micro Devices, Inc., Bank of America Corporation, Broadcom Inc., Intel Corporation, JPMorgan Chase & Co., Micron Technology, Inc., NVIDIA Corporation, Qualcomm Incorporated (+3 more)"
         },
         {
           "id": "ag-09",
@@ -2546,8 +2546,8 @@
           "count": 5,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 21,
-          "answer": "count = 5 — AbbVie Inc., Johnson &amp; Johnson, Eli Lilly and Company, Merck &amp; Co., Inc., Pfizer Inc."
+          "latency_ms": 23,
+          "answer": "count = 5 — AbbVie Inc., Johnson & Johnson, Eli Lilly and Company, Merck & Co., Inc., Pfizer Inc."
         },
         {
           "id": "ag-11",
@@ -2634,7 +2634,7 @@
           "count": 2,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "count = 2 — Beatriz Ferreira, Yelena Petrov"
         },
         {
@@ -2660,7 +2660,7 @@
           "count": 4,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "count = 4 — Cybertruck, Megapack, Model 3, Model Y"
         },
         {
@@ -2686,7 +2686,7 @@
           "count": 4,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "count = 4 — Botox, Humira, Rinvoq, Skyrizi"
         },
         {
@@ -2721,7 +2721,7 @@
           "count": 10,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 21,
+          "latency_ms": 23,
           "answer": "count = 10 — AI regulation, Antitrust enforcement, China exposure, Climate regulation, Commodity price volatility, Cybersecurity incidents, Foreign exchange volatility, Interest rate sensitivity (+2 more)"
         },
         {
@@ -2762,7 +2762,7 @@
           "count": 14,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "count = 14 — Advanced Micro Devices, Inc., Apple Inc., The Boeing Company, Broadcom Inc., Ford Motor Company, Hon Hai Precision Industry Co., Ltd., General Motors Company, Alphabet Inc. (+6 more)"
         },
         {
@@ -2793,7 +2793,7 @@
           "count": 8,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 22,
+          "latency_ms": 24,
           "answer": "count = 8 — ASML Holding N.V., The Boeing Company, Intel Corporation, Micron Technology, Inc., Salesforce, Inc., Samsung Electronics Co., Ltd., SK hynix Inc., Taiwan Semiconductor Manufacturing Company"
         },
         {
@@ -2821,7 +2821,7 @@
           "count": 5,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "count = 5 — Adobe Systems Software Ireland Limited, Google Ireland Limited, Mastercard International Incorporated, Microsoft Ireland Operations Limited, Vocalink Holdings Limited"
         },
         {
@@ -2845,7 +2845,7 @@
           "count": 3,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 21,
+          "latency_ms": 23,
           "answer": "count = 3 — 737 MAX, Comirnaty, Prevnar"
         },
         {
@@ -2866,7 +2866,7 @@
           "count": 1,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 22,
+          "latency_ms": 23,
           "answer": "count = 1 — Jim Farley"
         }
       ],
@@ -2935,7 +2935,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-&gt; Apple Inc. [apple]."
+          "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-> Apple Inc. [apple]."
         },
         {
           "id": "lk-02",
@@ -2955,7 +2955,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Satya Nadella [satya_nadella]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-&gt; Microsoft Corporation [microsoft]."
+          "answer": "Satya Nadella [satya_nadella]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-> Microsoft Corporation [microsoft]."
         },
         {
           "id": "lk-03",
@@ -2975,7 +2975,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Jensen Huang [jensen_huang]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-&gt; NVIDIA Corporation [nvidia]."
+          "answer": "Jensen Huang [jensen_huang]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-> NVIDIA Corporation [nvidia]."
         },
         {
           "id": "lk-04",
@@ -2995,7 +2995,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Albert Bourla [albert_bourla]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-&gt; Pfizer Inc. [pfizer]."
+          "answer": "Albert Bourla [albert_bourla]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-> Pfizer Inc. [pfizer]."
         },
         {
           "id": "lk-05",
@@ -3015,7 +3015,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd]. Evidence: Lisa Su [lisa_su] -CEO_OF-&gt; Advanced Micro Devices, Inc. [amd]."
+          "answer": "Advanced Micro Devices, Inc. [amd]. Evidence: Lisa Su [lisa_su] -CEO_OF-> Advanced Micro Devices, Inc. [amd]."
         },
         {
           "id": "lk-06",
@@ -3035,7 +3035,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "General Motors Company [gm]. Evidence: Mary Barra [mary_barra] -CEO_OF-&gt; General Motors Company [gm]."
+          "answer": "General Motors Company [gm]. Evidence: Mary Barra [mary_barra] -CEO_OF-> General Motors Company [gm]."
         },
         {
           "id": "lk-07",
@@ -3055,7 +3055,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "David A. Ricks [david_ricks]. Evidence: David A. Ricks [david_ricks] -CEO_OF-&gt; Eli Lilly and Company [lilly]."
+          "answer": "David A. Ricks [david_ricks]. Evidence: David A. Ricks [david_ricks] -CEO_OF-> Eli Lilly and Company [lilly]."
         },
         {
           "id": "lk-08",
@@ -3075,7 +3075,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "C.C. Wei [cc_wei]. Evidence: C.C. Wei [cc_wei] -CEO_OF-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]."
+          "answer": "C.C. Wei [cc_wei]. Evidence: C.C. Wei [cc_wei] -CEO_OF-> Taiwan Semiconductor Manufacturing Company [tsmc]."
         },
         {
           "id": "lk-09",
@@ -3095,7 +3095,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Microsoft Corporation [microsoft]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-&gt; Microsoft Corporation [microsoft]."
+          "answer": "Microsoft Corporation [microsoft]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-> Microsoft Corporation [microsoft]."
         },
         {
           "id": "lk-10",
@@ -3115,7 +3115,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Meta Platforms, Inc. [meta]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]."
+          "answer": "Meta Platforms, Inc. [meta]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]."
         },
         {
           "id": "lk-11",
@@ -3135,7 +3135,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Alphabet Inc. [google]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]."
+          "answer": "Alphabet Inc. [google]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]."
         },
         {
           "id": "lk-12",
@@ -3155,7 +3155,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "UnitedHealth Group Incorporated [unh]. Evidence: Optum, Inc. [sub_optum] -SUBSIDIARY_OF-&gt; UnitedHealth Group Incorporated [unh]."
+          "answer": "UnitedHealth Group Incorporated [unh]. Evidence: Optum, Inc. [sub_optum] -SUBSIDIARY_OF-> UnitedHealth Group Incorporated [unh]."
         },
         {
           "id": "lk-13",
@@ -3179,7 +3179,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100]. Evidence: NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-&gt; GeForce [prod_geforce]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-&gt; H100 [prod_h100]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-&gt; CUDA [prod_cuda]."
+          "answer": "CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100]. Evidence: NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-> GeForce [prod_geforce]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-> H100 [prod_h100]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-> CUDA [prod_cuda]."
         },
         {
           "id": "lk-14",
@@ -3203,7 +3203,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mounjaro [prod_mounjaro], Verzenio [prod_verzenio], Zepbound [prod_zepbound]. Evidence: Eli Lilly and Company [lilly] -OFFERS_PRODUCT-&gt; Mounjaro [prod_mounjaro]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-&gt; Zepbound [prod_zepbound]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-&gt; Verzeni"
+          "answer": "Mounjaro [prod_mounjaro], Verzenio [prod_verzenio], Zepbound [prod_zepbound]. Evidence: Eli Lilly and Company [lilly] -OFFERS_PRODUCT-> Mounjaro [prod_mounjaro]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-> Zepbound [prod_zepbound]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-> Verzenio [prod_v"
         },
         {
           "id": "lk-15",
@@ -3223,7 +3223,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Merck &amp; Co., Inc. [merck]. Evidence: Merck &amp; Co., Inc. [merck] -OFFERS_PRODUCT-&gt; Keytruda [prod_keytruda]."
+          "answer": "Merck & Co., Inc. [merck]. Evidence: Merck & Co., Inc. [merck] -OFFERS_PRODUCT-> Keytruda [prod_keytruda]."
         },
         {
           "id": "lk-16",
@@ -3243,7 +3243,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Qualcomm Incorporated [qualcomm]. Evidence: Qualcomm Incorporated [qualcomm] -OFFERS_PRODUCT-&gt; Snapdragon [prod_snapdragon]."
+          "answer": "Qualcomm Incorporated [qualcomm]. Evidence: Qualcomm Incorporated [qualcomm] -OFFERS_PRODUCT-> Snapdragon [prod_snapdragon]."
         },
         {
           "id": "lk-17",
@@ -3271,7 +3271,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Broadcom Inc. [broadcom], Hon Hai Precision Industry Co., Ltd. [foxconn], Qualcomm Incorporated [qualcomm], Samsung Electronics Co., Ltd. [samsung], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Ap"
+          "answer": "Broadcom Inc. [broadcom], Hon Hai Precision Industry Co., Ltd. [foxconn], Qualcomm Incorporated [qualcomm], Samsung Electronics Co., Ltd. [samsung], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Apple"
         },
         {
           "id": "lk-18",
@@ -3301,7 +3301,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -S"
+          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPP"
         },
         {
           "id": "lk-19",
@@ -3323,7 +3323,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -COMPETES_WITH-&gt; Ford Motor Company [ford]. Tesla, Inc. [tesla] -COMPETES_WITH-&gt; General Motors Company [gm]."
+          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -COMPETES_WITH-> Ford Motor Company [ford]. Tesla, Inc. [tesla] -COMPETES_WITH-> General Motors Company [gm]."
         },
         {
           "id": "lk-20",
@@ -3343,7 +3343,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -COMPETES_WITH-&gt; Mastercard Incorporated [mastercard]."
+          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -COMPETES_WITH-> Mastercard Incorporated [mastercard]."
         },
         {
           "id": "lk-21",
@@ -3371,7 +3371,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions [risk_tariffs]. Evidence: Tesla, Inc. [tesla] -MENTIONS_RISK-&gt; China exposure [risk_china_exposure"
+          "answer": "China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions [risk_tariffs]. Evidence: Tesla, Inc. [tesla] -MENTIONS_RISK-> China exposure [risk_china_exposure]. "
         },
         {
           "id": "lk-22",
@@ -3393,7 +3393,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cybersecurity incidents [risk_cybersecurity], Interest rate sensitivity [risk_interest_rate]. Evidence: JPMorgan Chase &amp; Co. [jpm] -MENTIONS_RISK-&gt; Interest rate sensitivity [risk_interest_rate]. JPMorgan Chase &amp; Co. [jpm] -MENTIONS_RISK-&gt; Cybersecurity incidents [risk_cybersecurity]."
+          "answer": "Cybersecurity incidents [risk_cybersecurity], Interest rate sensitivity [risk_interest_rate]. Evidence: JPMorgan Chase & Co. [jpm] -MENTIONS_RISK-> Interest rate sensitivity [risk_interest_rate]. JPMorgan Chase & Co. [jpm] -MENTIONS_RISK-> Cybersecurity incidents [risk_cybersecurity]."
         },
         {
           "id": "lk-23",
@@ -3419,7 +3419,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Retail [market_retail]. Evidence: Amazon.com, Inc. [amazon] -OPERATES_IN-&gt; Cloud infrastructure [market_cloud]. Amazon.com, Inc. [amazon] -OPERATES_IN-&gt; Digital advertising ["
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Retail [market_retail]. Evidence: Amazon.com, Inc. [amazon] -OPERATES_IN-> Cloud infrastructure [market_cloud]. Amazon.com, Inc. [amazon] -OPERATES_IN-> Digital advertising [market"
         },
         {
           "id": "lk-24",
@@ -3443,7 +3443,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Enterprise software [market_enterprise_software]. Evidence: Microsoft Corporation [microsoft] -OPERATES_IN-&gt; Cloud infrastructure [market_cloud]. Microsoft Corporation [microsoft] -OPERATES_IN-&gt; Enterprise software ["
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Enterprise software [market_enterprise_software]. Evidence: Microsoft Corporation [microsoft] -OPERATES_IN-> Cloud infrastructure [market_cloud]. Microsoft Corporation [microsoft] -OPERATES_IN-> Enterprise software [market"
         },
         {
           "id": "lk-25",
@@ -3463,7 +3463,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Irene Castellanos [dir_castellanos]. Evidence: Irene Castellanos [dir_castellanos] -DIRECTOR_OF-&gt; Apple Inc. [apple]."
+          "answer": "Irene Castellanos [dir_castellanos]. Evidence: Irene Castellanos [dir_castellanos] -DIRECTOR_OF-> Apple Inc. [apple]."
         },
         {
           "id": "lk-26",
@@ -3485,7 +3485,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Merck &amp; Co., Inc. [merck], Pfizer Inc. [pfizer]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Merck &amp; Co., Inc. [merck]."
+          "answer": "Merck & Co., Inc. [merck], Pfizer Inc. [pfizer]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Merck & Co., Inc. [merck]."
         },
         {
           "id": "lk-27",
@@ -3509,7 +3509,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Facebook Technologies, LLC [sub_facebook_tech], Instagram, LLC [sub_instagram], WhatsApp LLC [sub_whatsapp]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. WhatsApp LLC [sub_whatsapp] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. Facebook Technologies, L"
+          "answer": "Facebook Technologies, LLC [sub_facebook_tech], Instagram, LLC [sub_instagram], WhatsApp LLC [sub_whatsapp]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. WhatsApp LLC [sub_whatsapp] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. Facebook Technologies, LLC [su"
         },
         {
           "id": "lk-28",
@@ -3535,7 +3535,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "DeepMind Technologies Limited [sub_deepmind], Google Ireland Limited [sub_google_ireland], Waymo LLC [sub_waymo], YouTube, LLC [sub_youtube]. Evidence: YouTube, LLC [sub_youtube] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]. Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]. DeepMind Te"
+          "answer": "DeepMind Technologies Limited [sub_deepmind], Google Ireland Limited [sub_google_ireland], Waymo LLC [sub_waymo], YouTube, LLC [sub_youtube]. Evidence: YouTube, LLC [sub_youtube] -SUBSIDIARY_OF-> Alphabet Inc. [google]. Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]. DeepMind Technolo"
         },
         {
           "id": "lk-29",
@@ -3595,7 +3595,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Satya Nadella [satya_nadella]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-&gt; Microsoft Corporation [microsoft]. Satya Nadella [satya_nadella] -CEO_OF-&gt; Microsoft Corporation [microsoft]."
+          "answer": "Satya Nadella [satya_nadella]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-> Microsoft Corporation [microsoft]. Satya Nadella [satya_nadella] -CEO_OF-> Microsoft Corporation [microsoft]."
         },
         {
           "id": "2h-02",
@@ -3615,7 +3615,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mark Zuckerberg [mark_zuckerberg]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. Mark Zuckerberg [mark_zuckerberg] -CEO_OF-&gt; Meta Platforms, Inc. [meta]."
+          "answer": "Mark Zuckerberg [mark_zuckerberg]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. Mark Zuckerberg [mark_zuckerberg] -CEO_OF-> Meta Platforms, Inc. [meta]."
         },
         {
           "id": "2h-03",
@@ -3635,7 +3635,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Sundar Pichai [sundar_pichai]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]. Sundar Pichai [sundar_pichai] -CEO_OF-&gt; Alphabet Inc. [google]."
+          "answer": "Sundar Pichai [sundar_pichai]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]. Sundar Pichai [sundar_pichai] -CEO_OF-> Alphabet Inc. [google]."
         },
         {
           "id": "2h-04",
@@ -3663,7 +3663,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "AI regulation [risk_ai_regulation], Antitrust enforcement [risk_antitrust], Cybersecurity incidents [risk_cybersecurity], Foreign exchange volatility [risk_fx], Talent retention [risk_talent]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]. Alphabet Inc. [google] -MENTION"
+          "answer": "AI regulation [risk_ai_regulation], Antitrust enforcement [risk_antitrust], Cybersecurity incidents [risk_cybersecurity], Foreign exchange volatility [risk_fx], Talent retention [risk_talent]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]. Alphabet Inc. [google] -MENTIONS_R"
         },
         {
           "id": "2h-05",
@@ -3685,7 +3685,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Elon Musk [elon_musk], Mary Barra [mary_barra]. Evidence: Ford Motor Company [ford] -COMPETES_WITH-&gt; General Motors Company [gm]. Tesla, Inc. [tesla] -COMPETES_WITH-&gt; Ford Motor Company [ford]. Elon Musk [elon_musk] -CEO_OF-&gt; Tesla, Inc. [tesla]. Mary Barra [mary_barra] -CEO_OF-&gt; General"
+          "answer": "Elon Musk [elon_musk], Mary Barra [mary_barra]. Evidence: Ford Motor Company [ford] -COMPETES_WITH-> General Motors Company [gm]. Tesla, Inc. [tesla] -COMPETES_WITH-> Ford Motor Company [ford]. Elon Musk [elon_musk] -CEO_OF-> Tesla, Inc. [tesla]. Mary Barra [mary_barra] -CEO_OF-> General Motors Comp"
         },
         {
           "id": "2h-06",
@@ -3707,7 +3707,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Brian Moynihan [brian_moynihan], David Solomon [david_solomon]. Evidence: JPMorgan Chase &amp; Co. [jpm] -COMPETES_WITH-&gt; Bank of America Corporation [bofa]. JPMorgan Chase &amp; Co. [jpm] -COMPETES_WITH-&gt; The Goldman Sachs Group, Inc. [goldman]. Brian Moynihan [brian_moynihan] -CEO_OF-&gt; Ba"
+          "answer": "Brian Moynihan [brian_moynihan], David Solomon [david_solomon]. Evidence: JPMorgan Chase & Co. [jpm] -COMPETES_WITH-> Bank of America Corporation [bofa]. JPMorgan Chase & Co. [jpm] -COMPETES_WITH-> The Goldman Sachs Group, Inc. [goldman]. Brian Moynihan [brian_moynihan] -CEO_OF-> Bank of America Cor"
         },
         {
           "id": "2h-07",
@@ -3727,7 +3727,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ramon Laguarta [ramon_laguarta]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-&gt; PepsiCo, Inc. [pep]. Ramon Laguarta [ramon_laguarta] -CEO_OF-&gt; PepsiCo, Inc. [pep]."
+          "answer": "Ramon Laguarta [ramon_laguarta]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-> PepsiCo, Inc. [pep]. Ramon Laguarta [ramon_laguarta] -CEO_OF-> PepsiCo, Inc. [pep]."
         },
         {
           "id": "2h-08",
@@ -3755,7 +3755,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Intel Core [prod_core], CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100], Xeon [prod_xeon]. Evidence: Advanced Micro Devices, Inc. [amd] -COMPETES_WITH-&gt; Intel Corporation [intel]. NVIDIA Corporation [nvidia] -COMPETES_WITH-&gt; Advanced Micro Devices, Inc. [amd]. Intel Corporation [int"
+          "answer": "Intel Core [prod_core], CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100], Xeon [prod_xeon]. Evidence: Advanced Micro Devices, Inc. [amd] -COMPETES_WITH-> Intel Corporation [intel]. NVIDIA Corporation [nvidia] -COMPETES_WITH-> Advanced Micro Devices, Inc. [amd]. NVIDIA Corporation [nvidia] "
         },
         {
           "id": "2h-09",
@@ -3779,7 +3779,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Doritos [prod_doritos], Gatorade [prod_gatorade], Pepsi [prod_pepsi]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-&gt; PepsiCo, Inc. [pep]. PepsiCo, Inc. [pep] -OFFERS_PRODUCT-&gt; Pepsi [prod_pepsi]. PepsiCo, Inc. [pep] -OFFERS_PRODUCT-&gt; Gatorade [prod_gatorade]. PepsiCo, Inc. [pep] -OFF"
+          "answer": "Doritos [prod_doritos], Gatorade [prod_gatorade], Pepsi [prod_pepsi]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-> PepsiCo, Inc. [pep]. PepsiCo, Inc. [pep] -OFFERS_PRODUCT-> Pepsi [prod_pepsi]. PepsiCo, Inc. [pep] -OFFERS_PRODUCT-> Gatorade [prod_gatorade]. PepsiCo, Inc. [pep] -OFFERS_PRODU"
         },
         {
           "id": "2h-10",
@@ -3835,7 +3835,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "ASML Holding N.V. [asml], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: NVIDIA Corporation [nvidia] -COMPETES_WITH-&gt; Advanced Micro Devices, Inc. [amd]. NVIDIA Corporation [nvidia] -COMPETES_WITH-&gt; Intel Corporation [intel]. Intel Corporation [intel] -SUPPLIED_BY-&gt; ASML Holdi"
+          "answer": "ASML Holding N.V. [asml], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: NVIDIA Corporation [nvidia] -COMPETES_WITH-> Advanced Micro Devices, Inc. [amd]. NVIDIA Corporation [nvidia] -COMPETES_WITH-> Intel Corporation [intel]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-> Taiwan Sem"
         },
         {
           "id": "2h-12",
@@ -3859,7 +3859,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "ASML Holding N.V. [asml], Broadcom Inc. [broadcom], NVIDIA Corporation [nvidia]. Evidence: Apple Inc. [apple] -COMPETES_WITH-&gt; Samsung Electronics Co., Ltd. [samsung]. Apple Inc. [apple] -COMPETES_WITH-&gt; Alphabet Inc. [google]. Alphabet Inc. [google] -SUPPLIED_BY-&gt; NVIDIA Corporation [nvidi"
+          "answer": "ASML Holding N.V. [asml], Broadcom Inc. [broadcom], NVIDIA Corporation [nvidia]. Evidence: Apple Inc. [apple] -COMPETES_WITH-> Samsung Electronics Co., Ltd. [samsung]. Apple Inc. [apple] -COMPETES_WITH-> Alphabet Inc. [google]. Samsung Electronics Co., Ltd. [samsung] -SUPPLIED_BY-> ASML Holding N.V."
         },
         {
           "id": "2h-13",
@@ -3881,7 +3881,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Marcus Oyelaran [dir_oyelaran], Dana Whitfield [dir_whitfield]. Evidence: Pfizer Inc. [pfizer] -COMPETES_WITH-&gt; Merck &amp; Co., Inc. [merck]. Pfizer Inc. [pfizer] -COMPETES_WITH-&gt; Johnson &amp; Johnson [jnj]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Merck &amp; Co., Inc. [merck]. Marc"
+          "answer": "Marcus Oyelaran [dir_oyelaran], Dana Whitfield [dir_whitfield]. Evidence: Pfizer Inc. [pfizer] -COMPETES_WITH-> Merck & Co., Inc. [merck]. Pfizer Inc. [pfizer] -COMPETES_WITH-> Johnson & Johnson [jnj]. Marcus Oyelaran [dir_oyelaran] -DIRECTOR_OF-> Johnson & Johnson [jnj]. Dana Whitfield [dir_whitfie"
         },
         {
           "id": "2h-14",
@@ -3901,7 +3901,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Chidi Okafor [dir_okafor]. Evidence: Ford Motor Company [ford] -COMPETES_WITH-&gt; General Motors Company [gm]. Tesla, Inc. [tesla] -COMPETES_WITH-&gt; Ford Motor Company [ford]. Chidi Okafor [dir_okafor] -DIRECTOR_OF-&gt; General Motors Company [gm]."
+          "answer": "Chidi Okafor [dir_okafor]. Evidence: Ford Motor Company [ford] -COMPETES_WITH-> General Motors Company [gm]. Tesla, Inc. [tesla] -COMPETES_WITH-> Ford Motor Company [ford]. Chidi Okafor [dir_okafor] -DIRECTOR_OF-> General Motors Company [gm]."
         },
         {
           "id": "2h-15",
@@ -3927,7 +3927,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Retail [market_retail]. Evidence: Walmart Inc. [walmart] -COMPETES_WITH-&gt; Costco Wholesale Corporation [costco]. Walmart Inc. [walmart] -COMPETES_WITH-&gt; Amazon.com, Inc. [ama"
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Retail [market_retail]. Evidence: Walmart Inc. [walmart] -COMPETES_WITH-> Costco Wholesale Corporation [costco]. Walmart Inc. [walmart] -COMPETES_WITH-> Amazon.com, Inc. [amazon]. "
         },
         {
           "id": "2h-16",
@@ -3949,7 +3949,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Frito-Lay North America, Inc. [sub_fritolay], The Quaker Oats Company [sub_quaker]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-&gt; PepsiCo, Inc. [pep]. Frito-Lay North America, Inc. [sub_fritolay] -SUBSIDIARY_OF-&gt; PepsiCo, Inc. [pep]. The Quaker Oats Company [sub_quaker] -SUBSIDIARY_OF-"
+          "answer": "Frito-Lay North America, Inc. [sub_fritolay], The Quaker Oats Company [sub_quaker]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-> PepsiCo, Inc. [pep]. Frito-Lay North America, Inc. [sub_fritolay] -SUBSIDIARY_OF-> PepsiCo, Inc. [pep]. The Quaker Oats Company [sub_quaker] -SUBSIDIARY_OF-> Peps"
         },
         {
           "id": "2h-17",
@@ -3971,7 +3971,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mastercard International Incorporated [sub_mc_intl], Vocalink Holdings Limited [sub_vocalink]. Evidence: Visa Inc. [visa] -COMPETES_WITH-&gt; Mastercard Incorporated [mastercard]. Mastercard International Incorporated [sub_mc_intl] -SUBSIDIARY_OF-&gt; Mastercard Incorporated [mastercard]. Vocalink H"
+          "answer": "Mastercard International Incorporated [sub_mc_intl], Vocalink Holdings Limited [sub_vocalink]. Evidence: Visa Inc. [visa] -COMPETES_WITH-> Mastercard Incorporated [mastercard]. Mastercard International Incorporated [sub_mc_intl] -SUBSIDIARY_OF-> Mastercard Incorporated [mastercard]. Vocalink Holding"
         },
         {
           "id": "2h-18",
@@ -3995,7 +3995,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent]. Evidence: Lisa Su [lisa_su] -CEO_OF-&gt; Advanced Micro Devices, Inc. [amd]. Advanced Micro Devices, Inc. [amd] -MENTIONS_RISK-&gt; China exposure [risk_china_exposure]. Advanced"
+          "answer": "China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent]. Evidence: Lisa Su [lisa_su] -CEO_OF-> Advanced Micro Devices, Inc. [amd]. Advanced Micro Devices, Inc. [amd] -MENTIONS_RISK-> China exposure [risk_china_exposure]. Advanced Micro"
         },
         {
           "id": "2h-19",
@@ -4023,7 +4023,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "AI regulation [risk_ai_regulation], China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions [risk_tariffs]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-&gt; NVIDIA Corporation [nvidia]. NVIDIA Corporat"
+          "answer": "AI regulation [risk_ai_regulation], China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions [risk_tariffs]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-> NVIDIA Corporation [nvidia]. NVIDIA Corporation"
         },
         {
           "id": "2h-20",
@@ -4049,7 +4049,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Azure [prod_azure], Microsoft 365 [prod_m365], Windows [prod_windows], Xbox [prod_xbox]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-&gt; Microsoft Corporation [microsoft]. Microsoft Corporation [microsoft] -OFFERS_PRODUCT-&gt; Azure [prod_azure]. Microsoft Corporation [microsoft] -OFFERS_PRODUC"
+          "answer": "Azure [prod_azure], Microsoft 365 [prod_m365], Windows [prod_windows], Xbox [prod_xbox]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-> Microsoft Corporation [microsoft]. Microsoft Corporation [microsoft] -OFFERS_PRODUCT-> Azure [prod_azure]. Microsoft Corporation [microsoft] -OFFERS_PRODUCT-> Wi"
         },
         {
           "id": "2h-21",
@@ -4077,7 +4077,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], Qualcomm Incorporated [qualcomm]. Evidence: NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; SK h"
+          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], Qualcomm Incorporated [qualcomm]. Evidence: NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> SK hynix I"
         },
         {
           "id": "2h-22",
@@ -4103,7 +4103,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Amazon.com, Inc. [amazon], Alphabet Inc. [google], Meta Platforms, Inc. [meta], Oracle Corporation [oracle]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; NVIDIA Corporation [nvidia]. Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; Advanced Micro Devices, Inc. [amd]. Alphabet Inc"
+          "answer": "Amazon.com, Inc. [amazon], Alphabet Inc. [google], Meta Platforms, Inc. [meta], Oracle Corporation [oracle]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-> NVIDIA Corporation [nvidia]. Microsoft Corporation [microsoft] -SUPPLIED_BY-> Advanced Micro Devices, Inc. [amd]. Meta Platforms, In"
         },
         {
           "id": "2h-23",
@@ -4125,7 +4125,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Apple Inc. [apple], General Motors Company [gm]. Evidence: Ford Motor Company [ford] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]. General Motors Company [gm] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]."
+          "answer": "Apple Inc. [apple], General Motors Company [gm]. Evidence: Ford Motor Company [ford] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]. Apple Inc. [apple] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]. General Motors Company [gm] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]."
         },
         {
           "id": "2h-24",
@@ -4145,7 +4145,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -OPERATES_IN-&gt; Payments [market_payments]. Mastercard Incorporated [mastercard] -OPERATES_IN-&gt; Payments [market_payments]."
+          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -OPERATES_IN-> Payments [market_payments]. Mastercard Incorporated [mastercard] -OPERATES_IN-> Payments [market_payments]."
         },
         {
           "id": "2h-25",
@@ -4167,7 +4167,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -OPERATES_IN-&gt; Electric vehicles [market_ev]. Ford Motor Company [ford] -OPERATES_IN-&gt; Electric vehicles [market_ev]. General Motors Company [gm] -OPERATES_IN-&gt; Electric vehicles [market_ev]."
+          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -OPERATES_IN-> Electric vehicles [market_ev]. Ford Motor Company [ford] -OPERATES_IN-> Electric vehicles [market_ev]. General Motors Company [gm] -OPERATES_IN-> Electric vehicles [market_ev]."
         },
         {
           "id": "2h-26",
@@ -4187,7 +4187,7 @@
           "classified_kind": "lookup",
           "routing_ok": false,
           "latency_ms": 0,
-          "answer": "Dana Whitfield [dir_whitfield]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Merck &amp; Co., Inc. [merck]."
+          "answer": "Dana Whitfield [dir_whitfield]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Merck & Co., Inc. [merck]."
         },
         {
           "id": "2h-27",
@@ -4207,7 +4207,7 @@
           "classified_kind": "lookup",
           "routing_ok": false,
           "latency_ms": 0,
-          "answer": "Intel Corporation [intel]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manu"
+          "answer": "Intel Corporation [intel]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing"
         },
         {
           "id": "2h-28",
@@ -4241,7 +4241,7 @@
           "classified_kind": "lookup",
           "routing_ok": false,
           "latency_ms": 0,
-          "answer": "Apple Inc. [apple], The Boeing Company [boeing], Ford Motor Company [ford], General Motors Company [gm], Micron Technology, Inc. [micron], NVIDIA Corporation [nvidia], Tesla, Inc. [tesla], Walmart Inc. [walmart]. Evidence: Apple Inc. [apple] -MENTIONS_RISK-&gt; China exposure [risk_china_exposure]. "
+          "answer": "Apple Inc. [apple], The Boeing Company [boeing], Ford Motor Company [ford], General Motors Company [gm], Micron Technology, Inc. [micron], NVIDIA Corporation [nvidia], Tesla, Inc. [tesla], Walmart Inc. [walmart]. Evidence: Apple Inc. [apple] -MENTIONS_RISK-> China exposure [risk_china_exposure]. Mic"
         },
         {
           "id": "2h-29",
@@ -4297,7 +4297,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd], Alphabet Inc. [google], Intel Corporation [intel], Samsung Electronics Co., Ltd. [samsung]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co.,"
+          "answer": "Advanced Micro Devices, Inc. [amd], Alphabet Inc. [google], Intel Corporation [intel], Samsung Electronics Co., Ltd. [samsung]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. "
         },
         {
           "id": "3h-01",
@@ -4333,7 +4333,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cristiano Amon [cristiano_amon], Hock Tan [hock_tan], Jensen Huang [jensen_huang], Jim Farley [jim_farley], Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Mark Zuckerberg [mark_zuckerberg], Mary Barra [mary_barra], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Sem"
+          "answer": "Cristiano Amon [cristiano_amon], Hock Tan [hock_tan], Jensen Huang [jensen_huang], Jim Farley [jim_farley], Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Mark Zuckerberg [mark_zuckerberg], Mary Barra [mary_barra], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semico"
         },
         {
           "id": "3h-02",
@@ -4359,7 +4359,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Andy Jassy [andy_jassy], Mark Zuckerberg [mark_zuckerberg], Safra Catz [safra_catz], Sundar Pichai [sundar_pichai]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; NVIDIA Corporation [nvidia]. Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; Advanced Micro Devices, Inc. [amd]. Alpha"
+          "answer": "Andy Jassy [andy_jassy], Mark Zuckerberg [mark_zuckerberg], Safra Catz [safra_catz], Sundar Pichai [sundar_pichai]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-> NVIDIA Corporation [nvidia]. Microsoft Corporation [microsoft] -SUPPLIED_BY-> Advanced Micro Devices, Inc. [amd]. Meta Platfo"
         },
         {
           "id": "3h-03",
@@ -4425,7 +4425,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ruth Abernathy [dir_abernathy], Keiko Nakamura [dir_nakamura], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro"
+          "answer": "Ruth Abernathy [dir_abernathy], Keiko Nakamura [dir_nakamura], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devic"
         },
         {
           "id": "3h-05",
@@ -4453,7 +4453,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "AI regulation [risk_ai_regulation], Antitrust enforcement [risk_antitrust], Cybersecurity incidents [risk_cybersecurity], Foreign exchange volatility [risk_fx], Talent retention [risk_talent]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. Alphabet Inc. [go"
+          "answer": "AI regulation [risk_ai_regulation], Antitrust enforcement [risk_antitrust], Cybersecurity incidents [risk_cybersecurity], Foreign exchange volatility [risk_fx], Talent retention [risk_talent]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. Alphabet Inc. [googl"
         },
         {
           "id": "3h-06",
@@ -4479,7 +4479,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "DeepMind Technologies Limited [sub_deepmind], Google Ireland Limited [sub_google_ireland], Waymo LLC [sub_waymo], YouTube, LLC [sub_youtube]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. Alphabet Inc. [google] -COMPETES_WITH-&gt; Meta Platforms, Inc. [met"
+          "answer": "DeepMind Technologies Limited [sub_deepmind], Google Ireland Limited [sub_google_ireland], Waymo LLC [sub_waymo], YouTube, LLC [sub_youtube]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. Alphabet Inc. [google] -COMPETES_WITH-> Meta Platforms, Inc. [meta]. Yo"
         },
         {
           "id": "3h-07",
@@ -4505,7 +4505,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Andy Jassy [andy_jassy], Marc Benioff [marc_benioff], Safra Catz [safra_catz], Sundar Pichai [sundar_pichai]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-&gt; Microsoft Corporation [microsoft]. Microsoft Corporation [microsoft] -COMPETES_WITH-&gt; Alphabet Inc. [google]. Microsoft C"
+          "answer": "Andy Jassy [andy_jassy], Marc Benioff [marc_benioff], Safra Catz [safra_catz], Sundar Pichai [sundar_pichai]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-> Microsoft Corporation [microsoft]. Microsoft Corporation [microsoft] -COMPETES_WITH-> Alphabet Inc. [google]. Microsoft Corpora"
         },
         {
           "id": "3h-08",
@@ -4535,7 +4535,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Enterprise software [market_enterprise_software], Retail [market_retail], Smartphones [market_smartphones]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [googl"
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Enterprise software [market_enterprise_software], Retail [market_retail], Smartphones [market_smartphones]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]."
         },
         {
           "id": "3h-09",
@@ -4559,7 +4559,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-&gt; NVIDIA Corporation [nvidia]. NVIDIA Corporation [nvidia] -COMPETES_WITH-&gt; Advanced Micro Devices, Inc. [amd]. NVIDIA Corpora"
+          "answer": "China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-> NVIDIA Corporation [nvidia]. NVIDIA Corporation [nvidia] -COMPETES_WITH-> Advanced Micro Devices, Inc. [amd]. NVIDIA Corporation ["
         },
         {
           "id": "3h-10",
@@ -4589,7 +4589,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cybertruck [prod_cybertruck], Cadillac Escalade [prod_escalade], Megapack [prod_megapack], Model 3 [prod_model_3], Model Y [prod_model_y], Chevrolet Silverado [prod_silverado]. Evidence: Jim Farley [jim_farley] -CEO_OF-&gt; Ford Motor Company [ford]. Ford Motor Company [ford] -COMPETES_WITH-&gt; Gen"
+          "answer": "Cybertruck [prod_cybertruck], Cadillac Escalade [prod_escalade], Megapack [prod_megapack], Model 3 [prod_model_3], Model Y [prod_model_y], Chevrolet Silverado [prod_silverado]. Evidence: Jim Farley [jim_farley] -CEO_OF-> Ford Motor Company [ford]. Ford Motor Company [ford] -COMPETES_WITH-> General M"
         },
         {
           "id": "3h-11",
@@ -4611,7 +4611,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Marcus Oyelaran [dir_oyelaran], Dana Whitfield [dir_whitfield]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-&gt; Pfizer Inc. [pfizer]. Pfizer Inc. [pfizer] -COMPETES_WITH-&gt; Merck &amp; Co., Inc. [merck]. Pfizer Inc. [pfizer] -COMPETES_WITH-&gt; Johnson &amp; Johnson [jnj]. Dana Whitfield [dir"
+          "answer": "Marcus Oyelaran [dir_oyelaran], Dana Whitfield [dir_whitfield]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-> Pfizer Inc. [pfizer]. Pfizer Inc. [pfizer] -COMPETES_WITH-> Merck & Co., Inc. [merck]. Pfizer Inc. [pfizer] -COMPETES_WITH-> Johnson & Johnson [jnj]. Marcus Oyelaran [dir_oyelaran] -DIRE"
         },
         {
           "id": "3h-12",
@@ -4639,7 +4639,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Albert Bourla [albert_bourla], Joaquin Duato [joaquin_duato], Robert M. Davis [robert_davis], Robert A. Michael [robert_michael], Stephen Hemsley [stephen_hemsley]. Evidence: Eli Lilly and Company [lilly] -MENTIONS_RISK-&gt; Drug pricing pressure [risk_drug_pricing]. Eli Lilly and Company [lilly] -M"
+          "answer": "Albert Bourla [albert_bourla], Joaquin Duato [joaquin_duato], Robert M. Davis [robert_davis], Robert A. Michael [robert_michael], Stephen Hemsley [stephen_hemsley]. Evidence: Eli Lilly and Company [lilly] -MENTIONS_RISK-> Drug pricing pressure [risk_drug_pricing]. Eli Lilly and Company [lilly] -MENT"
         },
         {
           "id": "3h-13",
@@ -4665,7 +4665,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cruise LLC [sub_cruise], Ford Motor Company of Canada, Limited [sub_ford_canada], Ford Motor Credit Company LLC [sub_ford_credit], General Motors Financial Company, Inc. [sub_gm_financial]. Evidence: Tesla, Inc. [tesla] -OPERATES_IN-&gt; Electric vehicles [market_ev]. Ford Motor Company [ford] -OPER"
+          "answer": "Cruise LLC [sub_cruise], Ford Motor Company of Canada, Limited [sub_ford_canada], Ford Motor Credit Company LLC [sub_ford_credit], General Motors Financial Company, Inc. [sub_gm_financial]. Evidence: Tesla, Inc. [tesla] -OPERATES_IN-> Electric vehicles [market_ev]. Ford Motor Company [ford] -OPERATE"
         },
         {
           "id": "3h-14",
@@ -4685,7 +4685,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Piotr Kowalczyk [dir_kowalczyk]. Evidence: JPMorgan Chase &amp; Co. [jpm] -OPERATES_IN-&gt; Banking [market_banking]. Bank of America Corporation [bofa] -OPERATES_IN-&gt; Banking [market_banking]. The Goldman Sachs Group, Inc. [goldman] -OPERATES_IN-&gt; Banking [market_banking]. Piotr Kowalczyk [di"
+          "answer": "Piotr Kowalczyk [dir_kowalczyk]. Evidence: JPMorgan Chase & Co. [jpm] -OPERATES_IN-> Banking [market_banking]. Bank of America Corporation [bofa] -OPERATES_IN-> Banking [market_banking]. The Goldman Sachs Group, Inc. [goldman] -OPERATES_IN-> Banking [market_banking]. Piotr Kowalczyk [dir_kowalczyk] "
         },
         {
           "id": "3h-15",
@@ -4715,7 +4715,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Apple Watch [prod_apple_watch], Cadillac Escalade [prod_escalade], iPad [prod_ipad], iPhone [prod_iphone], Mac [prod_mac], Chevrolet Silverado [prod_silverado]. Evidence: Ford Motor Company [ford] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Qualcomm Incor"
+          "answer": "Apple Watch [prod_apple_watch], Cadillac Escalade [prod_escalade], iPad [prod_ipad], iPhone [prod_iphone], Mac [prod_mac], Chevrolet Silverado [prod_silverado]. Evidence: Ford Motor Company [ford] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]. Apple Inc. [apple] -SUPPLIED_BY-> Qualcomm Incorporate"
         },
         {
           "id": "3h-16",
@@ -4777,7 +4777,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -COMPETE"
+          "answer": "Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -COMPETES_WITH"
         },
         {
           "id": "3h-18",
@@ -4803,7 +4803,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cruise LLC [sub_cruise], Ford Motor Company of Canada, Limited [sub_ford_canada], Ford Motor Credit Company LLC [sub_ford_credit], General Motors Financial Company, Inc. [sub_gm_financial]. Evidence: Tesla, Inc. [tesla] -SUPPLIED_BY-&gt; Panasonic Holdings Corporation [panasonic]. Tesla, Inc. [tesla"
+          "answer": "Cruise LLC [sub_cruise], Ford Motor Company of Canada, Limited [sub_ford_canada], Ford Motor Credit Company LLC [sub_ford_credit], General Motors Financial Company, Inc. [sub_gm_financial]. Evidence: Tesla, Inc. [tesla] -SUPPLIED_BY-> Panasonic Holdings Corporation [panasonic]. Tesla, Inc. [tesla] -"
         },
         {
           "id": "3h-19",
@@ -4833,7 +4833,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Enterprise software [market_enterprise_software], Retail [market_retail], Smartphones [market_smartphones]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; NVIDIA Cor"
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Enterprise software [market_enterprise_software], Retail [market_retail], Smartphones [market_smartphones]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-> NVIDIA Corpor"
         },
         {
           "id": "3h-20",
@@ -4861,7 +4861,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ruth Abernathy [dir_abernathy], Naledi Mbeki [dir_mbeki], Keiko Nakamura [dir_nakamura], Chidi Okafor [dir_okafor], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Hon Hai Precision Ind"
+          "answer": "Ruth Abernathy [dir_abernathy], Naledi Mbeki [dir_mbeki], Keiko Nakamura [dir_nakamura], Chidi Okafor [dir_okafor], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Apple Inc. [apple] -SUPPLIED_BY-> Hon Hai Precision Industry "
         },
         {
           "id": "ag-01",
@@ -5181,7 +5181,7 @@
           "classified_kind": "aggregation",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "count = 5 — AbbVie Inc., Johnson &amp; Johnson, Eli Lilly and Company, Merck &amp; Co., Inc., Pfizer Inc."
+          "answer": "count = 5 — AbbVie Inc., Johnson & Johnson, Eli Lilly and Company, Merck & Co., Inc., Pfizer Inc."
         },
         {
           "id": "ag-11",
@@ -5231,7 +5231,7 @@
           "classified_kind": "aggregation",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "count = 16 — Adobe Inc., Amazon.com, Inc., Apple Inc., Bank of America Corporation, Costco Wholesale Corporation, The Goldman Sachs Group, Inc., Alphabet Inc., JPMorgan Chase &amp; Co. (+8 more)"
+          "answer": "count = 16 — Adobe Inc., Amazon.com, Inc., Apple Inc., Bank of America Corporation, Costco Wholesale Corporation, The Goldman Sachs Group, Inc., Alphabet Inc., JPMorgan Chase & Co. (+8 more)"
         },
         {
           "id": "ag-12",
@@ -5567,7 +5567,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-&gt; Apple Inc. [apple]."
+          "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-> Apple Inc. [apple]."
         },
         {
           "id": "lk-02",
@@ -5587,7 +5587,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Satya Nadella [satya_nadella]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-&gt; Microsoft Corporation [microsoft]."
+          "answer": "Satya Nadella [satya_nadella]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-> Microsoft Corporation [microsoft]."
         },
         {
           "id": "lk-03",
@@ -5607,7 +5607,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Jensen Huang [jensen_huang]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-&gt; NVIDIA Corporation [nvidia]."
+          "answer": "Jensen Huang [jensen_huang]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-> NVIDIA Corporation [nvidia]."
         },
         {
           "id": "lk-04",
@@ -5627,7 +5627,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Albert Bourla [albert_bourla]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-&gt; Pfizer Inc. [pfizer]."
+          "answer": "Albert Bourla [albert_bourla]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-> Pfizer Inc. [pfizer]."
         },
         {
           "id": "lk-05",
@@ -5647,7 +5647,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd]. Evidence: Lisa Su [lisa_su] -CEO_OF-&gt; Advanced Micro Devices, Inc. [amd]."
+          "answer": "Advanced Micro Devices, Inc. [amd]. Evidence: Lisa Su [lisa_su] -CEO_OF-> Advanced Micro Devices, Inc. [amd]."
         },
         {
           "id": "lk-06",
@@ -5667,7 +5667,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "General Motors Company [gm]. Evidence: Mary Barra [mary_barra] -CEO_OF-&gt; General Motors Company [gm]."
+          "answer": "General Motors Company [gm]. Evidence: Mary Barra [mary_barra] -CEO_OF-> General Motors Company [gm]."
         },
         {
           "id": "lk-07",
@@ -5687,7 +5687,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "David A. Ricks [david_ricks]. Evidence: David A. Ricks [david_ricks] -CEO_OF-&gt; Eli Lilly and Company [lilly]."
+          "answer": "David A. Ricks [david_ricks]. Evidence: David A. Ricks [david_ricks] -CEO_OF-> Eli Lilly and Company [lilly]."
         },
         {
           "id": "lk-08",
@@ -5707,7 +5707,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "C.C. Wei [cc_wei]. Evidence: C.C. Wei [cc_wei] -CEO_OF-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]."
+          "answer": "C.C. Wei [cc_wei]. Evidence: C.C. Wei [cc_wei] -CEO_OF-> Taiwan Semiconductor Manufacturing Company [tsmc]."
         },
         {
           "id": "lk-09",
@@ -5727,7 +5727,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Microsoft Corporation [microsoft]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-&gt; Microsoft Corporation [microsoft]."
+          "answer": "Microsoft Corporation [microsoft]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-> Microsoft Corporation [microsoft]."
         },
         {
           "id": "lk-10",
@@ -5747,7 +5747,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Meta Platforms, Inc. [meta]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]."
+          "answer": "Meta Platforms, Inc. [meta]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]."
         },
         {
           "id": "lk-11",
@@ -5767,7 +5767,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Alphabet Inc. [google]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]."
+          "answer": "Alphabet Inc. [google]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]."
         },
         {
           "id": "lk-12",
@@ -5787,7 +5787,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "UnitedHealth Group Incorporated [unh]. Evidence: Optum, Inc. [sub_optum] -SUBSIDIARY_OF-&gt; UnitedHealth Group Incorporated [unh]."
+          "answer": "UnitedHealth Group Incorporated [unh]. Evidence: Optum, Inc. [sub_optum] -SUBSIDIARY_OF-> UnitedHealth Group Incorporated [unh]."
         },
         {
           "id": "lk-13",
@@ -5811,7 +5811,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100]. Evidence: NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-&gt; GeForce [prod_geforce]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-&gt; H100 [prod_h100]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-&gt; CUDA [prod_cuda]."
+          "answer": "CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100]. Evidence: NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-> GeForce [prod_geforce]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-> H100 [prod_h100]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-> CUDA [prod_cuda]."
         },
         {
           "id": "lk-14",
@@ -5835,7 +5835,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mounjaro [prod_mounjaro], Verzenio [prod_verzenio], Zepbound [prod_zepbound]. Evidence: Eli Lilly and Company [lilly] -OFFERS_PRODUCT-&gt; Mounjaro [prod_mounjaro]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-&gt; Zepbound [prod_zepbound]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-&gt; Verzeni"
+          "answer": "Mounjaro [prod_mounjaro], Verzenio [prod_verzenio], Zepbound [prod_zepbound]. Evidence: Eli Lilly and Company [lilly] -OFFERS_PRODUCT-> Mounjaro [prod_mounjaro]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-> Zepbound [prod_zepbound]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-> Verzenio [prod_v"
         },
         {
           "id": "lk-15",
@@ -5855,7 +5855,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Merck &amp; Co., Inc. [merck]. Evidence: Merck &amp; Co., Inc. [merck] -OFFERS_PRODUCT-&gt; Keytruda [prod_keytruda]."
+          "answer": "Merck & Co., Inc. [merck]. Evidence: Merck & Co., Inc. [merck] -OFFERS_PRODUCT-> Keytruda [prod_keytruda]."
         },
         {
           "id": "lk-16",
@@ -5875,7 +5875,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Qualcomm Incorporated [qualcomm]. Evidence: Qualcomm Incorporated [qualcomm] -OFFERS_PRODUCT-&gt; Snapdragon [prod_snapdragon]."
+          "answer": "Qualcomm Incorporated [qualcomm]. Evidence: Qualcomm Incorporated [qualcomm] -OFFERS_PRODUCT-> Snapdragon [prod_snapdragon]."
         },
         {
           "id": "lk-17",
@@ -5903,7 +5903,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Broadcom Inc. [broadcom], Hon Hai Precision Industry Co., Ltd. [foxconn], Qualcomm Incorporated [qualcomm], Samsung Electronics Co., Ltd. [samsung], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Ap"
+          "answer": "Broadcom Inc. [broadcom], Hon Hai Precision Industry Co., Ltd. [foxconn], Qualcomm Incorporated [qualcomm], Samsung Electronics Co., Ltd. [samsung], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Apple"
         },
         {
           "id": "lk-18",
@@ -5933,7 +5933,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -S"
+          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPP"
         },
         {
           "id": "lk-19",
@@ -5955,7 +5955,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -COMPETES_WITH-&gt; Ford Motor Company [ford]. Tesla, Inc. [tesla] -COMPETES_WITH-&gt; General Motors Company [gm]."
+          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -COMPETES_WITH-> Ford Motor Company [ford]. Tesla, Inc. [tesla] -COMPETES_WITH-> General Motors Company [gm]."
         },
         {
           "id": "lk-20",
@@ -5975,7 +5975,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -COMPETES_WITH-&gt; Mastercard Incorporated [mastercard]."
+          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -COMPETES_WITH-> Mastercard Incorporated [mastercard]."
         },
         {
           "id": "lk-21",
@@ -6003,7 +6003,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions [risk_tariffs]. Evidence: Tesla, Inc. [tesla] -MENTIONS_RISK-&gt; China exposure [risk_china_exposure"
+          "answer": "China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions [risk_tariffs]. Evidence: Tesla, Inc. [tesla] -MENTIONS_RISK-> China exposure [risk_china_exposure]. "
         },
         {
           "id": "lk-22",
@@ -6025,7 +6025,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cybersecurity incidents [risk_cybersecurity], Interest rate sensitivity [risk_interest_rate]. Evidence: JPMorgan Chase &amp; Co. [jpm] -MENTIONS_RISK-&gt; Interest rate sensitivity [risk_interest_rate]. JPMorgan Chase &amp; Co. [jpm] -MENTIONS_RISK-&gt; Cybersecurity incidents [risk_cybersecurity]."
+          "answer": "Cybersecurity incidents [risk_cybersecurity], Interest rate sensitivity [risk_interest_rate]. Evidence: JPMorgan Chase & Co. [jpm] -MENTIONS_RISK-> Interest rate sensitivity [risk_interest_rate]. JPMorgan Chase & Co. [jpm] -MENTIONS_RISK-> Cybersecurity incidents [risk_cybersecurity]."
         },
         {
           "id": "lk-23",
@@ -6051,7 +6051,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Retail [market_retail]. Evidence: Amazon.com, Inc. [amazon] -OPERATES_IN-&gt; Cloud infrastructure [market_cloud]. Amazon.com, Inc. [amazon] -OPERATES_IN-&gt; Digital advertising ["
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Retail [market_retail]. Evidence: Amazon.com, Inc. [amazon] -OPERATES_IN-> Cloud infrastructure [market_cloud]. Amazon.com, Inc. [amazon] -OPERATES_IN-> Digital advertising [market"
         },
         {
           "id": "lk-24",
@@ -6075,7 +6075,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Enterprise software [market_enterprise_software]. Evidence: Microsoft Corporation [microsoft] -OPERATES_IN-&gt; Cloud infrastructure [market_cloud]. Microsoft Corporation [microsoft] -OPERATES_IN-&gt; Enterprise software ["
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Enterprise software [market_enterprise_software]. Evidence: Microsoft Corporation [microsoft] -OPERATES_IN-> Cloud infrastructure [market_cloud]. Microsoft Corporation [microsoft] -OPERATES_IN-> Enterprise software [market"
         },
         {
           "id": "lk-25",
@@ -6095,7 +6095,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Irene Castellanos [dir_castellanos]. Evidence: Irene Castellanos [dir_castellanos] -DIRECTOR_OF-&gt; Apple Inc. [apple]."
+          "answer": "Irene Castellanos [dir_castellanos]. Evidence: Irene Castellanos [dir_castellanos] -DIRECTOR_OF-> Apple Inc. [apple]."
         },
         {
           "id": "lk-26",
@@ -6117,7 +6117,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Merck &amp; Co., Inc. [merck], Pfizer Inc. [pfizer]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Merck &amp; Co., Inc. [merck]."
+          "answer": "Merck & Co., Inc. [merck], Pfizer Inc. [pfizer]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Merck & Co., Inc. [merck]."
         },
         {
           "id": "lk-27",
@@ -6141,7 +6141,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Facebook Technologies, LLC [sub_facebook_tech], Instagram, LLC [sub_instagram], WhatsApp LLC [sub_whatsapp]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. WhatsApp LLC [sub_whatsapp] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. Facebook Technologies, L"
+          "answer": "Facebook Technologies, LLC [sub_facebook_tech], Instagram, LLC [sub_instagram], WhatsApp LLC [sub_whatsapp]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. WhatsApp LLC [sub_whatsapp] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. Facebook Technologies, LLC [su"
         },
         {
           "id": "lk-28",
@@ -6167,7 +6167,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "DeepMind Technologies Limited [sub_deepmind], Google Ireland Limited [sub_google_ireland], Waymo LLC [sub_waymo], YouTube, LLC [sub_youtube]. Evidence: YouTube, LLC [sub_youtube] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]. Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]. DeepMind Te"
+          "answer": "DeepMind Technologies Limited [sub_deepmind], Google Ireland Limited [sub_google_ireland], Waymo LLC [sub_waymo], YouTube, LLC [sub_youtube]. Evidence: YouTube, LLC [sub_youtube] -SUBSIDIARY_OF-> Alphabet Inc. [google]. Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]. DeepMind Technolo"
         },
         {
           "id": "lk-29",
@@ -6227,7 +6227,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Satya Nadella [satya_nadella]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-&gt; Microsoft Corporation [microsoft]. Satya Nadella [satya_nadella] -CEO_OF-&gt; Microsoft Corporation [microsoft]."
+          "answer": "Satya Nadella [satya_nadella]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-> Microsoft Corporation [microsoft]. Satya Nadella [satya_nadella] -CEO_OF-> Microsoft Corporation [microsoft]."
         },
         {
           "id": "2h-02",
@@ -6247,7 +6247,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mark Zuckerberg [mark_zuckerberg]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. Mark Zuckerberg [mark_zuckerberg] -CEO_OF-&gt; Meta Platforms, Inc. [meta]."
+          "answer": "Mark Zuckerberg [mark_zuckerberg]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. Mark Zuckerberg [mark_zuckerberg] -CEO_OF-> Meta Platforms, Inc. [meta]."
         },
         {
           "id": "2h-03",
@@ -6267,7 +6267,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Sundar Pichai [sundar_pichai]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]. Sundar Pichai [sundar_pichai] -CEO_OF-&gt; Alphabet Inc. [google]."
+          "answer": "Sundar Pichai [sundar_pichai]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]. Sundar Pichai [sundar_pichai] -CEO_OF-> Alphabet Inc. [google]."
         },
         {
           "id": "2h-04",
@@ -6295,7 +6295,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "AI regulation [risk_ai_regulation], Antitrust enforcement [risk_antitrust], Cybersecurity incidents [risk_cybersecurity], Foreign exchange volatility [risk_fx], Talent retention [risk_talent]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]. Alphabet Inc. [google] -MENTION"
+          "answer": "AI regulation [risk_ai_regulation], Antitrust enforcement [risk_antitrust], Cybersecurity incidents [risk_cybersecurity], Foreign exchange volatility [risk_fx], Talent retention [risk_talent]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]. Alphabet Inc. [google] -MENTIONS_R"
         },
         {
           "id": "2h-05",
@@ -6317,7 +6317,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Elon Musk [elon_musk], Mary Barra [mary_barra]. Evidence: Ford Motor Company [ford] -COMPETES_WITH-&gt; General Motors Company [gm]. Tesla, Inc. [tesla] -COMPETES_WITH-&gt; Ford Motor Company [ford]. Elon Musk [elon_musk] -CEO_OF-&gt; Tesla, Inc. [tesla]. Mary Barra [mary_barra] -CEO_OF-&gt; General"
+          "answer": "Elon Musk [elon_musk], Mary Barra [mary_barra]. Evidence: Ford Motor Company [ford] -COMPETES_WITH-> General Motors Company [gm]. Tesla, Inc. [tesla] -COMPETES_WITH-> Ford Motor Company [ford]. Elon Musk [elon_musk] -CEO_OF-> Tesla, Inc. [tesla]. Mary Barra [mary_barra] -CEO_OF-> General Motors Comp"
         },
         {
           "id": "2h-06",
@@ -6339,7 +6339,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Brian Moynihan [brian_moynihan], David Solomon [david_solomon]. Evidence: JPMorgan Chase &amp; Co. [jpm] -COMPETES_WITH-&gt; Bank of America Corporation [bofa]. JPMorgan Chase &amp; Co. [jpm] -COMPETES_WITH-&gt; The Goldman Sachs Group, Inc. [goldman]. Brian Moynihan [brian_moynihan] -CEO_OF-&gt; Ba"
+          "answer": "Brian Moynihan [brian_moynihan], David Solomon [david_solomon]. Evidence: JPMorgan Chase & Co. [jpm] -COMPETES_WITH-> Bank of America Corporation [bofa]. JPMorgan Chase & Co. [jpm] -COMPETES_WITH-> The Goldman Sachs Group, Inc. [goldman]. Brian Moynihan [brian_moynihan] -CEO_OF-> Bank of America Cor"
         },
         {
           "id": "2h-07",
@@ -6359,7 +6359,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ramon Laguarta [ramon_laguarta]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-&gt; PepsiCo, Inc. [pep]. Ramon Laguarta [ramon_laguarta] -CEO_OF-&gt; PepsiCo, Inc. [pep]."
+          "answer": "Ramon Laguarta [ramon_laguarta]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-> PepsiCo, Inc. [pep]. Ramon Laguarta [ramon_laguarta] -CEO_OF-> PepsiCo, Inc. [pep]."
         },
         {
           "id": "2h-08",
@@ -6387,7 +6387,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Intel Core [prod_core], CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100], Xeon [prod_xeon]. Evidence: Advanced Micro Devices, Inc. [amd] -COMPETES_WITH-&gt; Intel Corporation [intel]. NVIDIA Corporation [nvidia] -COMPETES_WITH-&gt; Advanced Micro Devices, Inc. [amd]. Intel Corporation [int"
+          "answer": "Intel Core [prod_core], CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100], Xeon [prod_xeon]. Evidence: Advanced Micro Devices, Inc. [amd] -COMPETES_WITH-> Intel Corporation [intel]. NVIDIA Corporation [nvidia] -COMPETES_WITH-> Advanced Micro Devices, Inc. [amd]. NVIDIA Corporation [nvidia] "
         },
         {
           "id": "2h-09",
@@ -6411,7 +6411,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Doritos [prod_doritos], Gatorade [prod_gatorade], Pepsi [prod_pepsi]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-&gt; PepsiCo, Inc. [pep]. PepsiCo, Inc. [pep] -OFFERS_PRODUCT-&gt; Pepsi [prod_pepsi]. PepsiCo, Inc. [pep] -OFFERS_PRODUCT-&gt; Gatorade [prod_gatorade]. PepsiCo, Inc. [pep] -OFF"
+          "answer": "Doritos [prod_doritos], Gatorade [prod_gatorade], Pepsi [prod_pepsi]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-> PepsiCo, Inc. [pep]. PepsiCo, Inc. [pep] -OFFERS_PRODUCT-> Pepsi [prod_pepsi]. PepsiCo, Inc. [pep] -OFFERS_PRODUCT-> Gatorade [prod_gatorade]. PepsiCo, Inc. [pep] -OFFERS_PRODU"
         },
         {
           "id": "2h-10",
@@ -6467,7 +6467,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "ASML Holding N.V. [asml], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: NVIDIA Corporation [nvidia] -COMPETES_WITH-&gt; Advanced Micro Devices, Inc. [amd]. NVIDIA Corporation [nvidia] -COMPETES_WITH-&gt; Intel Corporation [intel]. Intel Corporation [intel] -SUPPLIED_BY-&gt; ASML Holdi"
+          "answer": "ASML Holding N.V. [asml], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: NVIDIA Corporation [nvidia] -COMPETES_WITH-> Advanced Micro Devices, Inc. [amd]. NVIDIA Corporation [nvidia] -COMPETES_WITH-> Intel Corporation [intel]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-> Taiwan Sem"
         },
         {
           "id": "2h-12",
@@ -6491,7 +6491,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "ASML Holding N.V. [asml], Broadcom Inc. [broadcom], NVIDIA Corporation [nvidia]. Evidence: Apple Inc. [apple] -COMPETES_WITH-&gt; Samsung Electronics Co., Ltd. [samsung]. Apple Inc. [apple] -COMPETES_WITH-&gt; Alphabet Inc. [google]. Alphabet Inc. [google] -SUPPLIED_BY-&gt; NVIDIA Corporation [nvidi"
+          "answer": "ASML Holding N.V. [asml], Broadcom Inc. [broadcom], NVIDIA Corporation [nvidia]. Evidence: Apple Inc. [apple] -COMPETES_WITH-> Samsung Electronics Co., Ltd. [samsung]. Apple Inc. [apple] -COMPETES_WITH-> Alphabet Inc. [google]. Samsung Electronics Co., Ltd. [samsung] -SUPPLIED_BY-> ASML Holding N.V."
         },
         {
           "id": "2h-13",
@@ -6513,7 +6513,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Marcus Oyelaran [dir_oyelaran], Dana Whitfield [dir_whitfield]. Evidence: Pfizer Inc. [pfizer] -COMPETES_WITH-&gt; Merck &amp; Co., Inc. [merck]. Pfizer Inc. [pfizer] -COMPETES_WITH-&gt; Johnson &amp; Johnson [jnj]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Merck &amp; Co., Inc. [merck]. Marc"
+          "answer": "Marcus Oyelaran [dir_oyelaran], Dana Whitfield [dir_whitfield]. Evidence: Pfizer Inc. [pfizer] -COMPETES_WITH-> Merck & Co., Inc. [merck]. Pfizer Inc. [pfizer] -COMPETES_WITH-> Johnson & Johnson [jnj]. Marcus Oyelaran [dir_oyelaran] -DIRECTOR_OF-> Johnson & Johnson [jnj]. Dana Whitfield [dir_whitfie"
         },
         {
           "id": "2h-14",
@@ -6533,7 +6533,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Chidi Okafor [dir_okafor]. Evidence: Ford Motor Company [ford] -COMPETES_WITH-&gt; General Motors Company [gm]. Tesla, Inc. [tesla] -COMPETES_WITH-&gt; Ford Motor Company [ford]. Chidi Okafor [dir_okafor] -DIRECTOR_OF-&gt; General Motors Company [gm]."
+          "answer": "Chidi Okafor [dir_okafor]. Evidence: Ford Motor Company [ford] -COMPETES_WITH-> General Motors Company [gm]. Tesla, Inc. [tesla] -COMPETES_WITH-> Ford Motor Company [ford]. Chidi Okafor [dir_okafor] -DIRECTOR_OF-> General Motors Company [gm]."
         },
         {
           "id": "2h-15",
@@ -6559,7 +6559,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Retail [market_retail]. Evidence: Walmart Inc. [walmart] -COMPETES_WITH-&gt; Costco Wholesale Corporation [costco]. Walmart Inc. [walmart] -COMPETES_WITH-&gt; Amazon.com, Inc. [ama"
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Retail [market_retail]. Evidence: Walmart Inc. [walmart] -COMPETES_WITH-> Costco Wholesale Corporation [costco]. Walmart Inc. [walmart] -COMPETES_WITH-> Amazon.com, Inc. [amazon]. "
         },
         {
           "id": "2h-16",
@@ -6581,7 +6581,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Frito-Lay North America, Inc. [sub_fritolay], The Quaker Oats Company [sub_quaker]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-&gt; PepsiCo, Inc. [pep]. Frito-Lay North America, Inc. [sub_fritolay] -SUBSIDIARY_OF-&gt; PepsiCo, Inc. [pep]. The Quaker Oats Company [sub_quaker] -SUBSIDIARY_OF-"
+          "answer": "Frito-Lay North America, Inc. [sub_fritolay], The Quaker Oats Company [sub_quaker]. Evidence: The Coca-Cola Company [ko] -COMPETES_WITH-> PepsiCo, Inc. [pep]. Frito-Lay North America, Inc. [sub_fritolay] -SUBSIDIARY_OF-> PepsiCo, Inc. [pep]. The Quaker Oats Company [sub_quaker] -SUBSIDIARY_OF-> Peps"
         },
         {
           "id": "2h-17",
@@ -6603,7 +6603,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mastercard International Incorporated [sub_mc_intl], Vocalink Holdings Limited [sub_vocalink]. Evidence: Visa Inc. [visa] -COMPETES_WITH-&gt; Mastercard Incorporated [mastercard]. Mastercard International Incorporated [sub_mc_intl] -SUBSIDIARY_OF-&gt; Mastercard Incorporated [mastercard]. Vocalink H"
+          "answer": "Mastercard International Incorporated [sub_mc_intl], Vocalink Holdings Limited [sub_vocalink]. Evidence: Visa Inc. [visa] -COMPETES_WITH-> Mastercard Incorporated [mastercard]. Mastercard International Incorporated [sub_mc_intl] -SUBSIDIARY_OF-> Mastercard Incorporated [mastercard]. Vocalink Holding"
         },
         {
           "id": "2h-18",
@@ -6627,7 +6627,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent]. Evidence: Lisa Su [lisa_su] -CEO_OF-&gt; Advanced Micro Devices, Inc. [amd]. Advanced Micro Devices, Inc. [amd] -MENTIONS_RISK-&gt; China exposure [risk_china_exposure]. Advanced"
+          "answer": "China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent]. Evidence: Lisa Su [lisa_su] -CEO_OF-> Advanced Micro Devices, Inc. [amd]. Advanced Micro Devices, Inc. [amd] -MENTIONS_RISK-> China exposure [risk_china_exposure]. Advanced Micro"
         },
         {
           "id": "2h-19",
@@ -6655,7 +6655,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "AI regulation [risk_ai_regulation], China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions [risk_tariffs]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-&gt; NVIDIA Corporation [nvidia]. NVIDIA Corporat"
+          "answer": "AI regulation [risk_ai_regulation], China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions [risk_tariffs]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-> NVIDIA Corporation [nvidia]. NVIDIA Corporation"
         },
         {
           "id": "2h-20",
@@ -6681,7 +6681,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Azure [prod_azure], Microsoft 365 [prod_m365], Windows [prod_windows], Xbox [prod_xbox]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-&gt; Microsoft Corporation [microsoft]. Microsoft Corporation [microsoft] -OFFERS_PRODUCT-&gt; Azure [prod_azure]. Microsoft Corporation [microsoft] -OFFERS_PRODUC"
+          "answer": "Azure [prod_azure], Microsoft 365 [prod_m365], Windows [prod_windows], Xbox [prod_xbox]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-> Microsoft Corporation [microsoft]. Microsoft Corporation [microsoft] -OFFERS_PRODUCT-> Azure [prod_azure]. Microsoft Corporation [microsoft] -OFFERS_PRODUCT-> Wi"
         },
         {
           "id": "2h-21",
@@ -6709,7 +6709,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], Qualcomm Incorporated [qualcomm]. Evidence: NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; SK h"
+          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], Qualcomm Incorporated [qualcomm]. Evidence: NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> SK hynix I"
         },
         {
           "id": "2h-22",
@@ -6735,7 +6735,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Amazon.com, Inc. [amazon], Alphabet Inc. [google], Meta Platforms, Inc. [meta], Oracle Corporation [oracle]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; NVIDIA Corporation [nvidia]. Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; Advanced Micro Devices, Inc. [amd]. Alphabet Inc"
+          "answer": "Amazon.com, Inc. [amazon], Alphabet Inc. [google], Meta Platforms, Inc. [meta], Oracle Corporation [oracle]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-> NVIDIA Corporation [nvidia]. Microsoft Corporation [microsoft] -SUPPLIED_BY-> Advanced Micro Devices, Inc. [amd]. Meta Platforms, In"
         },
         {
           "id": "2h-23",
@@ -6757,7 +6757,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Apple Inc. [apple], General Motors Company [gm]. Evidence: Ford Motor Company [ford] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]. General Motors Company [gm] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]."
+          "answer": "Apple Inc. [apple], General Motors Company [gm]. Evidence: Ford Motor Company [ford] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]. Apple Inc. [apple] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]. General Motors Company [gm] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]."
         },
         {
           "id": "2h-24",
@@ -6777,7 +6777,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -OPERATES_IN-&gt; Payments [market_payments]. Mastercard Incorporated [mastercard] -OPERATES_IN-&gt; Payments [market_payments]."
+          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -OPERATES_IN-> Payments [market_payments]. Mastercard Incorporated [mastercard] -OPERATES_IN-> Payments [market_payments]."
         },
         {
           "id": "2h-25",
@@ -6799,7 +6799,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -OPERATES_IN-&gt; Electric vehicles [market_ev]. Ford Motor Company [ford] -OPERATES_IN-&gt; Electric vehicles [market_ev]. General Motors Company [gm] -OPERATES_IN-&gt; Electric vehicles [market_ev]."
+          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -OPERATES_IN-> Electric vehicles [market_ev]. Ford Motor Company [ford] -OPERATES_IN-> Electric vehicles [market_ev]. General Motors Company [gm] -OPERATES_IN-> Electric vehicles [market_ev]."
         },
         {
           "id": "2h-26",
@@ -6819,7 +6819,7 @@
           "classified_kind": "lookup",
           "routing_ok": false,
           "latency_ms": 0,
-          "answer": "Dana Whitfield [dir_whitfield]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Merck &amp; Co., Inc. [merck]."
+          "answer": "Dana Whitfield [dir_whitfield]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Merck & Co., Inc. [merck]."
         },
         {
           "id": "2h-27",
@@ -6839,7 +6839,7 @@
           "classified_kind": "lookup",
           "routing_ok": false,
           "latency_ms": 0,
-          "answer": "Intel Corporation [intel]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manu"
+          "answer": "Intel Corporation [intel]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing"
         },
         {
           "id": "2h-28",
@@ -6873,7 +6873,7 @@
           "classified_kind": "lookup",
           "routing_ok": false,
           "latency_ms": 0,
-          "answer": "Apple Inc. [apple], The Boeing Company [boeing], Ford Motor Company [ford], General Motors Company [gm], Micron Technology, Inc. [micron], NVIDIA Corporation [nvidia], Tesla, Inc. [tesla], Walmart Inc. [walmart]. Evidence: Apple Inc. [apple] -MENTIONS_RISK-&gt; China exposure [risk_china_exposure]. "
+          "answer": "Apple Inc. [apple], The Boeing Company [boeing], Ford Motor Company [ford], General Motors Company [gm], Micron Technology, Inc. [micron], NVIDIA Corporation [nvidia], Tesla, Inc. [tesla], Walmart Inc. [walmart]. Evidence: Apple Inc. [apple] -MENTIONS_RISK-> China exposure [risk_china_exposure]. Mic"
         },
         {
           "id": "2h-29",
@@ -6929,7 +6929,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd], Alphabet Inc. [google], Intel Corporation [intel], Samsung Electronics Co., Ltd. [samsung]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co.,"
+          "answer": "Advanced Micro Devices, Inc. [amd], Alphabet Inc. [google], Intel Corporation [intel], Samsung Electronics Co., Ltd. [samsung]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. "
         },
         {
           "id": "3h-01",
@@ -6965,7 +6965,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cristiano Amon [cristiano_amon], Hock Tan [hock_tan], Jensen Huang [jensen_huang], Jim Farley [jim_farley], Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Mark Zuckerberg [mark_zuckerberg], Mary Barra [mary_barra], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Sem"
+          "answer": "Cristiano Amon [cristiano_amon], Hock Tan [hock_tan], Jensen Huang [jensen_huang], Jim Farley [jim_farley], Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Mark Zuckerberg [mark_zuckerberg], Mary Barra [mary_barra], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semico"
         },
         {
           "id": "3h-02",
@@ -6991,7 +6991,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Andy Jassy [andy_jassy], Mark Zuckerberg [mark_zuckerberg], Safra Catz [safra_catz], Sundar Pichai [sundar_pichai]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; NVIDIA Corporation [nvidia]. Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; Advanced Micro Devices, Inc. [amd]. Alpha"
+          "answer": "Andy Jassy [andy_jassy], Mark Zuckerberg [mark_zuckerberg], Safra Catz [safra_catz], Sundar Pichai [sundar_pichai]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-> NVIDIA Corporation [nvidia]. Microsoft Corporation [microsoft] -SUPPLIED_BY-> Advanced Micro Devices, Inc. [amd]. Meta Platfo"
         },
         {
           "id": "3h-03",
@@ -7057,7 +7057,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ruth Abernathy [dir_abernathy], Keiko Nakamura [dir_nakamura], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro"
+          "answer": "Ruth Abernathy [dir_abernathy], Keiko Nakamura [dir_nakamura], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devic"
         },
         {
           "id": "3h-05",
@@ -7085,7 +7085,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "AI regulation [risk_ai_regulation], Antitrust enforcement [risk_antitrust], Cybersecurity incidents [risk_cybersecurity], Foreign exchange volatility [risk_fx], Talent retention [risk_talent]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. Alphabet Inc. [go"
+          "answer": "AI regulation [risk_ai_regulation], Antitrust enforcement [risk_antitrust], Cybersecurity incidents [risk_cybersecurity], Foreign exchange volatility [risk_fx], Talent retention [risk_talent]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. Alphabet Inc. [googl"
         },
         {
           "id": "3h-06",
@@ -7111,7 +7111,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "DeepMind Technologies Limited [sub_deepmind], Google Ireland Limited [sub_google_ireland], Waymo LLC [sub_waymo], YouTube, LLC [sub_youtube]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. Alphabet Inc. [google] -COMPETES_WITH-&gt; Meta Platforms, Inc. [met"
+          "answer": "DeepMind Technologies Limited [sub_deepmind], Google Ireland Limited [sub_google_ireland], Waymo LLC [sub_waymo], YouTube, LLC [sub_youtube]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. Alphabet Inc. [google] -COMPETES_WITH-> Meta Platforms, Inc. [meta]. Yo"
         },
         {
           "id": "3h-07",
@@ -7137,7 +7137,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Andy Jassy [andy_jassy], Marc Benioff [marc_benioff], Safra Catz [safra_catz], Sundar Pichai [sundar_pichai]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-&gt; Microsoft Corporation [microsoft]. Microsoft Corporation [microsoft] -COMPETES_WITH-&gt; Alphabet Inc. [google]. Microsoft C"
+          "answer": "Andy Jassy [andy_jassy], Marc Benioff [marc_benioff], Safra Catz [safra_catz], Sundar Pichai [sundar_pichai]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-> Microsoft Corporation [microsoft]. Microsoft Corporation [microsoft] -COMPETES_WITH-> Alphabet Inc. [google]. Microsoft Corpora"
         },
         {
           "id": "3h-08",
@@ -7167,7 +7167,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Enterprise software [market_enterprise_software], Retail [market_retail], Smartphones [market_smartphones]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [googl"
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Enterprise software [market_enterprise_software], Retail [market_retail], Smartphones [market_smartphones]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]."
         },
         {
           "id": "3h-09",
@@ -7191,7 +7191,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-&gt; NVIDIA Corporation [nvidia]. NVIDIA Corporation [nvidia] -COMPETES_WITH-&gt; Advanced Micro Devices, Inc. [amd]. NVIDIA Corpora"
+          "answer": "China exposure [risk_china_exposure], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-> NVIDIA Corporation [nvidia]. NVIDIA Corporation [nvidia] -COMPETES_WITH-> Advanced Micro Devices, Inc. [amd]. NVIDIA Corporation ["
         },
         {
           "id": "3h-10",
@@ -7221,7 +7221,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cybertruck [prod_cybertruck], Cadillac Escalade [prod_escalade], Megapack [prod_megapack], Model 3 [prod_model_3], Model Y [prod_model_y], Chevrolet Silverado [prod_silverado]. Evidence: Jim Farley [jim_farley] -CEO_OF-&gt; Ford Motor Company [ford]. Ford Motor Company [ford] -COMPETES_WITH-&gt; Gen"
+          "answer": "Cybertruck [prod_cybertruck], Cadillac Escalade [prod_escalade], Megapack [prod_megapack], Model 3 [prod_model_3], Model Y [prod_model_y], Chevrolet Silverado [prod_silverado]. Evidence: Jim Farley [jim_farley] -CEO_OF-> Ford Motor Company [ford]. Ford Motor Company [ford] -COMPETES_WITH-> General M"
         },
         {
           "id": "3h-11",
@@ -7243,7 +7243,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Marcus Oyelaran [dir_oyelaran], Dana Whitfield [dir_whitfield]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-&gt; Pfizer Inc. [pfizer]. Pfizer Inc. [pfizer] -COMPETES_WITH-&gt; Merck &amp; Co., Inc. [merck]. Pfizer Inc. [pfizer] -COMPETES_WITH-&gt; Johnson &amp; Johnson [jnj]. Dana Whitfield [dir"
+          "answer": "Marcus Oyelaran [dir_oyelaran], Dana Whitfield [dir_whitfield]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-> Pfizer Inc. [pfizer]. Pfizer Inc. [pfizer] -COMPETES_WITH-> Merck & Co., Inc. [merck]. Pfizer Inc. [pfizer] -COMPETES_WITH-> Johnson & Johnson [jnj]. Marcus Oyelaran [dir_oyelaran] -DIRE"
         },
         {
           "id": "3h-12",
@@ -7271,7 +7271,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Albert Bourla [albert_bourla], Joaquin Duato [joaquin_duato], Robert M. Davis [robert_davis], Robert A. Michael [robert_michael], Stephen Hemsley [stephen_hemsley]. Evidence: Eli Lilly and Company [lilly] -MENTIONS_RISK-&gt; Drug pricing pressure [risk_drug_pricing]. Eli Lilly and Company [lilly] -M"
+          "answer": "Albert Bourla [albert_bourla], Joaquin Duato [joaquin_duato], Robert M. Davis [robert_davis], Robert A. Michael [robert_michael], Stephen Hemsley [stephen_hemsley]. Evidence: Eli Lilly and Company [lilly] -MENTIONS_RISK-> Drug pricing pressure [risk_drug_pricing]. Eli Lilly and Company [lilly] -MENT"
         },
         {
           "id": "3h-13",
@@ -7297,7 +7297,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cruise LLC [sub_cruise], Ford Motor Company of Canada, Limited [sub_ford_canada], Ford Motor Credit Company LLC [sub_ford_credit], General Motors Financial Company, Inc. [sub_gm_financial]. Evidence: Tesla, Inc. [tesla] -OPERATES_IN-&gt; Electric vehicles [market_ev]. Ford Motor Company [ford] -OPER"
+          "answer": "Cruise LLC [sub_cruise], Ford Motor Company of Canada, Limited [sub_ford_canada], Ford Motor Credit Company LLC [sub_ford_credit], General Motors Financial Company, Inc. [sub_gm_financial]. Evidence: Tesla, Inc. [tesla] -OPERATES_IN-> Electric vehicles [market_ev]. Ford Motor Company [ford] -OPERATE"
         },
         {
           "id": "3h-14",
@@ -7317,7 +7317,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Piotr Kowalczyk [dir_kowalczyk]. Evidence: JPMorgan Chase &amp; Co. [jpm] -OPERATES_IN-&gt; Banking [market_banking]. Bank of America Corporation [bofa] -OPERATES_IN-&gt; Banking [market_banking]. The Goldman Sachs Group, Inc. [goldman] -OPERATES_IN-&gt; Banking [market_banking]. Piotr Kowalczyk [di"
+          "answer": "Piotr Kowalczyk [dir_kowalczyk]. Evidence: JPMorgan Chase & Co. [jpm] -OPERATES_IN-> Banking [market_banking]. Bank of America Corporation [bofa] -OPERATES_IN-> Banking [market_banking]. The Goldman Sachs Group, Inc. [goldman] -OPERATES_IN-> Banking [market_banking]. Piotr Kowalczyk [dir_kowalczyk] "
         },
         {
           "id": "3h-15",
@@ -7347,7 +7347,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Apple Watch [prod_apple_watch], Cadillac Escalade [prod_escalade], iPad [prod_ipad], iPhone [prod_iphone], Mac [prod_mac], Chevrolet Silverado [prod_silverado]. Evidence: Ford Motor Company [ford] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Qualcomm Incor"
+          "answer": "Apple Watch [prod_apple_watch], Cadillac Escalade [prod_escalade], iPad [prod_ipad], iPhone [prod_iphone], Mac [prod_mac], Chevrolet Silverado [prod_silverado]. Evidence: Ford Motor Company [ford] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]. Apple Inc. [apple] -SUPPLIED_BY-> Qualcomm Incorporate"
         },
         {
           "id": "3h-16",
@@ -7409,7 +7409,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -COMPETE"
+          "answer": "Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -COMPETES_WITH"
         },
         {
           "id": "3h-18",
@@ -7435,7 +7435,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cruise LLC [sub_cruise], Ford Motor Company of Canada, Limited [sub_ford_canada], Ford Motor Credit Company LLC [sub_ford_credit], General Motors Financial Company, Inc. [sub_gm_financial]. Evidence: Tesla, Inc. [tesla] -SUPPLIED_BY-&gt; Panasonic Holdings Corporation [panasonic]. Tesla, Inc. [tesla"
+          "answer": "Cruise LLC [sub_cruise], Ford Motor Company of Canada, Limited [sub_ford_canada], Ford Motor Credit Company LLC [sub_ford_credit], General Motors Financial Company, Inc. [sub_gm_financial]. Evidence: Tesla, Inc. [tesla] -SUPPLIED_BY-> Panasonic Holdings Corporation [panasonic]. Tesla, Inc. [tesla] -"
         },
         {
           "id": "3h-19",
@@ -7465,7 +7465,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Enterprise software [market_enterprise_software], Retail [market_retail], Smartphones [market_smartphones]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; NVIDIA Cor"
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Enterprise software [market_enterprise_software], Retail [market_retail], Smartphones [market_smartphones]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-> NVIDIA Corpor"
         },
         {
           "id": "3h-20",
@@ -7493,7 +7493,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ruth Abernathy [dir_abernathy], Naledi Mbeki [dir_mbeki], Keiko Nakamura [dir_nakamura], Chidi Okafor [dir_okafor], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Hon Hai Precision Ind"
+          "answer": "Ruth Abernathy [dir_abernathy], Naledi Mbeki [dir_mbeki], Keiko Nakamura [dir_nakamura], Chidi Okafor [dir_okafor], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Apple Inc. [apple] -SUPPLIED_BY-> Hon Hai Precision Industry "
         },
         {
           "id": "ag-01",
@@ -7813,7 +7813,7 @@
           "classified_kind": "aggregation",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "count = 5 — AbbVie Inc., Johnson &amp; Johnson, Eli Lilly and Company, Merck &amp; Co., Inc., Pfizer Inc."
+          "answer": "count = 5 — AbbVie Inc., Johnson & Johnson, Eli Lilly and Company, Merck & Co., Inc., Pfizer Inc."
         },
         {
           "id": "ag-11",
@@ -7863,7 +7863,7 @@
           "classified_kind": "aggregation",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "count = 16 — Adobe Inc., Amazon.com, Inc., Apple Inc., Bank of America Corporation, Costco Wholesale Corporation, The Goldman Sachs Group, Inc., Alphabet Inc., JPMorgan Chase &amp; Co. (+8 more)"
+          "answer": "count = 16 — Adobe Inc., Amazon.com, Inc., Apple Inc., Bank of America Corporation, Costco Wholesale Corporation, The Goldman Sachs Group, Inc., Alphabet Inc., JPMorgan Chase & Co. (+8 more)"
         },
         {
           "id": "ag-12",
@@ -7893,7 +7893,7 @@
           "count": 0,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 7,
+          "latency_ms": 6,
           "answer": "count = 0"
         },
         {
@@ -8063,7 +8063,7 @@
           "count": 0,
           "classified_kind": "aggregation",
           "routing_ok": true,
-          "latency_ms": 6,
+          "latency_ms": 7,
           "answer": "count = 0"
         },
         {
@@ -8174,7 +8174,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-&gt; Apple Inc. [apple]."
+          "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-> Apple Inc. [apple]."
         },
         {
           "id": "lk-02",
@@ -8194,7 +8194,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Satya Nadella [satya_nadella]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-&gt; Microsoft Corporation [microsoft]."
+          "answer": "Satya Nadella [satya_nadella]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-> Microsoft Corporation [microsoft]."
         },
         {
           "id": "lk-03",
@@ -8214,7 +8214,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Jensen Huang [jensen_huang]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-&gt; NVIDIA Corporation [nvidia]."
+          "answer": "Jensen Huang [jensen_huang]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-> NVIDIA Corporation [nvidia]."
         },
         {
           "id": "lk-04",
@@ -8234,7 +8234,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Albert Bourla [albert_bourla]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-&gt; Pfizer Inc. [pfizer]."
+          "answer": "Albert Bourla [albert_bourla]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-> Pfizer Inc. [pfizer]."
         },
         {
           "id": "lk-05",
@@ -8254,7 +8254,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd]. Evidence: Lisa Su [lisa_su] -CEO_OF-&gt; Advanced Micro Devices, Inc. [amd]."
+          "answer": "Advanced Micro Devices, Inc. [amd]. Evidence: Lisa Su [lisa_su] -CEO_OF-> Advanced Micro Devices, Inc. [amd]."
         },
         {
           "id": "lk-06",
@@ -8274,7 +8274,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "General Motors Company [gm]. Evidence: Mary Barra [mary_barra] -CEO_OF-&gt; General Motors Company [gm]."
+          "answer": "General Motors Company [gm]. Evidence: Mary Barra [mary_barra] -CEO_OF-> General Motors Company [gm]."
         },
         {
           "id": "lk-07",
@@ -8294,7 +8294,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "David A. Ricks [david_ricks]. Evidence: David A. Ricks [david_ricks] -CEO_OF-&gt; Eli Lilly and Company [lilly]."
+          "answer": "David A. Ricks [david_ricks]. Evidence: David A. Ricks [david_ricks] -CEO_OF-> Eli Lilly and Company [lilly]."
         },
         {
           "id": "lk-08",
@@ -8314,7 +8314,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "C.C. Wei [cc_wei]. Evidence: C.C. Wei [cc_wei] -CEO_OF-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]."
+          "answer": "C.C. Wei [cc_wei]. Evidence: C.C. Wei [cc_wei] -CEO_OF-> Taiwan Semiconductor Manufacturing Company [tsmc]."
         },
         {
           "id": "lk-09",
@@ -8334,7 +8334,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Microsoft Corporation [microsoft]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-&gt; Microsoft Corporation [microsoft]."
+          "answer": "Microsoft Corporation [microsoft]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-> Microsoft Corporation [microsoft]."
         },
         {
           "id": "lk-10",
@@ -8354,7 +8354,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Meta Platforms, Inc. [meta]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]."
+          "answer": "Meta Platforms, Inc. [meta]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]."
         },
         {
           "id": "lk-11",
@@ -8374,7 +8374,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Alphabet Inc. [google]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]."
+          "answer": "Alphabet Inc. [google]. Evidence: Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]."
         },
         {
           "id": "lk-12",
@@ -8394,7 +8394,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "UnitedHealth Group Incorporated [unh]. Evidence: Optum, Inc. [sub_optum] -SUBSIDIARY_OF-&gt; UnitedHealth Group Incorporated [unh]."
+          "answer": "UnitedHealth Group Incorporated [unh]. Evidence: Optum, Inc. [sub_optum] -SUBSIDIARY_OF-> UnitedHealth Group Incorporated [unh]."
         },
         {
           "id": "lk-13",
@@ -8418,7 +8418,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100]. Evidence: NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-&gt; GeForce [prod_geforce]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-&gt; H100 [prod_h100]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-&gt; CUDA [prod_cuda]."
+          "answer": "CUDA [prod_cuda], GeForce [prod_geforce], H100 [prod_h100]. Evidence: NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-> GeForce [prod_geforce]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-> H100 [prod_h100]. NVIDIA Corporation [nvidia] -OFFERS_PRODUCT-> CUDA [prod_cuda]."
         },
         {
           "id": "lk-14",
@@ -8442,7 +8442,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mounjaro [prod_mounjaro], Verzenio [prod_verzenio], Zepbound [prod_zepbound]. Evidence: Eli Lilly and Company [lilly] -OFFERS_PRODUCT-&gt; Mounjaro [prod_mounjaro]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-&gt; Zepbound [prod_zepbound]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-&gt; Verzeni"
+          "answer": "Mounjaro [prod_mounjaro], Verzenio [prod_verzenio], Zepbound [prod_zepbound]. Evidence: Eli Lilly and Company [lilly] -OFFERS_PRODUCT-> Mounjaro [prod_mounjaro]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-> Zepbound [prod_zepbound]. Eli Lilly and Company [lilly] -OFFERS_PRODUCT-> Verzenio [prod_v"
         },
         {
           "id": "lk-15",
@@ -8462,7 +8462,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Merck &amp; Co., Inc. [merck]. Evidence: Merck &amp; Co., Inc. [merck] -OFFERS_PRODUCT-&gt; Keytruda [prod_keytruda]."
+          "answer": "Merck & Co., Inc. [merck]. Evidence: Merck & Co., Inc. [merck] -OFFERS_PRODUCT-> Keytruda [prod_keytruda]."
         },
         {
           "id": "lk-16",
@@ -8482,7 +8482,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Qualcomm Incorporated [qualcomm]. Evidence: Qualcomm Incorporated [qualcomm] -OFFERS_PRODUCT-&gt; Snapdragon [prod_snapdragon]."
+          "answer": "Qualcomm Incorporated [qualcomm]. Evidence: Qualcomm Incorporated [qualcomm] -OFFERS_PRODUCT-> Snapdragon [prod_snapdragon]."
         },
         {
           "id": "lk-17",
@@ -8510,7 +8510,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Broadcom Inc. [broadcom], Hon Hai Precision Industry Co., Ltd. [foxconn], Qualcomm Incorporated [qualcomm], Samsung Electronics Co., Ltd. [samsung], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Ap"
+          "answer": "Broadcom Inc. [broadcom], Hon Hai Precision Industry Co., Ltd. [foxconn], Qualcomm Incorporated [qualcomm], Samsung Electronics Co., Ltd. [samsung], Taiwan Semiconductor Manufacturing Company [tsmc]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Apple"
         },
         {
           "id": "lk-18",
@@ -8540,7 +8540,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -S"
+          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPP"
         },
         {
           "id": "lk-19",
@@ -8562,7 +8562,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -COMPETES_WITH-&gt; Ford Motor Company [ford]. Tesla, Inc. [tesla] -COMPETES_WITH-&gt; General Motors Company [gm]."
+          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -COMPETES_WITH-> Ford Motor Company [ford]. Tesla, Inc. [tesla] -COMPETES_WITH-> General Motors Company [gm]."
         },
         {
           "id": "lk-20",
@@ -8582,7 +8582,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -COMPETES_WITH-&gt; Mastercard Incorporated [mastercard]."
+          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -COMPETES_WITH-> Mastercard Incorporated [mastercard]."
         },
         {
           "id": "lk-21",
@@ -8610,7 +8610,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions [risk_tariffs]. Evidence: Tesla, Inc. [tesla] -MENTIONS_RISK-&gt; China exposure [risk_china_exposure"
+          "answer": "China exposure [risk_china_exposure], Climate regulation [risk_climate_regulation], Supplier concentration [risk_supply_concentration], Talent retention [risk_talent], Tariffs and trade restrictions [risk_tariffs]. Evidence: Tesla, Inc. [tesla] -MENTIONS_RISK-> China exposure [risk_china_exposure]. "
         },
         {
           "id": "lk-22",
@@ -8632,7 +8632,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Cybersecurity incidents [risk_cybersecurity], Interest rate sensitivity [risk_interest_rate]. Evidence: JPMorgan Chase &amp; Co. [jpm] -MENTIONS_RISK-&gt; Interest rate sensitivity [risk_interest_rate]. JPMorgan Chase &amp; Co. [jpm] -MENTIONS_RISK-&gt; Cybersecurity incidents [risk_cybersecurity]."
+          "answer": "Cybersecurity incidents [risk_cybersecurity], Interest rate sensitivity [risk_interest_rate]. Evidence: JPMorgan Chase & Co. [jpm] -MENTIONS_RISK-> Interest rate sensitivity [risk_interest_rate]. JPMorgan Chase & Co. [jpm] -MENTIONS_RISK-> Cybersecurity incidents [risk_cybersecurity]."
         },
         {
           "id": "lk-23",
@@ -8658,7 +8658,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Retail [market_retail]. Evidence: Amazon.com, Inc. [amazon] -OPERATES_IN-&gt; Cloud infrastructure [market_cloud]. Amazon.com, Inc. [amazon] -OPERATES_IN-&gt; Digital advertising ["
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Digital advertising [market_digital_ads], Retail [market_retail]. Evidence: Amazon.com, Inc. [amazon] -OPERATES_IN-> Cloud infrastructure [market_cloud]. Amazon.com, Inc. [amazon] -OPERATES_IN-> Digital advertising [market"
         },
         {
           "id": "lk-24",
@@ -8682,7 +8682,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Enterprise software [market_enterprise_software]. Evidence: Microsoft Corporation [microsoft] -OPERATES_IN-&gt; Cloud infrastructure [market_cloud]. Microsoft Corporation [microsoft] -OPERATES_IN-&gt; Enterprise software ["
+          "answer": "Foundation AI models [market_ai_models], Cloud infrastructure [market_cloud], Enterprise software [market_enterprise_software]. Evidence: Microsoft Corporation [microsoft] -OPERATES_IN-> Cloud infrastructure [market_cloud]. Microsoft Corporation [microsoft] -OPERATES_IN-> Enterprise software [market"
         },
         {
           "id": "lk-25",
@@ -8702,7 +8702,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Irene Castellanos [dir_castellanos]. Evidence: Irene Castellanos [dir_castellanos] -DIRECTOR_OF-&gt; Apple Inc. [apple]."
+          "answer": "Irene Castellanos [dir_castellanos]. Evidence: Irene Castellanos [dir_castellanos] -DIRECTOR_OF-> Apple Inc. [apple]."
         },
         {
           "id": "lk-26",
@@ -8724,7 +8724,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Merck &amp; Co., Inc. [merck], Pfizer Inc. [pfizer]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Merck &amp; Co., Inc. [merck]."
+          "answer": "Merck & Co., Inc. [merck], Pfizer Inc. [pfizer]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Merck & Co., Inc. [merck]."
         },
         {
           "id": "lk-27",
@@ -8748,7 +8748,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Facebook Technologies, LLC [sub_facebook_tech], Instagram, LLC [sub_instagram], WhatsApp LLC [sub_whatsapp]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. WhatsApp LLC [sub_whatsapp] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]. Facebook Technologies, L"
+          "answer": "Facebook Technologies, LLC [sub_facebook_tech], Instagram, LLC [sub_instagram], WhatsApp LLC [sub_whatsapp]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. WhatsApp LLC [sub_whatsapp] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]. Facebook Technologies, LLC [su"
         },
         {
           "id": "lk-28",
@@ -8774,7 +8774,7 @@
           "classified_kind": "lookup",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "DeepMind Technologies Limited [sub_deepmind], Google Ireland Limited [sub_google_ireland], Waymo LLC [sub_waymo], YouTube, LLC [sub_youtube]. Evidence: YouTube, LLC [sub_youtube] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]. Waymo LLC [sub_waymo] -SUBSIDIARY_OF-&gt; Alphabet Inc. [google]. DeepMind Te"
+          "answer": "DeepMind Technologies Limited [sub_deepmind], Google Ireland Limited [sub_google_ireland], Waymo LLC [sub_waymo], YouTube, LLC [sub_youtube]. Evidence: YouTube, LLC [sub_youtube] -SUBSIDIARY_OF-> Alphabet Inc. [google]. Waymo LLC [sub_waymo] -SUBSIDIARY_OF-> Alphabet Inc. [google]. DeepMind Technolo"
         },
         {
           "id": "lk-29",
@@ -9035,7 +9035,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd], Intel Corporation [intel]. Evidence: NVIDIA Corporation [nvidia] -COMPETES_WITH-&gt; Advanced Micro Devices, Inc. [amd]. NVIDIA Corporation [nvidia] -COMPETES_WITH-&gt; Intel Corporation [intel]."
+          "answer": "Advanced Micro Devices, Inc. [amd], Intel Corporation [intel]. Evidence: NVIDIA Corporation [nvidia] -COMPETES_WITH-> Advanced Micro Devices, Inc. [amd]. NVIDIA Corporation [nvidia] -COMPETES_WITH-> Intel Corporation [intel]."
         },
         {
           "id": "2h-12",
@@ -9058,7 +9058,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Alphabet Inc. [google], Samsung Electronics Co., Ltd. [samsung]. Evidence: Apple Inc. [apple] -COMPETES_WITH-&gt; Samsung Electronics Co., Ltd. [samsung]. Apple Inc. [apple] -COMPETES_WITH-&gt; Alphabet Inc. [google]."
+          "answer": "Alphabet Inc. [google], Samsung Electronics Co., Ltd. [samsung]. Evidence: Apple Inc. [apple] -COMPETES_WITH-> Samsung Electronics Co., Ltd. [samsung]. Apple Inc. [apple] -COMPETES_WITH-> Alphabet Inc. [google]."
         },
         {
           "id": "2h-13",
@@ -9245,7 +9245,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], Qualcomm Incorporated [qualcomm]. Evidence: NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; SK h"
+          "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], Qualcomm Incorporated [qualcomm]. Evidence: NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> SK hynix I"
         },
         {
           "id": "2h-22",
@@ -9271,7 +9271,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Amazon.com, Inc. [amazon], Alphabet Inc. [google], Meta Platforms, Inc. [meta], Oracle Corporation [oracle]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; NVIDIA Corporation [nvidia]. Microsoft Corporation [microsoft] -SUPPLIED_BY-&gt; Advanced Micro Devices, Inc. [amd]. Alphabet Inc"
+          "answer": "Amazon.com, Inc. [amazon], Alphabet Inc. [google], Meta Platforms, Inc. [meta], Oracle Corporation [oracle]. Evidence: Microsoft Corporation [microsoft] -SUPPLIED_BY-> NVIDIA Corporation [nvidia]. Microsoft Corporation [microsoft] -SUPPLIED_BY-> Advanced Micro Devices, Inc. [amd]. Meta Platforms, In"
         },
         {
           "id": "2h-23",
@@ -9293,7 +9293,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Apple Inc. [apple], General Motors Company [gm]. Evidence: Ford Motor Company [ford] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]. General Motors Company [gm] -SUPPLIED_BY-&gt; Qualcomm Incorporated [qualcomm]."
+          "answer": "Apple Inc. [apple], General Motors Company [gm]. Evidence: Ford Motor Company [ford] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]. Apple Inc. [apple] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]. General Motors Company [gm] -SUPPLIED_BY-> Qualcomm Incorporated [qualcomm]."
         },
         {
           "id": "2h-24",
@@ -9313,7 +9313,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -OPERATES_IN-&gt; Payments [market_payments]. Mastercard Incorporated [mastercard] -OPERATES_IN-&gt; Payments [market_payments]."
+          "answer": "Mastercard Incorporated [mastercard]. Evidence: Visa Inc. [visa] -OPERATES_IN-> Payments [market_payments]. Mastercard Incorporated [mastercard] -OPERATES_IN-> Payments [market_payments]."
         },
         {
           "id": "2h-25",
@@ -9335,7 +9335,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -OPERATES_IN-&gt; Electric vehicles [market_ev]. Ford Motor Company [ford] -OPERATES_IN-&gt; Electric vehicles [market_ev]. General Motors Company [gm] -OPERATES_IN-&gt; Electric vehicles [market_ev]."
+          "answer": "Ford Motor Company [ford], General Motors Company [gm]. Evidence: Tesla, Inc. [tesla] -OPERATES_IN-> Electric vehicles [market_ev]. Ford Motor Company [ford] -OPERATES_IN-> Electric vehicles [market_ev]. General Motors Company [gm] -OPERATES_IN-> Electric vehicles [market_ev]."
         },
         {
           "id": "2h-26",
@@ -9355,7 +9355,7 @@
           "classified_kind": "lookup",
           "routing_ok": false,
           "latency_ms": 0,
-          "answer": "Dana Whitfield [dir_whitfield]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-&gt; Merck &amp; Co., Inc. [merck]."
+          "answer": "Dana Whitfield [dir_whitfield]. Evidence: Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Pfizer Inc. [pfizer]. Dana Whitfield [dir_whitfield] -DIRECTOR_OF-> Merck & Co., Inc. [merck]."
         },
         {
           "id": "2h-27",
@@ -9375,7 +9375,7 @@
           "classified_kind": "lookup",
           "routing_ok": false,
           "latency_ms": 0,
-          "answer": "Intel Corporation [intel]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manu"
+          "answer": "Intel Corporation [intel]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing"
         },
         {
           "id": "2h-28",
@@ -9409,7 +9409,7 @@
           "classified_kind": "lookup",
           "routing_ok": false,
           "latency_ms": 0,
-          "answer": "Apple Inc. [apple], The Boeing Company [boeing], Ford Motor Company [ford], General Motors Company [gm], Micron Technology, Inc. [micron], NVIDIA Corporation [nvidia], Tesla, Inc. [tesla], Walmart Inc. [walmart]. Evidence: Apple Inc. [apple] -MENTIONS_RISK-&gt; China exposure [risk_china_exposure]. "
+          "answer": "Apple Inc. [apple], The Boeing Company [boeing], Ford Motor Company [ford], General Motors Company [gm], Micron Technology, Inc. [micron], NVIDIA Corporation [nvidia], Tesla, Inc. [tesla], Walmart Inc. [walmart]. Evidence: Apple Inc. [apple] -MENTIONS_RISK-> China exposure [risk_china_exposure]. Mic"
         },
         {
           "id": "2h-29",
@@ -9463,7 +9463,7 @@
           "classified_kind": "multi_hop",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "Apple Inc. [apple], NVIDIA Corporation [nvidia]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn]."
+          "answer": "Apple Inc. [apple], NVIDIA Corporation [nvidia]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. [foxconn]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. [foxconn]."
         },
         {
           "id": "3h-01",
@@ -10225,7 +10225,7 @@
           "classified_kind": "aggregation",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "count = 5 — AbbVie Inc., Johnson &amp; Johnson, Eli Lilly and Company, Merck &amp; Co., Inc., Pfizer Inc."
+          "answer": "count = 5 — AbbVie Inc., Johnson & Johnson, Eli Lilly and Company, Merck & Co., Inc., Pfizer Inc."
         },
         {
           "id": "ag-11",
@@ -10275,7 +10275,7 @@
           "classified_kind": "aggregation",
           "routing_ok": true,
           "latency_ms": 0,
-          "answer": "count = 16 — Adobe Inc., Amazon.com, Inc., Apple Inc., Bank of America Corporation, Costco Wholesale Corporation, The Goldman Sachs Group, Inc., Alphabet Inc., JPMorgan Chase &amp; Co. (+8 more)"
+          "answer": "count = 16 — Adobe Inc., Amazon.com, Inc., Apple Inc., Bank of America Corporation, Costco Wholesale Corporation, The Goldman Sachs Group, Inc., Alphabet Inc., JPMorgan Chase & Co. (+8 more)"
         },
         {
           "id": "ag-12",
@@ -10672,7 +10672,7 @@
       "classified_kind": "lookup",
       "routing_ok": true,
       "latency_ms": 0,
-      "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-&gt; Apple Inc. [apple]."
+      "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-> Apple Inc. [apple]."
     },
     {
       "id": "lk-02",
@@ -10692,7 +10692,7 @@
       "classified_kind": "lookup",
       "routing_ok": true,
       "latency_ms": 0,
-      "answer": "Satya Nadella [satya_nadella]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-&gt; Microsoft Corporation [microsoft]."
+      "answer": "Satya Nadella [satya_nadella]. Evidence: Satya Nadella [satya_nadella] -CEO_OF-> Microsoft Corporation [microsoft]."
     },
     {
       "id": "lk-03",
@@ -10712,7 +10712,7 @@
       "classified_kind": "lookup",
       "routing_ok": true,
       "latency_ms": 0,
-      "answer": "Jensen Huang [jensen_huang]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-&gt; NVIDIA Corporation [nvidia]."
+      "answer": "Jensen Huang [jensen_huang]. Evidence: Jensen Huang [jensen_huang] -CEO_OF-> NVIDIA Corporation [nvidia]."
     },
     {
       "id": "lk-04",
@@ -10732,7 +10732,7 @@
       "classified_kind": "lookup",
       "routing_ok": true,
       "latency_ms": 0,
-      "answer": "Albert Bourla [albert_bourla]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-&gt; Pfizer Inc. [pfizer]."
+      "answer": "Albert Bourla [albert_bourla]. Evidence: Albert Bourla [albert_bourla] -CEO_OF-> Pfizer Inc. [pfizer]."
     },
     {
       "id": "lk-05",
@@ -10752,7 +10752,7 @@
       "classified_kind": "lookup",
       "routing_ok": true,
       "latency_ms": 0,
-      "answer": "Advanced Micro Devices, Inc. [amd]. Evidence: Lisa Su [lisa_su] -CEO_OF-&gt; Advanced Micro Devices, Inc. [amd]."
+      "answer": "Advanced Micro Devices, Inc. [amd]. Evidence: Lisa Su [lisa_su] -CEO_OF-> Advanced Micro Devices, Inc. [amd]."
     },
     {
       "id": "lk-06",
@@ -10772,7 +10772,7 @@
       "classified_kind": "lookup",
       "routing_ok": true,
       "latency_ms": 0,
-      "answer": "General Motors Company [gm]. Evidence: Mary Barra [mary_barra] -CEO_OF-&gt; General Motors Company [gm]."
+      "answer": "General Motors Company [gm]. Evidence: Mary Barra [mary_barra] -CEO_OF-> General Motors Company [gm]."
     },
     {
       "id": "lk-07",
@@ -10792,7 +10792,7 @@
       "classified_kind": "lookup",
       "routing_ok": true,
       "latency_ms": 0,
-      "answer": "David A. Ricks [david_ricks]. Evidence: David A. Ricks [david_ricks] -CEO_OF-&gt; Eli Lilly and Company [lilly]."
+      "answer": "David A. Ricks [david_ricks]. Evidence: David A. Ricks [david_ricks] -CEO_OF-> Eli Lilly and Company [lilly]."
     },
     {
       "id": "lk-08",
@@ -10812,7 +10812,7 @@
       "classified_kind": "lookup",
       "routing_ok": true,
       "latency_ms": 0,
-      "answer": "C.C. Wei [cc_wei]. Evidence: C.C. Wei [cc_wei] -CEO_OF-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]."
+      "answer": "C.C. Wei [cc_wei]. Evidence: C.C. Wei [cc_wei] -CEO_OF-> Taiwan Semiconductor Manufacturing Company [tsmc]."
     },
     {
       "id": "lk-09",
@@ -10832,7 +10832,7 @@
       "classified_kind": "lookup",
       "routing_ok": true,
       "latency_ms": 0,
-      "answer": "Microsoft Corporation [microsoft]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-&gt; Microsoft Corporation [microsoft]."
+      "answer": "Microsoft Corporation [microsoft]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-> Microsoft Corporation [microsoft]."
     },
     {
       "id": "lk-10",
@@ -10852,7 +10852,7 @@
       "classified_kind": "lookup",
       "routing_ok": true,
       "latency_ms": 0,
-      "answer": "Meta Platforms, Inc. [meta]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-&gt; Meta Platforms, Inc. [meta]."
+      "answer": "Meta Platforms, Inc. [meta]. Evidence: Instagram, LLC [sub_instagram] -SUBSIDIARY_OF-> Meta Platforms, Inc. [meta]."
     }
   ],
   "environment": {

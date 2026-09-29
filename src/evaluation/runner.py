@@ -206,7 +206,7 @@ def run_all(
         "model_pinned": settings.anthropic_model,
         "embedder": store.embedder.name,
         "graph": {"nodes": store.n_nodes, "edges": store.n_edges},
-        "gold": {"path": str(gold_path), "n": len(gold), "by_category": counts},
+        "gold": {"path": _relative(gold_path), "n": len(gold), "by_category": counts},
         "faithfulness": PENDING_FAITHFULNESS,
         "faithfulness_rubric": list(FAITHFULNESS_RUBRIC),
         "systems": systems,
@@ -219,6 +219,15 @@ def run_all(
     path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
     logger.info("run written to {}", path)
     return path
+
+
+def _relative(path: Path) -> str:
+    """Path relative to the repository root when possible (keeps artifacts portable)."""
+    root = Path(__file__).resolve().parents[2]
+    try:
+        return path.resolve().relative_to(root).as_posix()
+    except ValueError:
+        return path.as_posix()
 
 
 def _pct(x: float) -> str:

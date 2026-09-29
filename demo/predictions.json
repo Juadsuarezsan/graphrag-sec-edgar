@@ -1,6 +1,6 @@
 {
  "project": "graphrag-sec-edgar",
- "generated_at": "2026-09-29T02:23:05+00:00",
+ "generated_at": "2026-09-29T02:37:46+00:00",
  "synthesis": "template (deterministic, no LLM)",
  "graph": {
   "nodes": 279,
@@ -18,7 +18,7 @@
    "graph": {
     "question": "Who is the CEO of Apple?",
     "mode": "graph",
-    "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-&gt; Apple Inc. [apple].",
+    "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-> Apple Inc. [apple].",
     "classified_kind": "lookup",
     "answer_ids": [
      "tim_cook"
@@ -82,7 +82,7 @@
     },
     "synthesizer": "template",
     "metrics": {
-     "trace_id": "c2da3cd584a544df",
+     "trace_id": "9f7f8c5d5f744df2",
      "latency_ms": 1,
      "tokens_in": 0,
      "tokens_out": 0,
@@ -96,7 +96,7 @@
      "tim_cook"
     ],
     "count": null,
-    "latency_ms": 62
+    "latency_ms": 61
    }
   },
   {
@@ -115,7 +115,7 @@
    "graph": {
     "question": "Which companies are supplied by TSMC?",
     "mode": "graph",
-    "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Qualcomm Incorporated [qualcomm] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc].",
+    "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Qualcomm Incorporated [qualcomm] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc].",
     "classified_kind": "lookup",
     "answer_ids": [
      "amd",
@@ -284,8 +284,8 @@
     },
     "synthesizer": "template",
     "metrics": {
-     "trace_id": "ee5d3feb90284465",
-     "latency_ms": 1,
+     "trace_id": "7b8d4299e1774d57",
+     "latency_ms": 0,
      "tokens_in": 0,
      "tokens_out": 0,
      "cost_usd": 0.0,
@@ -293,7 +293,7 @@
     }
    },
    "vector": {
-    "answer": "Adobe Inc. [adobe], Amazon.com, Inc. [amazon], Apple Inc. [apple], The Boeing Company [boeing], Bank of America Corporation [bofa], Chevron Corporation [chevron], Costco Wholesale Corporation [costco], Ford Motor Company [ford], General Motors Company [gm], The Goldman Sachs Group, Inc. [goldman], Alphabet Inc. [google], JPMorgan Chase &amp; Co. [jpm] (+13 more). Evidence: TSMC Arizona Corporation (Subsidiary). jurisdiction: Delaware; parent: tsmc; stale: True. TSMC Arizona Corporation is a subsidiary of Taiwan Semiconductor Manufacturing Company. 737 MAX (Product). category: Aircraft; company: boeing; stale: False. 737 MAX is a product of The Boeing Company. N3 process (Product). category: Foundry node; company: tsmc; stale: True. N3 process is a product of Taiwan Semiconductor Manufacturing Company. Climate regulation (Risk). stale: False. Climate regulation is a risk mentioned by Exxon Mobil Corporation. Climate regulation is a risk mentioned by Chevron Corporation. Climate regulation is a risk ",
+    "answer": "Adobe Inc. [adobe], Amazon.com, Inc. [amazon], Apple Inc. [apple], The Boeing Company [boeing], Bank of America Corporation [bofa], Chevron Corporation [chevron], Costco Wholesale Corporation [costco], Ford Motor Company [ford], General Motors Company [gm], The Goldman Sachs Group, Inc. [goldman], Alphabet Inc. [google], JPMorgan Chase & Co. [jpm] (+13 more). Evidence: TSMC Arizona Corporation (Subsidiary). jurisdiction: Delaware; parent: tsmc; stale: True. TSMC Arizona Corporation is a subsidiary of Taiwan Semiconductor Manufacturing Company. 737 MAX (Product). category: Aircraft; company: boeing; stale: False. 737 MAX is a product of The Boeing Company. N3 process (Product). category: Foundry node; company: tsmc; stale: True. N3 process is a product of Taiwan Semiconductor Manufacturing Company. Climate regulation (Risk). stale: False. Climate regulation is a risk mentioned by Exxon Mobil Corporation. Climate regulation is a risk mentioned by Chevron Corporation. Climate regulation is a risk ",
     "answer_ids": [
      "adobe",
      "amazon",
@@ -336,7 +336,7 @@
    "graph": {
     "question": "Who is the CEO of the parent company of LinkedIn?",
     "mode": "graph",
-    "answer": "Satya Nadella [satya_nadella]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-&gt; Microsoft Corporation [microsoft]. Satya Nadella [satya_nadella] -CEO_OF-&gt; Microsoft Corporation [microsoft].",
+    "answer": "Satya Nadella [satya_nadella]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-> Microsoft Corporation [microsoft]. Satya Nadella [satya_nadella] -CEO_OF-> Microsoft Corporation [microsoft].",
     "classified_kind": "multi_hop",
     "answer_ids": [
      "satya_nadella"
@@ -426,7 +426,7 @@
     },
     "synthesizer": "template",
     "metrics": {
-     "trace_id": "6808c961f15a49a6",
+     "trace_id": "e92f6cda87374e0b",
      "latency_ms": 0,
      "tokens_in": 0,
      "tokens_out": 0,
@@ -435,7 +435,7 @@
     }
    },
    "vector": {
-    "answer": "Brian Moynihan [brian_moynihan], James Quincey [james_quincey], Jim Farley [jim_farley], Kelly Ortberg [kelly_ortberg]. Evidence: LinkedIn Corporation (Subsidiary). jurisdiction: Delaware; parent: microsoft; stale: True. LinkedIn Corporation is a subsidiary of Microsoft Corporation. The Boeing Company (Company). ticker: BA; sector: Aerospace &amp; Defense; in_sp500: True; cik: 0000012927; hq_state: VA; stale: False. The Boeing Company offers the product 737 MAX. The Boeing Company of Brian Moynihan (Person). role: CEO; company: bofa; since: 2010; stale: False. Brian Moynihan is the CEO of Bank of America Corporation. Jim Farley (Person). role: CEO; company: ford; since: 2020; stale: False. Jim Farley is the CEO of Ford Motor Company.",
+    "answer": "Brian Moynihan [brian_moynihan], James Quincey [james_quincey], Jim Farley [jim_farley], Kelly Ortberg [kelly_ortberg]. Evidence: LinkedIn Corporation (Subsidiary). jurisdiction: Delaware; parent: microsoft; stale: True. LinkedIn Corporation is a subsidiary of Microsoft Corporation. The Boeing Company (Company). ticker: BA; sector: Aerospace & Defense; in_sp500: True; cik: 0000012927; hq_state: VA; stale: False. The Boeing Company offers the product 737 MAX. The Boeing Company of Brian Moynihan (Person). role: CEO; company: bofa; since: 2010; stale: False. Brian Moynihan is the CEO of Bank of America Corporation. Jim Farley (Person). role: CEO; company: ford; since: 2020; stale: False. Jim Farley is the CEO of Ford Motor Company.",
     "answer_ids": [
      "brian_moynihan",
      "james_quincey",
@@ -443,7 +443,7 @@
      "kelly_ortberg"
     ],
     "count": null,
-    "latency_ms": 24
+    "latency_ms": 23
    }
   },
   {
@@ -461,7 +461,7 @@
    "graph": {
     "question": "Which companies share a supplier with NVIDIA?",
     "mode": "graph",
-    "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], Qualcomm Incorporated [qualcomm]. Evidence: NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; SK hynix Inc. [sk_hynix]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Micron Technology, Inc. [micron]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn].",
+    "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], Qualcomm Incorporated [qualcomm]. Evidence: NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> SK hynix Inc. [sk_hynix]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Micron Technology, Inc. [micron]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. [foxconn].",
     "classified_kind": "multi_hop",
     "answer_ids": [
      "amd",
@@ -668,6 +668,11 @@
       },
       {
        "from": "apple",
+       "to": "foxconn",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "apple",
        "to": "tsmc",
        "type": "SUPPLIED_BY"
       },
@@ -690,17 +695,12 @@
        "from": "intel",
        "to": "tsmc",
        "type": "SUPPLIED_BY"
-      },
-      {
-       "from": "apple",
-       "to": "foxconn",
-       "type": "SUPPLIED_BY"
       }
      ]
     },
     "synthesizer": "template",
     "metrics": {
-     "trace_id": "ef0d8ad35c8f4700",
+     "trace_id": "cc651b65951a4735",
      "latency_ms": 0,
      "tokens_in": 0,
      "tokens_out": 0,
@@ -732,7 +732,7 @@
      "tsmc"
     ],
     "count": null,
-    "latency_ms": 23
+    "latency_ms": 22
    }
   },
   {
@@ -754,7 +754,7 @@
    "graph": {
     "question": "Which CEOs lead companies that share a supplier with Apple?",
     "mode": "graph",
-    "answer": "Cristiano Amon [cristiano_amon], Hock Tan [hock_tan], Jensen Huang [jensen_huang], Jim Farley [jim_farley], Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Mark Zuckerberg [mark_zuckerberg], Mary Barra [mary_barra], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Samsung Electronics Co., Ltd. [samsung]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Broadcom Inc. [broadcom].",
+    "answer": "Cristiano Amon [cristiano_amon], Hock Tan [hock_tan], Jensen Huang [jensen_huang], Jim Farley [jim_farley], Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Mark Zuckerberg [mark_zuckerberg], Mary Barra [mary_barra], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Apple Inc. [apple] -SUPPLIED_BY-> Hon Hai Precision Industry Co., Ltd. [foxconn]. Apple Inc. [apple] -SUPPLIED_BY-> Samsung Electronics Co., Ltd. [samsung]. Apple Inc. [apple] -SUPPLIED_BY-> Broadcom Inc. [broadcom].",
     "classified_kind": "multi_hop",
     "answer_ids": [
      "cristiano_amon",
@@ -1016,34 +1016,6 @@
        "stale": false
       },
       {
-       "id": "ford",
-       "type": "Company",
-       "name": "Ford Motor Company",
-       "hops": 2,
-       "stale": false
-      },
-      {
-       "id": "gm",
-       "type": "Company",
-       "name": "General Motors Company",
-       "hops": 2,
-       "stale": false
-      },
-      {
-       "id": "google",
-       "type": "Company",
-       "name": "Alphabet Inc.",
-       "hops": 2,
-       "stale": false
-      },
-      {
-       "id": "meta",
-       "type": "Company",
-       "name": "Meta Platforms, Inc.",
-       "hops": 2,
-       "stale": false
-      },
-      {
        "id": "nvidia",
        "type": "Company",
        "name": "NVIDIA Corporation",
@@ -1065,37 +1037,44 @@
        "stale": false
       },
       {
+       "id": "google",
+       "type": "Company",
+       "name": "Alphabet Inc.",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "meta",
+       "type": "Company",
+       "name": "Meta Platforms, Inc.",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "ford",
+       "type": "Company",
+       "name": "Ford Motor Company",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "gm",
+       "type": "Company",
+       "name": "General Motors Company",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "jim_farley",
+       "type": "Person",
+       "name": "Jim Farley",
+       "hops": 3,
+       "stale": false
+      },
+      {
        "id": "jensen_huang",
        "type": "Person",
        "name": "Jensen Huang",
-       "hops": 3,
-       "stale": false
-      },
-      {
-       "id": "cristiano_amon",
-       "type": "Person",
-       "name": "Cristiano Amon",
-       "hops": 3,
-       "stale": false
-      },
-      {
-       "id": "sundar_pichai",
-       "type": "Person",
-       "name": "Sundar Pichai",
-       "hops": 3,
-       "stale": false
-      },
-      {
-       "id": "mary_barra",
-       "type": "Person",
-       "name": "Mary Barra",
-       "hops": 3,
-       "stale": false
-      },
-      {
-       "id": "hock_tan",
-       "type": "Person",
-       "name": "Hock Tan",
        "hops": 3,
        "stale": false
       },
@@ -1114,6 +1093,13 @@
        "stale": false
       },
       {
+       "id": "hock_tan",
+       "type": "Person",
+       "name": "Hock Tan",
+       "hops": 3,
+       "stale": false
+      },
+      {
        "id": "lip_bu_tan",
        "type": "Person",
        "name": "Lip-Bu Tan",
@@ -1121,9 +1107,23 @@
        "stale": false
       },
       {
-       "id": "jim_farley",
+       "id": "mary_barra",
        "type": "Person",
-       "name": "Jim Farley",
+       "name": "Mary Barra",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "sundar_pichai",
+       "type": "Person",
+       "name": "Sundar Pichai",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "cristiano_amon",
+       "type": "Person",
+       "name": "Cristiano Amon",
        "hops": 3,
        "stale": false
       }
@@ -1155,26 +1155,6 @@
        "type": "SUPPLIED_BY"
       },
       {
-       "from": "ford",
-       "to": "qualcomm",
-       "type": "SUPPLIED_BY"
-      },
-      {
-       "from": "gm",
-       "to": "qualcomm",
-       "type": "SUPPLIED_BY"
-      },
-      {
-       "from": "google",
-       "to": "broadcom",
-       "type": "SUPPLIED_BY"
-      },
-      {
-       "from": "meta",
-       "to": "broadcom",
-       "type": "SUPPLIED_BY"
-      },
-      {
        "from": "nvidia",
        "to": "tsmc",
        "type": "SUPPLIED_BY"
@@ -1200,8 +1180,13 @@
        "type": "SUPPLIED_BY"
       },
       {
-       "from": "qualcomm",
-       "to": "samsung",
+       "from": "google",
+       "to": "broadcom",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "meta",
+       "to": "broadcom",
        "type": "SUPPLIED_BY"
       },
       {
@@ -1210,28 +1195,28 @@
        "type": "SUPPLIED_BY"
       },
       {
+       "from": "qualcomm",
+       "to": "samsung",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "ford",
+       "to": "qualcomm",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "gm",
+       "to": "qualcomm",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "jim_farley",
+       "to": "ford",
+       "type": "CEO_OF"
+      },
+      {
        "from": "jensen_huang",
        "to": "nvidia",
-       "type": "CEO_OF"
-      },
-      {
-       "from": "cristiano_amon",
-       "to": "qualcomm",
-       "type": "CEO_OF"
-      },
-      {
-       "from": "sundar_pichai",
-       "to": "google",
-       "type": "CEO_OF"
-      },
-      {
-       "from": "mary_barra",
-       "to": "gm",
-       "type": "CEO_OF"
-      },
-      {
-       "from": "hock_tan",
-       "to": "broadcom",
        "type": "CEO_OF"
       },
       {
@@ -1245,21 +1230,36 @@
        "type": "CEO_OF"
       },
       {
+       "from": "hock_tan",
+       "to": "broadcom",
+       "type": "CEO_OF"
+      },
+      {
        "from": "lip_bu_tan",
        "to": "intel",
        "type": "CEO_OF"
       },
       {
-       "from": "jim_farley",
-       "to": "ford",
+       "from": "mary_barra",
+       "to": "gm",
+       "type": "CEO_OF"
+      },
+      {
+       "from": "sundar_pichai",
+       "to": "google",
+       "type": "CEO_OF"
+      },
+      {
+       "from": "cristiano_amon",
+       "to": "qualcomm",
        "type": "CEO_OF"
       }
      ]
     },
     "synthesizer": "template",
     "metrics": {
-     "trace_id": "6105cb429470480f",
-     "latency_ms": 4,
+     "trace_id": "3fb04a7ac22f4755",
+     "latency_ms": 3,
      "tokens_in": 0,
      "tokens_out": 0,
      "cost_usd": 0.0,
@@ -1288,7 +1288,7 @@
    "graph": {
     "question": "Which directors sit on the boards of companies that compete with a company supplied by TSMC?",
     "mode": "graph",
-    "answer": "Ruth Abernathy [dir_abernathy], Keiko Nakamura [dir_nakamura], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Qualcomm Incorporated [qualcomm] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc].",
+    "answer": "Ruth Abernathy [dir_abernathy], Keiko Nakamura [dir_nakamura], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc]. Qualcomm Incorporated [qualcomm] -SUPPLIED_BY-> Taiwan Semiconductor Manufacturing Company [tsmc].",
     "classified_kind": "multi_hop",
     "answer_ids": [
      "dir_abernathy",
@@ -1492,16 +1492,16 @@
        "stale": false
       },
       {
-       "id": "dir_petrov",
+       "id": "dir_abernathy",
        "type": "Person",
-       "name": "Yelena Petrov",
+       "name": "Ruth Abernathy",
        "hops": 3,
        "stale": false
       },
       {
-       "id": "dir_abernathy",
+       "id": "dir_petrov",
        "type": "Person",
-       "name": "Ruth Abernathy",
+       "name": "Yelena Petrov",
        "hops": 3,
        "stale": false
       }
@@ -1538,16 +1538,6 @@
        "type": "SUPPLIED_BY"
       },
       {
-       "from": "nvidia",
-       "to": "amd",
-       "type": "COMPETES_WITH"
-      },
-      {
-       "from": "nvidia",
-       "to": "intel",
-       "type": "COMPETES_WITH"
-      },
-      {
        "from": "apple",
        "to": "samsung",
        "type": "COMPETES_WITH"
@@ -1555,6 +1545,16 @@
       {
        "from": "apple",
        "to": "google",
+       "type": "COMPETES_WITH"
+      },
+      {
+       "from": "nvidia",
+       "to": "amd",
+       "type": "COMPETES_WITH"
+      },
+      {
+       "from": "nvidia",
+       "to": "intel",
        "type": "COMPETES_WITH"
       },
       {
@@ -1573,11 +1573,6 @@
        "type": "DIRECTOR_OF"
       },
       {
-       "from": "dir_petrov",
-       "to": "google",
-       "type": "DIRECTOR_OF"
-      },
-      {
        "from": "dir_nakamura",
        "to": "tsmc",
        "type": "DIRECTOR_OF"
@@ -1591,12 +1586,17 @@
        "from": "dir_abernathy",
        "to": "intel",
        "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_petrov",
+       "to": "google",
+       "type": "DIRECTOR_OF"
       }
      ]
     },
     "synthesizer": "template",
     "metrics": {
-     "trace_id": "b381fccc20ae478f",
+     "trace_id": "52b7d79381c64d2f",
      "latency_ms": 0,
      "tokens_in": 0,
      "tokens_out": 0,
@@ -1605,14 +1605,14 @@
     }
    },
    "vector": {
-    "answer": "Irene Castellanos [dir_castellanos], Keiko Nakamura [dir_nakamura], Helle Rasmussen [dir_rasmussen]. Evidence: TSMC Arizona Corporation (Subsidiary). jurisdiction: Delaware; parent: tsmc; stale: True. TSMC Arizona Corporation is a subsidiary of Taiwan Semiconductor Manufacturing Company. N3 process (Product). category: Foundry node; company: tsmc; stale: True. N3 process is a product of Taiwan Semiconductor Manufacturing Company. Apple Inc. (Company). ticker: AAPL; sector: Technology; in_sp500: True; cik: 0000320193; hq_state: CA; stale: False. Apple Inc. offers the product iPhone. Apple Inc. offers the product Mac. Apple Inc. The Boeing Company (Company). ticker: BA; sector: Aerospace &amp; Defense; in_sp500: True; cik: 0000012927; hq_state: VA; stale: False. The Boeing Company offers the product 737 MAX. The Boeing Company of",
+    "answer": "Irene Castellanos [dir_castellanos], Keiko Nakamura [dir_nakamura], Helle Rasmussen [dir_rasmussen]. Evidence: TSMC Arizona Corporation (Subsidiary). jurisdiction: Delaware; parent: tsmc; stale: True. TSMC Arizona Corporation is a subsidiary of Taiwan Semiconductor Manufacturing Company. N3 process (Product). category: Foundry node; company: tsmc; stale: True. N3 process is a product of Taiwan Semiconductor Manufacturing Company. Apple Inc. (Company). ticker: AAPL; sector: Technology; in_sp500: True; cik: 0000320193; hq_state: CA; stale: False. Apple Inc. offers the product iPhone. Apple Inc. offers the product Mac. Apple Inc. The Boeing Company (Company). ticker: BA; sector: Aerospace & Defense; in_sp500: True; cik: 0000012927; hq_state: VA; stale: False. The Boeing Company offers the product 737 MAX. The Boeing Company of",
     "answer_ids": [
      "dir_castellanos",
      "dir_nakamura",
      "dir_rasmussen"
     ],
     "count": null,
-    "latency_ms": 23
+    "latency_ms": 22
    }
   },
   {
@@ -1994,7 +1994,7 @@
     },
     "synthesizer": "template",
     "metrics": {
-     "trace_id": "300589e142f74d7b",
+     "trace_id": "825dfd3a488447a4",
      "latency_ms": 1,
      "tokens_in": 0,
      "tokens_out": 0,
@@ -2026,7 +2026,7 @@
      "xom"
     ],
     "count": 19,
-    "latency_ms": 23
+    "latency_ms": 22
    }
   },
   {
@@ -2854,7 +2854,7 @@
     },
     "synthesizer": "template",
     "metrics": {
-     "trace_id": "8eb55ea40c8f45c0",
+     "trace_id": "61c172996cf14522",
      "latency_ms": 1,
      "tokens_in": 0,
      "tokens_out": 0,
@@ -2869,7 +2869,7 @@
      "dir_okafor"
     ],
     "count": 2,
-    "latency_ms": 23
+    "latency_ms": 22
    }
   }
  ]
