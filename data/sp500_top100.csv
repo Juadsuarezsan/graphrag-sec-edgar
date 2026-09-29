@@ -1,0 +1,101 @@
+rank,ticker,cik,name
+1,NVDA,0001045810,NVIDIA Corporation
+2,MSFT,0000789019,Microsoft Corporation
+3,AAPL,0000320193,Apple Inc.
+4,AMZN,0001018724,Amazon.com Inc.
+5,GOOGL,0001652044,Alphabet Inc.
+6,META,0001326801,Meta Platforms Inc.
+7,AVGO,0001730168,Broadcom Inc.
+8,TSLA,0001318605,Tesla Inc.
+9,BRK.B,0001067983,Berkshire Hathaway Inc.
+10,WMT,0000104169,Walmart Inc.
+11,JPM,0000019617,JPMorgan Chase & Co.
+12,LLY,0000059478,Eli Lilly and Company
+13,V,0001403161,Visa Inc.
+14,ORCL,0001341439,Oracle Corporation
+15,MA,0001141391,Mastercard Incorporated
+16,NFLX,0001065280,Netflix Inc.
+17,XOM,0000034088,Exxon Mobil Corporation
+18,COST,0000909832,Costco Wholesale Corporation
+19,JNJ,0000200406,Johnson & Johnson
+20,HD,0000354950,The Home Depot Inc.
+21,PG,0000080424,The Procter & Gamble Company
+22,ABBV,0001551152,AbbVie Inc.
+23,BAC,0000070858,Bank of America Corporation
+24,PLTR,0001321655,Palantir Technologies Inc.
+25,CVX,0000093410,Chevron Corporation
+26,KO,0000021344,The Coca-Cola Company
+27,GE,0000040545,GE Aerospace
+28,UNH,0000731766,UnitedHealth Group Incorporated
+29,AMD,0000002488,Advanced Micro Devices Inc.
+30,CSCO,0000858877,Cisco Systems Inc.
+31,WFC,0000072971,Wells Fargo & Company
+32,TMUS,0001283699,T-Mobile US Inc.
+33,PM,0001413329,Philip Morris International Inc.
+34,MS,0000895421,Morgan Stanley
+35,IBM,0000051143,International Business Machines Corporation
+36,CRM,0001108524,Salesforce Inc.
+37,ABT,0000001800,Abbott Laboratories
+38,AXP,0000004962,American Express Company
+39,GS,0000886982,The Goldman Sachs Group Inc.
+40,LIN,0001707925,Linde plc
+41,MCD,0000063908,McDonald's Corporation
+42,INTU,0000896878,Intuit Inc.
+43,DIS,0001744489,The Walt Disney Company
+44,MRK,0000310158,Merck & Co. Inc.
+45,NOW,0001373715,ServiceNow Inc.
+46,CAT,0000018230,Caterpillar Inc.
+47,RTX,0000101829,RTX Corporation
+48,T,0000732717,AT&T Inc.
+49,PEP,0000077476,PepsiCo Inc.
+50,UBER,0001543151,Uber Technologies Inc.
+51,ISRG,0001035267,Intuitive Surgical Inc.
+52,VZ,0000732712,Verizon Communications Inc.
+53,BKNG,0001075531,Booking Holdings Inc.
+54,QCOM,0000804328,Qualcomm Incorporated
+55,TXN,0000097476,Texas Instruments Incorporated
+56,ACN,0001467373,Accenture plc
+57,AMGN,0000318154,Amgen Inc.
+58,SCHW,0000316709,The Charles Schwab Corporation
+59,TMO,0000097745,Thermo Fisher Scientific Inc.
+60,BLK,0001364742,BlackRock Inc.
+61,ADBE,0000796343,Adobe Inc.
+62,SPGI,0000064040,S&P Global Inc.
+63,PGR,0000080661,The Progressive Corporation
+64,BSX,0000885725,Boston Scientific Corporation
+65,AMAT,0000006951,Applied Materials Inc.
+66,NEE,0000753308,NextEra Energy Inc.
+67,HON,0000773840,Honeywell International Inc.
+68,DHR,0000313616,Danaher Corporation
+69,SYK,0000310764,Stryker Corporation
+70,GILD,0000882095,Gilead Sciences Inc.
+71,ETN,0001551182,Eaton Corporation plc
+72,C,0000831001,Citigroup Inc.
+73,PFE,0000078003,Pfizer Inc.
+74,DE,0000315189,Deere & Company
+75,TJX,0000109198,The TJX Companies Inc.
+76,BA,0000012927,The Boeing Company
+77,UNP,0000100885,Union Pacific Corporation
+78,MU,0000723125,Micron Technology Inc.
+79,PANW,0001327567,Palo Alto Networks Inc.
+80,ANET,0001596532,Arista Networks Inc.
+81,ADP,0000008670,Automatic Data Processing Inc.
+82,CMCSA,0001166691,Comcast Corporation
+83,COP,0001163165,ConocoPhillips
+84,LOW,0000060667,Lowe's Companies Inc.
+85,KKR,0001404912,KKR & Co. Inc.
+86,LRCX,0000707549,Lam Research Corporation
+87,VRTX,0000875320,Vertex Pharmaceuticals Incorporated
+88,ADI,0000006281,Analog Devices Inc.
+89,KLAC,0000319201,KLA Corporation
+90,MDT,0001613103,Medtronic plc
+91,LMT,0000936468,Lockheed Martin Corporation
+92,CB,0000896159,Chubb Limited
+93,SBUX,0000829224,Starbucks Corporation
+94,INTC,0000050863,Intel Corporation
+95,NKE,0000320187,NIKE Inc.
+96,MMC,0000062709,Marsh & McLennan Companies Inc.
+97,SO,0000092122,The Southern Company
+98,PLD,0001045609,Prologis Inc.
+99,F,0000037996,Ford Motor Company
+100,GM,0001467858,General Motors Company
