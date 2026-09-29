@@ -73,8 +73,8 @@ RETURN DISTINCT d.name, k.name;
 
 | | Fixture + excerpt real (este repo) | Objetivo DoD (pendiente de `ANTHROPIC_API_KEY` y red a sec.gov) |
 |---|---|---|
-| Nodos | 280 (42 Company, 54 Person, 77 Subsidiary, 79 Product, 13 Risk, 15 Market) | ≥ 5 000 |
-| Aristas | 452 | ≥ 20 000 |
+| Nodos | 279 (42 Company, 54 Person, 77 Subsidiary, 78 Product, 13 Risk, 15 Market) | ≥ 5 000 |
+| Aristas | 451 | ≥ 20 000 |
 | Fuente | Tablas curadas a mano en `src/graph/fixture.py` + Item 1 real de Alphabet | 100 empresas × 3 años de 10-K + Exhibit 21 + DEF 14A extraídos con `ClaudeExtractor` |
 
 Los conteos exactos se leen con `python -c "from src.graph.fixture import fixture_summary; print(fixture_summary())"` y en `GET /health`.

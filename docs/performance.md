@@ -1,6 +1,6 @@
 # Rendimiento y perfilado
 
-Fuente de las cifras: `eval/runs/2026-09-29-fixture-deterministic.json` (100 preguntas × 4 sistemas, grafo de 279 nodos / 452 aristas, Python 3.11, CPU sin GPU). Regenerable con `python -m eval.run`.
+Fuente de las cifras: `eval/runs/2026-09-29-fixture-deterministic.json` (100 preguntas × 4 sistemas, grafo de 279 nodos / 451 aristas, Python 3.11, CPU sin GPU). Regenerable con `python -m eval.run`.
 
 ## Latencia por sistema (100 preguntas, sin LLM)
 

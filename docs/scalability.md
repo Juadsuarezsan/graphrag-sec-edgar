@@ -6,7 +6,7 @@ Cómo se comporta el sistema al crecer el corpus (documentos) y la carga (consul
 
 | Dimensión | Valor medido |
 |---|---|
-| Grafo | 279 nodos / 452 aristas (fixture + Item 1 real de Alphabet) |
+| Grafo | 279 nodos / 451 aristas (fixture + Item 1 real de Alphabet) |
 | Latencia GraphRAG | p50 ≈ 0 ms, p95 ≤ 4 ms por pregunta (planner + traversal en memoria) |
 | Latencia Vector RAG | p50 ≈ 22 ms (TF-IDF exacto sobre 279 pasajes, Python puro) |
 | Arranque de la API | ~1 s (fixture + ingesta por reglas + marcado de staleness) |
