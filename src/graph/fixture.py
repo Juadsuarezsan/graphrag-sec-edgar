@@ -1,89 +1,1035 @@
-"""Small SEC-EDGAR-like graph fixture. ~25 companies, ~15 people, supplier and
-competitor edges. Real ingestion of 10-K filings is a separate step you run
-once when SEC_API_KEY is configured."""
+"""Hand-curated S&P 500 knowledge-graph fixture.
+
+Scope and provenance (declared, see ``docs/data_schema.md``):
+
+* ``Company``, ``CEO_OF``, ``SUBSIDIARY_OF``, ``OFFERS_PRODUCT``, ``SUPPLIED_BY``,
+  ``COMPETES_WITH``, ``OPERATES_IN`` and ``MENTIONS_RISK`` facts were written by
+  hand from public knowledge of the companies' 10-K / Exhibit 21 filings as of
+  their FY2024-FY2025 reports. They are a *fixture*, not an extraction run.
+* ``Person`` nodes with ``role="Director"`` are **synthetic placeholders**
+  (``properties.synthetic=True``) standing in for DEF 14A data that the
+  rule-based extractor produces when real proxy statements are available.
+* ``source_filing_date`` is the approximate filing date of the latest 10-K
+  each company had filed when this fixture was written; a few are older on
+  purpose so the staleness detector has something to flag.
+"""
+
 from __future__ import annotations
 
+from typing import Any
+
+from src.embeddings.base import Embedder
+from src.graph.base import GraphStore
 from src.graph.store import InMemoryGraph
 
+# ---------------------------------------------------------------------------
+# Companies: (id, name, ticker, sector, in_sp500, cik, hq_state, filing_date, aliases)
+# ---------------------------------------------------------------------------
+COMPANIES: list[tuple[str, str, str, str, bool, str, str, str, list[str]]] = [
+    (
+        "apple",
+        "Apple Inc.",
+        "AAPL",
+        "Technology",
+        True,
+        "0000320193",
+        "CA",
+        "2025-10-31",
+        ["apple"],
+    ),
+    (
+        "microsoft",
+        "Microsoft Corporation",
+        "MSFT",
+        "Technology",
+        True,
+        "0000789019",
+        "WA",
+        "2025-07-30",
+        ["microsoft"],
+    ),
+    (
+        "google",
+        "Alphabet Inc.",
+        "GOOGL",
+        "Technology",
+        True,
+        "0001652044",
+        "CA",
+        "2026-02-04",
+        ["alphabet", "google"],
+    ),
+    (
+        "meta",
+        "Meta Platforms, Inc.",
+        "META",
+        "Technology",
+        True,
+        "0001326801",
+        "CA",
+        "2026-01-29",
+        ["meta", "meta platforms"],
+    ),
+    (
+        "amazon",
+        "Amazon.com, Inc.",
+        "AMZN",
+        "Consumer Discretionary",
+        True,
+        "0001018724",
+        "WA",
+        "2026-02-05",
+        ["amazon"],
+    ),
+    (
+        "oracle",
+        "Oracle Corporation",
+        "ORCL",
+        "Technology",
+        True,
+        "0001341439",
+        "TX",
+        "2025-06-20",
+        ["oracle"],
+    ),
+    (
+        "salesforce",
+        "Salesforce, Inc.",
+        "CRM",
+        "Technology",
+        True,
+        "0001108524",
+        "CA",
+        "2025-03-05",
+        ["salesforce"],
+    ),
+    (
+        "adobe",
+        "Adobe Inc.",
+        "ADBE",
+        "Technology",
+        True,
+        "0000796343",
+        "CA",
+        "2026-01-14",
+        ["adobe"],
+    ),
+    (
+        "nvidia",
+        "NVIDIA Corporation",
+        "NVDA",
+        "Semiconductors",
+        True,
+        "0001045810",
+        "CA",
+        "2026-02-25",
+        ["nvidia"],
+    ),
+    (
+        "amd",
+        "Advanced Micro Devices, Inc.",
+        "AMD",
+        "Semiconductors",
+        True,
+        "0000002488",
+        "CA",
+        "2026-02-04",
+        ["amd", "advanced micro devices"],
+    ),
+    (
+        "intel",
+        "Intel Corporation",
+        "INTC",
+        "Semiconductors",
+        True,
+        "0000050863",
+        "CA",
+        "2026-01-29",
+        ["intel"],
+    ),
+    (
+        "qualcomm",
+        "Qualcomm Incorporated",
+        "QCOM",
+        "Semiconductors",
+        True,
+        "0000804328",
+        "CA",
+        "2025-11-05",
+        ["qualcomm"],
+    ),
+    (
+        "broadcom",
+        "Broadcom Inc.",
+        "AVGO",
+        "Semiconductors",
+        True,
+        "0001730168",
+        "CA",
+        "2025-12-19",
+        ["broadcom"],
+    ),
+    (
+        "micron",
+        "Micron Technology, Inc.",
+        "MU",
+        "Semiconductors",
+        True,
+        "0000723125",
+        "ID",
+        "2025-10-03",
+        ["micron"],
+    ),
+    (
+        "tesla",
+        "Tesla, Inc.",
+        "TSLA",
+        "Automotive",
+        True,
+        "0001318605",
+        "TX",
+        "2026-01-29",
+        ["tesla"],
+    ),
+    (
+        "ford",
+        "Ford Motor Company",
+        "F",
+        "Automotive",
+        True,
+        "0000037996",
+        "MI",
+        "2026-02-06",
+        ["ford"],
+    ),
+    (
+        "gm",
+        "General Motors Company",
+        "GM",
+        "Automotive",
+        True,
+        "0001467858",
+        "MI",
+        "2026-01-28",
+        ["general motors", "gm"],
+    ),
+    (
+        "jpm",
+        "JPMorgan Chase & Co.",
+        "JPM",
+        "Financials",
+        True,
+        "0000019617",
+        "NY",
+        "2026-02-13",
+        ["jpmorgan", "jpmorgan chase", "jp morgan"],
+    ),
+    (
+        "bofa",
+        "Bank of America Corporation",
+        "BAC",
+        "Financials",
+        True,
+        "0000070858",
+        "NC",
+        "2026-02-24",
+        ["bank of america"],
+    ),
+    (
+        "goldman",
+        "The Goldman Sachs Group, Inc.",
+        "GS",
+        "Financials",
+        True,
+        "0000886982",
+        "NY",
+        "2026-02-20",
+        ["goldman sachs", "goldman"],
+    ),
+    ("visa", "Visa Inc.", "V", "Financials", True, "0001403161", "CA", "2025-11-13", ["visa"]),
+    (
+        "mastercard",
+        "Mastercard Incorporated",
+        "MA",
+        "Financials",
+        True,
+        "0001141391",
+        "NY",
+        "2026-02-12",
+        ["mastercard"],
+    ),
+    (
+        "xom",
+        "Exxon Mobil Corporation",
+        "XOM",
+        "Energy",
+        True,
+        "0000034088",
+        "TX",
+        "2026-02-25",
+        ["exxon", "exxonmobil", "exxon mobil"],
+    ),
+    (
+        "chevron",
+        "Chevron Corporation",
+        "CVX",
+        "Energy",
+        True,
+        "0000093410",
+        "TX",
+        "2026-02-24",
+        ["chevron"],
+    ),
+    ("pfizer", "Pfizer Inc.", "PFE", "Pharma", True, "0000078003", "NY", "2026-02-26", ["pfizer"]),
+    (
+        "jnj",
+        "Johnson & Johnson",
+        "JNJ",
+        "Pharma",
+        True,
+        "0000200406",
+        "NJ",
+        "2026-02-13",
+        ["johnson & johnson", "johnson and johnson", "j&j"],
+    ),
+    (
+        "merck",
+        "Merck & Co., Inc.",
+        "MRK",
+        "Pharma",
+        True,
+        "0000310158",
+        "NJ",
+        "2026-02-25",
+        ["merck"],
+    ),
+    (
+        "lilly",
+        "Eli Lilly and Company",
+        "LLY",
+        "Pharma",
+        True,
+        "0000059478",
+        "IN",
+        "2026-02-19",
+        ["eli lilly", "lilly"],
+    ),
+    ("abbvie", "AbbVie Inc.", "ABBV", "Pharma", True, "0001551152", "IL", "2026-02-13", ["abbvie"]),
+    (
+        "walmart",
+        "Walmart Inc.",
+        "WMT",
+        "Retail",
+        True,
+        "0000104169",
+        "AR",
+        "2025-03-14",
+        ["walmart"],
+    ),
+    (
+        "costco",
+        "Costco Wholesale Corporation",
+        "COST",
+        "Retail",
+        True,
+        "0000909832",
+        "WA",
+        "2025-10-08",
+        ["costco"],
+    ),
+    (
+        "ko",
+        "The Coca-Cola Company",
+        "KO",
+        "Consumer Staples",
+        True,
+        "0000021344",
+        "GA",
+        "2026-02-19",
+        ["coca-cola", "coca cola", "coke"],
+    ),
+    (
+        "pep",
+        "PepsiCo, Inc.",
+        "PEP",
+        "Consumer Staples",
+        True,
+        "0000077476",
+        "NY",
+        "2026-02-05",
+        ["pepsico", "pepsi"],
+    ),
+    (
+        "unh",
+        "UnitedHealth Group Incorporated",
+        "UNH",
+        "Healthcare",
+        True,
+        "0000731766",
+        "MN",
+        "2026-02-19",
+        ["unitedhealth", "united health"],
+    ),
+    (
+        "boeing",
+        "The Boeing Company",
+        "BA",
+        "Aerospace & Defense",
+        True,
+        "0000012927",
+        "VA",
+        "2026-01-30",
+        ["boeing"],
+    ),
+    (
+        "lockheed",
+        "Lockheed Martin Corporation",
+        "LMT",
+        "Aerospace & Defense",
+        True,
+        "0000936468",
+        "MD",
+        "2026-01-28",
+        ["lockheed martin", "lockheed"],
+    ),
+    # Non-S&P 500 counterparties (suppliers / competitors referenced in 10-Ks)
+    (
+        "tsmc",
+        "Taiwan Semiconductor Manufacturing Company",
+        "TSM",
+        "Semiconductors",
+        False,
+        "0001046179",
+        "TW",
+        "2025-04-17",
+        ["tsmc", "taiwan semiconductor"],
+    ),
+    (
+        "samsung",
+        "Samsung Electronics Co., Ltd.",
+        "005930.KS",
+        "Conglomerate",
+        False,
+        "",
+        "KR",
+        "2024-03-12",
+        ["samsung"],
+    ),
+    (
+        "asml",
+        "ASML Holding N.V.",
+        "ASML",
+        "Semiconductor Equipment",
+        False,
+        "0000937966",
+        "NL",
+        "2025-02-12",
+        ["asml"],
+    ),
+    (
+        "foxconn",
+        "Hon Hai Precision Industry Co., Ltd.",
+        "2317.TW",
+        "Electronics Manufacturing",
+        False,
+        "",
+        "TW",
+        "2024-05-31",
+        ["foxconn", "hon hai"],
+    ),
+    (
+        "sk_hynix",
+        "SK hynix Inc.",
+        "000660.KS",
+        "Semiconductors",
+        False,
+        "",
+        "KR",
+        "2024-03-20",
+        ["sk hynix", "hynix"],
+    ),
+    (
+        "panasonic",
+        "Panasonic Holdings Corporation",
+        "6752.T",
+        "Electronics",
+        False,
+        "",
+        "JP",
+        "2024-06-27",
+        ["panasonic"],
+    ),
+]
 
-def build_demo_graph() -> InMemoryGraph:
-    g = InMemoryGraph()
+# CEOs: (person_id, name, company_id, since)
+CEOS: list[tuple[str, str, str, str]] = [
+    ("tim_cook", "Tim Cook", "apple", "2011"),
+    ("satya_nadella", "Satya Nadella", "microsoft", "2014"),
+    ("sundar_pichai", "Sundar Pichai", "google", "2019"),
+    ("mark_zuckerberg", "Mark Zuckerberg", "meta", "2004"),
+    ("andy_jassy", "Andy Jassy", "amazon", "2021"),
+    ("safra_catz", "Safra Catz", "oracle", "2014"),
+    ("marc_benioff", "Marc Benioff", "salesforce", "1999"),
+    ("shantanu_narayen", "Shantanu Narayen", "adobe", "2007"),
+    ("jensen_huang", "Jensen Huang", "nvidia", "1993"),
+    ("lisa_su", "Lisa Su", "amd", "2014"),
+    ("lip_bu_tan", "Lip-Bu Tan", "intel", "2025"),
+    ("cristiano_amon", "Cristiano Amon", "qualcomm", "2021"),
+    ("hock_tan", "Hock Tan", "broadcom", "2006"),
+    ("sanjay_mehrotra", "Sanjay Mehrotra", "micron", "2017"),
+    ("elon_musk", "Elon Musk", "tesla", "2008"),
+    ("jim_farley", "Jim Farley", "ford", "2020"),
+    ("mary_barra", "Mary Barra", "gm", "2014"),
+    ("jamie_dimon", "Jamie Dimon", "jpm", "2005"),
+    ("brian_moynihan", "Brian Moynihan", "bofa", "2010"),
+    ("david_solomon", "David Solomon", "goldman", "2018"),
+    ("ryan_mcinerney", "Ryan McInerney", "visa", "2023"),
+    ("michael_miebach", "Michael Miebach", "mastercard", "2021"),
+    ("darren_woods", "Darren Woods", "xom", "2017"),
+    ("mike_wirth", "Mike Wirth", "chevron", "2018"),
+    ("albert_bourla", "Albert Bourla", "pfizer", "2019"),
+    ("joaquin_duato", "Joaquin Duato", "jnj", "2022"),
+    ("robert_davis", "Robert M. Davis", "merck", "2021"),
+    ("david_ricks", "David A. Ricks", "lilly", "2017"),
+    ("robert_michael", "Robert A. Michael", "abbvie", "2024"),
+    ("doug_mcmillon", "Doug McMillon", "walmart", "2014"),
+    ("ron_vachris", "Ron Vachris", "costco", "2024"),
+    ("james_quincey", "James Quincey", "ko", "2017"),
+    ("ramon_laguarta", "Ramon Laguarta", "pep", "2018"),
+    ("stephen_hemsley", "Stephen Hemsley", "unh", "2025"),
+    ("kelly_ortberg", "Kelly Ortberg", "boeing", "2024"),
+    ("jim_taiclet", "Jim Taiclet", "lockheed", "2020"),
+    ("cc_wei", "C.C. Wei", "tsmc", "2018"),
+    ("christophe_fouquet", "Christophe Fouquet", "asml", "2024"),
+]
 
-    # ---- Companies (S&P 500-ish) ----
-    companies = [
-        ("apple", "Apple Inc.", {"ticker": "AAPL", "in_sp500": True, "sector": "Tech", "revenue_2024": 383_000_000_000}),
-        ("microsoft", "Microsoft Corp.", {"ticker": "MSFT", "in_sp500": True, "sector": "Tech", "revenue_2024": 245_000_000_000}),
-        ("nvidia", "NVIDIA Corp.", {"ticker": "NVDA", "in_sp500": True, "sector": "Semiconductors", "revenue_2024": 60_000_000_000}),
-        ("amd", "AMD Inc.", {"ticker": "AMD", "in_sp500": True, "sector": "Semiconductors"}),
-        ("tsmc", "Taiwan Semiconductor", {"ticker": "TSM", "in_sp500": False, "sector": "Foundry"}),
-        ("samsung", "Samsung Electronics", {"ticker": "005930.KS", "in_sp500": False, "sector": "Conglomerate"}),
-        ("google", "Alphabet Inc.", {"ticker": "GOOGL", "in_sp500": True, "sector": "Tech"}),
-        ("meta", "Meta Platforms", {"ticker": "META", "in_sp500": True, "sector": "Tech"}),
-        ("tesla", "Tesla Inc.", {"ticker": "TSLA", "in_sp500": True, "sector": "Auto"}),
-        ("ford", "Ford Motor", {"ticker": "F", "in_sp500": True, "sector": "Auto"}),
-        ("gm", "General Motors", {"ticker": "GM", "in_sp500": True, "sector": "Auto"}),
-        ("jpm", "JPMorgan Chase", {"ticker": "JPM", "in_sp500": True, "sector": "Financials"}),
-        ("bofa", "Bank of America", {"ticker": "BAC", "in_sp500": True, "sector": "Financials"}),
-        ("xom", "ExxonMobil", {"ticker": "XOM", "in_sp500": True, "sector": "Energy"}),
-        ("pfe", "Pfizer", {"ticker": "PFE", "in_sp500": True, "sector": "Pharma"}),
-        ("jnj", "Johnson & Johnson", {"ticker": "JNJ", "in_sp500": True, "sector": "Pharma"}),
-    ]
-    for cid, name, props in companies:
-        g.upsert_node(id=cid, type="Company", name=name, properties=props)
+# Synthetic directors: (person_id, name, [company boards]). Cross-board seats are
+# deliberate so 3-hop "shared director" questions have non-trivial answers.
+DIRECTORS: list[tuple[str, str, list[str]]] = [
+    ("dir_whitfield", "Dana Whitfield", ["pfizer", "merck"]),
+    ("dir_oyelaran", "Marcus Oyelaran", ["jnj", "abbvie"]),
+    ("dir_castellanos", "Irene Castellanos", ["apple", "jpm"]),
+    ("dir_lindqvist", "Anders Lindqvist", ["microsoft", "visa"]),
+    ("dir_nakamura", "Keiko Nakamura", ["nvidia", "tsmc"]),
+    ("dir_okafor", "Chidi Okafor", ["ford", "gm"]),
+    ("dir_rasmussen", "Helle Rasmussen", ["xom", "boeing"]),
+    ("dir_petrov", "Yelena Petrov", ["google", "ko"]),
+    ("dir_sandoval", "Tomas Sandoval", ["walmart", "costco"]),
+    ("dir_abernathy", "Ruth Abernathy", ["amd", "intel"]),
+    ("dir_kowalczyk", "Piotr Kowalczyk", ["bofa", "goldman"]),
+    ("dir_mbeki", "Naledi Mbeki", ["meta", "salesforce"]),
+    ("dir_haddad", "Samir Haddad", ["lilly", "unh"]),
+    ("dir_ferreira", "Beatriz Ferreira", ["pep", "chevron"]),
+    ("dir_ellison", "Grace Ellison", ["oracle"]),
+    ("dir_tremblay", "Luc Tremblay", ["lockheed"]),
+]
 
-    # ---- People (CEOs / directors) ----
-    people = [
-        ("tim_cook", "Tim Cook", {"role": "CEO", "company": "apple"}),
-        ("satya_nadella", "Satya Nadella", {"role": "CEO", "company": "microsoft"}),
-        ("jensen_huang", "Jensen Huang", {"role": "CEO", "company": "nvidia"}),
-        ("lisa_su", "Lisa Su", {"role": "CEO", "company": "amd"}),
-        ("morris_chang", "Morris Chang", {"role": "Founder", "company": "tsmc"}),
-        ("sundar_pichai", "Sundar Pichai", {"role": "CEO", "company": "google"}),
-        ("zuck", "Mark Zuckerberg", {"role": "CEO", "company": "meta"}),
-        ("elon", "Elon Musk", {"role": "CEO", "company": "tesla"}),
-        ("jamie_dimon", "Jamie Dimon", {"role": "CEO", "company": "jpm"}),
-    ]
-    for pid, name, props in people:
-        g.upsert_node(id=pid, type="Person", name=name, properties=props)
+# Subsidiaries (Exhibit 21 style): (sub_id, name, parent_id, jurisdiction)
+SUBSIDIARIES: list[tuple[str, str, str, str]] = [
+    ("sub_apple_ops_intl", "Apple Operations International Limited", "apple", "Ireland"),
+    ("sub_beats", "Beats Electronics, LLC", "apple", "Delaware"),
+    ("sub_braeburn", "Braeburn Capital, Inc.", "apple", "Nevada"),
+    ("sub_linkedin", "LinkedIn Corporation", "microsoft", "Delaware"),
+    ("sub_github", "GitHub, Inc.", "microsoft", "Delaware"),
+    ("sub_activision", "Activision Blizzard, Inc.", "microsoft", "Delaware"),
+    ("sub_ms_ireland", "Microsoft Ireland Operations Limited", "microsoft", "Ireland"),
+    ("sub_youtube", "YouTube, LLC", "google", "Delaware"),
+    ("sub_waymo", "Waymo LLC", "google", "Delaware"),
+    ("sub_deepmind", "DeepMind Technologies Limited", "google", "United Kingdom"),
+    ("sub_google_ireland", "Google Ireland Limited", "google", "Ireland"),
+    ("sub_instagram", "Instagram, LLC", "meta", "Delaware"),
+    ("sub_whatsapp", "WhatsApp LLC", "meta", "Delaware"),
+    ("sub_facebook_tech", "Facebook Technologies, LLC", "meta", "Delaware"),
+    ("sub_aws", "Amazon Web Services, Inc.", "amazon", "Delaware"),
+    ("sub_whole_foods", "Whole Foods Market, Inc.", "amazon", "Texas"),
+    ("sub_zappos", "Zappos.com, LLC", "amazon", "Nevada"),
+    ("sub_audible", "Audible, Inc.", "amazon", "Delaware"),
+    ("sub_cerner", "Cerner Corporation", "oracle", "Delaware"),
+    ("sub_netsuite", "NetSuite Inc.", "oracle", "Delaware"),
+    ("sub_slack", "Slack Technologies, LLC", "salesforce", "Delaware"),
+    ("sub_tableau", "Tableau Software, LLC", "salesforce", "Delaware"),
+    ("sub_mulesoft", "MuleSoft, LLC", "salesforce", "Delaware"),
+    ("sub_frameio", "Frame.io, Inc.", "adobe", "Delaware"),
+    ("sub_adobe_ireland", "Adobe Systems Software Ireland Limited", "adobe", "Ireland"),
+    ("sub_mellanox", "Mellanox Technologies, Ltd.", "nvidia", "Israel"),
+    ("sub_xilinx", "Xilinx, Inc.", "amd", "Delaware"),
+    ("sub_pensando", "Pensando Systems, Inc.", "amd", "Delaware"),
+    ("sub_mobileye", "Mobileye Global Inc.", "intel", "Delaware"),
+    ("sub_qti", "Qualcomm Technologies, Inc.", "qualcomm", "Delaware"),
+    ("sub_vmware", "VMware LLC", "broadcom", "Delaware"),
+    ("sub_ca", "CA, Inc.", "broadcom", "Delaware"),
+    ("sub_micron_asia", "Micron Semiconductor Asia Operations Pte. Ltd.", "micron", "Singapore"),
+    ("sub_tesla_energy", "Tesla Energy Operations, Inc.", "tesla", "Delaware"),
+    ("sub_solarcity", "SolarCity Corporation", "tesla", "Delaware"),
+    ("sub_ford_credit", "Ford Motor Credit Company LLC", "ford", "Delaware"),
+    ("sub_ford_canada", "Ford Motor Company of Canada, Limited", "ford", "Canada"),
+    ("sub_gm_financial", "General Motors Financial Company, Inc.", "gm", "Texas"),
+    ("sub_cruise", "Cruise LLC", "gm", "Delaware"),
+    ("sub_jpm_bank", "JPMorgan Chase Bank, N.A.", "jpm", "United States"),
+    ("sub_jpm_securities", "J.P. Morgan Securities LLC", "jpm", "Delaware"),
+    ("sub_bofa_na", "Bank of America, N.A.", "bofa", "United States"),
+    ("sub_merrill", "Merrill Lynch, Pierce, Fenner & Smith Incorporated", "bofa", "Delaware"),
+    ("sub_gs_bank", "Goldman Sachs Bank USA", "goldman", "New York"),
+    ("sub_gs_intl", "Goldman Sachs International", "goldman", "United Kingdom"),
+    ("sub_visa_usa", "Visa U.S.A. Inc.", "visa", "Delaware"),
+    ("sub_visa_europe", "Visa Europe Limited", "visa", "United Kingdom"),
+    ("sub_mc_intl", "Mastercard International Incorporated", "mastercard", "Delaware"),
+    ("sub_vocalink", "Vocalink Holdings Limited", "mastercard", "United Kingdom"),
+    ("sub_xto", "XTO Energy Inc.", "xom", "Delaware"),
+    ("sub_imperial_oil", "Imperial Oil Limited", "xom", "Canada"),
+    ("sub_chevron_usa", "Chevron U.S.A. Inc.", "chevron", "Pennsylvania"),
+    ("sub_hess", "Hess Corporation", "chevron", "Delaware"),
+    ("sub_wyeth", "Wyeth LLC", "pfizer", "Delaware"),
+    ("sub_hospira", "Hospira, Inc.", "pfizer", "Delaware"),
+    ("sub_seagen", "Seagen Inc.", "pfizer", "Delaware"),
+    ("sub_janssen", "Janssen Pharmaceuticals, Inc.", "jnj", "Pennsylvania"),
+    ("sub_ethicon", "Ethicon, Inc.", "jnj", "New Jersey"),
+    ("sub_msd", "Merck Sharp & Dohme LLC", "merck", "New Jersey"),
+    ("sub_acceleron", "Acceleron Pharma Inc.", "merck", "Delaware"),
+    ("sub_loxo", "Loxo Oncology, Inc.", "lilly", "Delaware"),
+    ("sub_allergan", "Allergan plc", "abbvie", "Ireland"),
+    ("sub_pharmacyclics", "Pharmacyclics LLC", "abbvie", "Delaware"),
+    ("sub_sams", "Sam's West, Inc.", "walmart", "Arkansas"),
+    ("sub_flipkart", "Flipkart Private Limited", "walmart", "Singapore"),
+    ("sub_costco_canada", "Costco Wholesale Canada Ltd.", "costco", "Canada"),
+    ("sub_costa", "Costa Limited", "ko", "United Kingdom"),
+    ("sub_ccr", "Coca-Cola Refreshments USA, Inc.", "ko", "Delaware"),
+    ("sub_fritolay", "Frito-Lay North America, Inc.", "pep", "Delaware"),
+    ("sub_quaker", "The Quaker Oats Company", "pep", "New Jersey"),
+    ("sub_optum", "Optum, Inc.", "unh", "Delaware"),
+    ("sub_uhc", "UnitedHealthcare, Inc.", "unh", "Delaware"),
+    ("sub_boeing_capital", "Boeing Capital Corporation", "boeing", "Delaware"),
+    ("sub_wisk", "Wisk Aero LLC", "boeing", "Delaware"),
+    ("sub_sikorsky", "Sikorsky Aircraft Corporation", "lockheed", "Delaware"),
+    ("sub_tsmc_arizona", "TSMC Arizona Corporation", "tsmc", "Delaware"),
+    ("sub_cymer", "Cymer, LLC", "asml", "Nevada"),
+]
 
-    # ---- CEO_OF edges ----
-    for pid, _, props in people:
-        if props.get("role") in ("CEO", "Founder"):
-            g.upsert_edge(from_id=pid, to_id=props["company"], type="CEO_OF")
+# Products: (product_id, name, company_id, category)
+PRODUCTS: list[tuple[str, str, str, str]] = [
+    ("prod_iphone", "iPhone", "apple", "Smartphone"),
+    ("prod_mac", "Mac", "apple", "Computer"),
+    ("prod_ipad", "iPad", "apple", "Tablet"),
+    ("prod_apple_watch", "Apple Watch", "apple", "Wearable"),
+    ("prod_azure", "Azure", "microsoft", "Cloud"),
+    ("prod_windows", "Windows", "microsoft", "Operating system"),
+    ("prod_m365", "Microsoft 365", "microsoft", "Productivity"),
+    ("prod_xbox", "Xbox", "microsoft", "Gaming"),
+    ("prod_google_search", "Google Search", "google", "Search"),
+    ("prod_google_cloud", "Google Cloud", "google", "Cloud"),
+    ("prod_gemini", "Gemini", "google", "AI model"),
+    ("prod_android", "Android", "google", "Operating system"),
+    ("prod_facebook", "Facebook", "meta", "Social network"),
+    ("prod_llama", "Llama", "meta", "AI model"),
+    ("prod_quest", "Meta Quest", "meta", "Headset"),
+    ("prod_prime", "Amazon Prime", "amazon", "Subscription"),
+    ("prod_ec2", "Amazon EC2", "amazon", "Cloud"),
+    ("prod_alexa", "Alexa", "amazon", "Voice assistant"),
+    ("prod_oracle_db", "Oracle Database", "oracle", "Database"),
+    ("prod_oci", "Oracle Cloud Infrastructure", "oracle", "Cloud"),
+    ("prod_sales_cloud", "Sales Cloud", "salesforce", "CRM"),
+    ("prod_agentforce", "Agentforce", "salesforce", "AI agents"),
+    ("prod_photoshop", "Photoshop", "adobe", "Creative software"),
+    ("prod_acrobat", "Acrobat", "adobe", "Documents"),
+    ("prod_geforce", "GeForce", "nvidia", "GPU"),
+    ("prod_h100", "H100", "nvidia", "Data-center GPU"),
+    ("prod_cuda", "CUDA", "nvidia", "Software platform"),
+    ("prod_ryzen", "Ryzen", "amd", "CPU"),
+    ("prod_epyc", "EPYC", "amd", "Server CPU"),
+    ("prod_mi300", "Instinct MI300", "amd", "Data-center GPU"),
+    ("prod_xeon", "Xeon", "intel", "Server CPU"),
+    ("prod_core", "Intel Core", "intel", "CPU"),
+    ("prod_snapdragon", "Snapdragon", "qualcomm", "Mobile SoC"),
+    ("prod_tomahawk", "Tomahawk", "broadcom", "Switch silicon"),
+    ("prod_vcf", "VMware Cloud Foundation", "broadcom", "Infrastructure software"),
+    ("prod_hbm3e", "HBM3E", "micron", "Memory"),
+    ("prod_model_3", "Model 3", "tesla", "Electric vehicle"),
+    ("prod_model_y", "Model Y", "tesla", "Electric vehicle"),
+    ("prod_cybertruck", "Cybertruck", "tesla", "Electric vehicle"),
+    ("prod_megapack", "Megapack", "tesla", "Energy storage"),
+    ("prod_f150", "F-150", "ford", "Pickup truck"),
+    ("prod_mach_e", "Mustang Mach-E", "ford", "Electric vehicle"),
+    ("prod_silverado", "Chevrolet Silverado", "gm", "Pickup truck"),
+    ("prod_escalade", "Cadillac Escalade", "gm", "SUV"),
+    ("prod_comirnaty", "Comirnaty", "pfizer", "Vaccine"),
+    ("prod_paxlovid", "Paxlovid", "pfizer", "Antiviral"),
+    ("prod_prevnar", "Prevnar", "pfizer", "Vaccine"),
+    ("prod_stelara", "Stelara", "jnj", "Immunology"),
+    ("prod_darzalex", "Darzalex", "jnj", "Oncology"),
+    ("prod_keytruda", "Keytruda", "merck", "Oncology"),
+    ("prod_gardasil", "Gardasil", "merck", "Vaccine"),
+    ("prod_mounjaro", "Mounjaro", "lilly", "Diabetes"),
+    ("prod_zepbound", "Zepbound", "lilly", "Obesity"),
+    ("prod_verzenio", "Verzenio", "lilly", "Oncology"),
+    ("prod_humira", "Humira", "abbvie", "Immunology"),
+    ("prod_skyrizi", "Skyrizi", "abbvie", "Immunology"),
+    ("prod_rinvoq", "Rinvoq", "abbvie", "Immunology"),
+    ("prod_botox", "Botox", "abbvie", "Aesthetics"),
+    ("prod_kirkland", "Kirkland Signature", "costco", "Private label"),
+    ("prod_walmart_plus", "Walmart+", "walmart", "Subscription"),
+    ("prod_coke_zero", "Coca-Cola Zero Sugar", "ko", "Beverage"),
+    ("prod_sprite", "Sprite", "ko", "Beverage"),
+    ("prod_pepsi", "Pepsi", "pep", "Beverage"),
+    ("prod_gatorade", "Gatorade", "pep", "Beverage"),
+    ("prod_doritos", "Doritos", "pep", "Snack"),
+    ("prod_737max", "737 MAX", "boeing", "Aircraft"),
+    ("prod_787", "787 Dreamliner", "boeing", "Aircraft"),
+    ("prod_f35", "F-35 Lightning II", "lockheed", "Fighter aircraft"),
+    ("prod_n3", "N3 process", "tsmc", "Foundry node"),
+    ("prod_euv", "EUV lithography system", "asml", "Equipment"),
+]
 
-    # ---- SUPPLIED_BY (TSMC is the giant supplier) ----
-    for cid in ("apple", "nvidia", "amd", "tesla"):
-        g.upsert_edge(from_id=cid, to_id="tsmc", type="SUPPLIED_BY",
-                       properties={"materiality": "high"})
-    g.upsert_edge(from_id="microsoft", to_id="tsmc", type="SUPPLIED_BY",
-                   properties={"materiality": "medium"})
+# Risks (Item 1A themes): (risk_id, name, aliases)
+RISKS: list[tuple[str, str, list[str]]] = [
+    ("risk_china_exposure", "China exposure", ["china"]),
+    (
+        "risk_supply_concentration",
+        "Supplier concentration",
+        ["supplier concentration", "supply concentration", "single-source supplier"],
+    ),
+    ("risk_climate_regulation", "Climate regulation", ["climate"]),
+    ("risk_interest_rate", "Interest rate sensitivity", ["interest rate"]),
+    ("risk_cybersecurity", "Cybersecurity incidents", ["cybersecurity", "cyber"]),
+    (
+        "risk_ai_regulation",
+        "AI regulation",
+        ["ai regulation", "artificial intelligence regulation"],
+    ),
+    ("risk_antitrust", "Antitrust enforcement", ["antitrust"]),
+    ("risk_drug_pricing", "Drug pricing pressure", ["drug pricing"]),
+    ("risk_patent_expiry", "Patent expiration", ["patent expir", "loss of exclusivity"]),
+    ("risk_fx", "Foreign exchange volatility", ["foreign exchange", "currency"]),
+    ("risk_tariffs", "Tariffs and trade restrictions", ["tariff"]),
+    ("risk_talent", "Talent retention", ["talent", "key personnel"]),
+    ("risk_commodity_prices", "Commodity price volatility", ["commodity"]),
+]
 
-    # ---- COMPETES_WITH ----
-    g.upsert_edge(from_id="apple", to_id="samsung", type="COMPETES_WITH")
-    g.upsert_edge(from_id="nvidia", to_id="amd", type="COMPETES_WITH")
-    g.upsert_edge(from_id="ford", to_id="gm", type="COMPETES_WITH")
-    g.upsert_edge(from_id="ford", to_id="tesla", type="COMPETES_WITH")
-    g.upsert_edge(from_id="pfe", to_id="jnj", type="COMPETES_WITH")
-    g.upsert_edge(from_id="jpm", to_id="bofa", type="COMPETES_WITH")
-    g.upsert_edge(from_id="google", to_id="microsoft", type="COMPETES_WITH")
+MENTIONS_RISK: dict[str, list[str]] = {
+    "risk_china_exposure": [
+        "apple",
+        "microsoft",
+        "nvidia",
+        "amd",
+        "intel",
+        "qualcomm",
+        "broadcom",
+        "micron",
+        "tesla",
+        "boeing",
+        "walmart",
+        "tsmc",
+        "asml",
+        "ford",
+        "gm",
+    ],
+    "risk_supply_concentration": [
+        "apple",
+        "nvidia",
+        "amd",
+        "qualcomm",
+        "broadcom",
+        "tesla",
+        "ford",
+        "gm",
+        "boeing",
+        "micron",
+    ],
+    "risk_climate_regulation": [
+        "xom",
+        "chevron",
+        "ford",
+        "gm",
+        "tesla",
+        "boeing",
+        "ko",
+        "pep",
+        "walmart",
+        "costco",
+    ],
+    "risk_interest_rate": ["jpm", "bofa", "goldman", "visa", "mastercard", "ford", "gm"],
+    "risk_cybersecurity": [
+        "apple",
+        "microsoft",
+        "google",
+        "meta",
+        "amazon",
+        "oracle",
+        "salesforce",
+        "adobe",
+        "jpm",
+        "bofa",
+        "goldman",
+        "visa",
+        "mastercard",
+        "unh",
+        "walmart",
+        "costco",
+    ],
+    "risk_ai_regulation": [
+        "microsoft",
+        "google",
+        "meta",
+        "amazon",
+        "nvidia",
+        "oracle",
+        "salesforce",
+        "adobe",
+        "apple",
+    ],
+    "risk_antitrust": ["apple", "google", "meta", "amazon", "microsoft", "visa", "mastercard"],
+    "risk_drug_pricing": ["pfizer", "jnj", "merck", "lilly", "abbvie", "unh"],
+    "risk_patent_expiry": ["pfizer", "jnj", "merck", "lilly", "abbvie"],
+    "risk_fx": [
+        "apple",
+        "ko",
+        "pep",
+        "pfizer",
+        "jnj",
+        "merck",
+        "xom",
+        "chevron",
+        "microsoft",
+        "google",
+    ],
+    "risk_tariffs": [
+        "apple",
+        "tesla",
+        "ford",
+        "gm",
+        "walmart",
+        "costco",
+        "nvidia",
+        "boeing",
+        "micron",
+    ],
+    "risk_talent": ["tesla", "nvidia", "meta", "google", "microsoft", "amd", "salesforce"],
+    "risk_commodity_prices": ["xom", "chevron", "ko", "pep", "ford", "gm"],
+}
 
-    # ---- Risks ----
-    risks = [
-        ("risk_china_exposure", "China supply-chain exposure"),
-        ("risk_chip_shortage", "Semiconductor shortage"),
-        ("risk_climate_regulation", "Climate regulation"),
-        ("risk_interest_rate", "Interest rate sensitivity"),
-    ]
-    for rid, name in risks:
-        g.upsert_node(id=rid, type="Risk", name=name)
+MARKETS: list[tuple[str, str, list[str]]] = [
+    ("market_cloud", "Cloud infrastructure", ["cloud"]),
+    ("market_smartphones", "Smartphones", ["smartphone"]),
+    ("market_semiconductors", "Semiconductors", ["semiconductor", "chip"]),
+    ("market_ev", "Electric vehicles", ["electric vehicle", "ev market"]),
+    ("market_digital_ads", "Digital advertising", ["digital advertising", "advertising"]),
+    ("market_banking", "Banking", ["banking"]),
+    ("market_payments", "Payments", ["payments", "payment network"]),
+    ("market_oil_gas", "Oil and gas", ["oil and gas", "oil & gas"]),
+    ("market_pharma", "Pharmaceuticals", ["pharmaceutical"]),
+    ("market_retail", "Retail", ["retail"]),
+    ("market_defense", "Aerospace and defense", ["defense", "aerospace"]),
+    ("market_beverages", "Beverages", ["beverage"]),
+    ("market_health_insurance", "Health insurance", ["health insurance"]),
+    ("market_enterprise_software", "Enterprise software", ["enterprise software"]),
+    ("market_ai_models", "Foundation AI models", ["foundation model", "ai model"]),
+]
 
-    for cid in ("apple", "nvidia", "amd", "microsoft", "tesla"):
-        g.upsert_edge(from_id=cid, to_id="risk_china_exposure", type="MENTIONS_RISK")
-    for cid in ("apple", "nvidia", "amd"):
-        g.upsert_edge(from_id=cid, to_id="risk_chip_shortage", type="MENTIONS_RISK")
-    for cid in ("xom", "ford", "gm", "tesla"):
-        g.upsert_edge(from_id=cid, to_id="risk_climate_regulation", type="MENTIONS_RISK")
-    for cid in ("jpm", "bofa"):
-        g.upsert_edge(from_id=cid, to_id="risk_interest_rate", type="MENTIONS_RISK")
+OPERATES_IN: dict[str, list[str]] = {
+    "market_cloud": ["microsoft", "google", "amazon", "oracle"],
+    "market_smartphones": ["apple", "samsung", "google"],
+    "market_semiconductors": [
+        "nvidia",
+        "amd",
+        "intel",
+        "qualcomm",
+        "broadcom",
+        "micron",
+        "tsmc",
+        "samsung",
+        "sk_hynix",
+    ],
+    "market_ev": ["tesla", "ford", "gm"],
+    "market_digital_ads": ["google", "meta", "amazon"],
+    "market_banking": ["jpm", "bofa", "goldman"],
+    "market_payments": ["visa", "mastercard"],
+    "market_oil_gas": ["xom", "chevron"],
+    "market_pharma": ["pfizer", "jnj", "merck", "lilly", "abbvie"],
+    "market_retail": ["walmart", "costco", "amazon"],
+    "market_defense": ["boeing", "lockheed"],
+    "market_beverages": ["ko", "pep"],
+    "market_health_insurance": ["unh"],
+    "market_enterprise_software": ["microsoft", "oracle", "salesforce", "adobe"],
+    "market_ai_models": ["google", "meta", "microsoft", "amazon"],
+}
 
+# SUPPLIED_BY: (customer_id, supplier_id, component)
+SUPPLIED_BY: list[tuple[str, str, str]] = [
+    ("apple", "tsmc", "application processors"),
+    ("apple", "foxconn", "final assembly"),
+    ("apple", "samsung", "OLED displays"),
+    ("apple", "broadcom", "wireless components"),
+    ("apple", "qualcomm", "cellular modems"),
+    ("nvidia", "tsmc", "GPU wafers"),
+    ("nvidia", "sk_hynix", "HBM memory"),
+    ("nvidia", "micron", "HBM memory"),
+    ("nvidia", "foxconn", "server assembly"),
+    ("amd", "tsmc", "CPU/GPU wafers"),
+    ("qualcomm", "tsmc", "SoC wafers"),
+    ("qualcomm", "samsung", "foundry services"),
+    ("broadcom", "tsmc", "ASIC wafers"),
+    ("intel", "asml", "lithography equipment"),
+    ("intel", "tsmc", "compute tiles"),
+    ("micron", "asml", "lithography equipment"),
+    ("tsmc", "asml", "EUV lithography equipment"),
+    ("samsung", "asml", "lithography equipment"),
+    ("sk_hynix", "asml", "lithography equipment"),
+    ("tesla", "panasonic", "battery cells"),
+    ("ford", "qualcomm", "digital cockpit chips"),
+    ("gm", "qualcomm", "digital cockpit chips"),
+    ("microsoft", "nvidia", "data-center GPUs"),
+    ("microsoft", "amd", "data-center accelerators"),
+    ("google", "nvidia", "data-center GPUs"),
+    ("google", "broadcom", "TPU co-design"),
+    ("meta", "nvidia", "data-center GPUs"),
+    ("meta", "amd", "data-center accelerators"),
+    ("meta", "broadcom", "custom accelerators"),
+    ("amazon", "nvidia", "data-center GPUs"),
+    ("oracle", "nvidia", "data-center GPUs"),
+]
+
+COMPETES_WITH: list[tuple[str, str]] = [
+    ("apple", "samsung"),
+    ("apple", "google"),
+    ("microsoft", "google"),
+    ("microsoft", "amazon"),
+    ("google", "amazon"),
+    ("google", "meta"),
+    ("nvidia", "amd"),
+    ("nvidia", "intel"),
+    ("amd", "intel"),
+    ("micron", "samsung"),
+    ("micron", "sk_hynix"),
+    ("tsmc", "samsung"),
+    ("tsmc", "intel"),
+    ("tesla", "ford"),
+    ("tesla", "gm"),
+    ("ford", "gm"),
+    ("jpm", "bofa"),
+    ("jpm", "goldman"),
+    ("visa", "mastercard"),
+    ("xom", "chevron"),
+    ("pfizer", "merck"),
+    ("pfizer", "jnj"),
+    ("jnj", "abbvie"),
+    ("walmart", "costco"),
+    ("walmart", "amazon"),
+    ("ko", "pep"),
+    ("oracle", "microsoft"),
+    ("oracle", "salesforce"),
+    ("salesforce", "microsoft"),
+    ("boeing", "lockheed"),
+]
+
+
+_FILING_DATES: dict[str, str] = {row[0]: row[7] for row in COMPANIES}
+
+
+def _filing_date(company_id: str) -> str:
+    return _FILING_DATES[company_id]
+
+
+def populate(store: GraphStore) -> GraphStore:
+    """Load the fixture into any :class:`GraphStore` (idempotent thanks to MERGE)."""
+    for cid, name, ticker, sector, in_sp, cik, hq, fdate, aliases in COMPANIES:
+        store.upsert_node(
+            id=cid,
+            type="Company",
+            name=name,
+            properties={
+                "ticker": ticker,
+                "sector": sector,
+                "in_sp500": in_sp,
+                "cik": cik,
+                "hq_state": hq,
+                "aliases": aliases,
+                "description": f"{name} ({ticker}), {sector} sector",
+            },
+            source_filing_date=fdate,
+        )
+    for pid, name, cid, since in CEOS:
+        store.upsert_node(
+            id=pid,
+            type="Person",
+            name=name,
+            properties={"role": "CEO", "company": cid, "since": since, "aliases": [name.lower()]},
+            source_filing_date=_filing_date(cid),
+        )
+        store.upsert_edge(from_id=pid, to_id=cid, type="CEO_OF", properties={"since": since})
+    for pid, name, boards in DIRECTORS:
+        store.upsert_node(
+            id=pid,
+            type="Person",
+            name=name,
+            properties={"role": "Director", "synthetic": True, "aliases": [name.lower()]},
+            source_filing_date=_filing_date(boards[0]),
+        )
+        for cid in boards:
+            store.upsert_edge(
+                from_id=pid,
+                to_id=cid,
+                type="DIRECTOR_OF",
+                properties={"source": "synthetic DEF 14A"},
+            )
+    for sid, name, parent, juris in SUBSIDIARIES:
+        store.upsert_node(
+            id=sid,
+            type="Subsidiary",
+            name=name,
+            properties={"jurisdiction": juris, "parent": parent, "aliases": [name.lower()]},
+            source_filing_date=_filing_date(parent),
+        )
+        store.upsert_edge(
+            from_id=sid, to_id=parent, type="SUBSIDIARY_OF", properties={"source": "Exhibit 21"}
+        )
+    for prid, name, cid, category in PRODUCTS:
+        store.upsert_node(
+            id=prid,
+            type="Product",
+            name=name,
+            properties={"category": category, "company": cid, "aliases": [name.lower()]},
+            source_filing_date=_filing_date(cid),
+        )
+        store.upsert_edge(from_id=cid, to_id=prid, type="OFFERS_PRODUCT")
+    for rid, name, aliases in RISKS:
+        store.upsert_node(id=rid, type="Risk", name=name, properties={"aliases": aliases})
+    for rid, cids in MENTIONS_RISK.items():
+        for cid in cids:
+            store.upsert_edge(
+                from_id=cid, to_id=rid, type="MENTIONS_RISK", properties={"section": "Item 1A"}
+            )
+    for mid, name, aliases in MARKETS:
+        store.upsert_node(id=mid, type="Market", name=name, properties={"aliases": aliases})
+    for mid, cids in OPERATES_IN.items():
+        for cid in cids:
+            store.upsert_edge(from_id=cid, to_id=mid, type="OPERATES_IN")
+    for cust, supp, component in SUPPLIED_BY:
+        store.upsert_edge(
+            from_id=cust, to_id=supp, type="SUPPLIED_BY", properties={"component": component}
+        )
+    for a, b in COMPETES_WITH:
+        store.upsert_edge(from_id=a, to_id=b, type="COMPETES_WITH")
+    return store
+
+
+def build_demo_graph(embedder: Embedder | None = None) -> InMemoryGraph:
+    """Build the fixture in a fresh :class:`InMemoryGraph`."""
+    g = InMemoryGraph(embedder=embedder)
+    populate(g)
     return g
+
+
+def fixture_summary() -> dict[str, Any]:
+    """Counts by node type and edge type (used by docs and the demo)."""
+    g = build_demo_graph()
+    by_type: dict[str, int] = {}
+    for n in g.nodes():
+        by_type[n["type"]] = by_type.get(n["type"], 0) + 1
+    by_edge: dict[str, int] = {}
+    for e in g.edges():
+        by_edge[e["type"]] = by_edge.get(e["type"], 0) + 1
+    return {
+        "nodes": g.n_nodes,
+        "edges": g.n_edges,
+        "by_node_type": by_type,
+        "by_edge_type": by_edge,
+    }
