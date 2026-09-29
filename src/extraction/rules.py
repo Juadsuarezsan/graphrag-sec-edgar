@@ -23,7 +23,7 @@ from src.extraction.schemas import (
 from src.ingestion.models import Chunk
 from src.ingestion.parser import parse_def14a_directors, parse_exhibit21
 
-_ORG_TOKEN = r"[A-Z][A-Za-z0-9&.'\-]*"
+_ORG_TOKEN = r"[A-Z][A-Za-z0-9&'\-]*\.?"
 _ORG_NAME = rf"{_ORG_TOKEN}(?:\s+{_ORG_TOKEN}){{0,4}}"
 _LIST_SEP = re.compile(r",\s*|\s+and\s+|\s*;\s*")
 
@@ -35,9 +35,10 @@ _SUPPLIER_RE = re.compile(
     rf"(?:supplied\s+by|sourced\s+from|rel(?:y|ies)\s+on|single[- ]source(?:d)?\s+(?:from|supplier[s]?\s*(?:,|is|are)))\s+"
     rf"(?P<list>{_ORG_NAME}(?:(?:,\s*|\s+and\s+){_ORG_NAME}){{0,6}})\s+(?:for|to|as)\b",
 )
+_PRODUCT_ITEM = r"[A-Za-z][\w+'\-]*(?:\.\w+)*(?:\s[A-Z][\w+'\-]*(?:\.\w+)*)*"
 _PRODUCTS_RE = re.compile(
     r"(?:products?|offerings?|platforms?|brands?)\s+(?:include|including|such\s+as|comprise|are)\s+"
-    r"(?P<list>[A-Z][\w+.'\- ]{1,40}(?:,\s*[A-Z][\w+.'\- ]{1,40}){1,12}(?:,?\s+and\s+[A-Z][\w+.'\- ]{1,40})?)",
+    rf"(?P<list>{_PRODUCT_ITEM}(?:(?:,\s*(?:and\s+)?|\s+and\s+){_PRODUCT_ITEM}){{1,14}})",
 )
 _CEO_RE = re.compile(
     r"(?P<name>[A-Z][a-zA-Z.'-]+(?:\s+[A-Z][a-zA-Z.'-]+){1,3}),?\s+(?:our|the Company's|the)\s+"
@@ -118,7 +119,7 @@ RISK_LEXICON: dict[str, tuple[str, list[str]]] = {
 def _split_names(blob: str) -> list[str]:
     names: list[str] = []
     for part in _LIST_SEP.split(blob):
-        part = part.strip(" .;:")
+        part = re.split(r"\.\s", part)[0].strip(" .;:")
         if not part or part.lower() in _GENERIC or len(part) < 2:
             continue
         if part.split()[0].lower() in _GENERIC:
@@ -244,7 +245,7 @@ class RuleBasedExtractor:
                 )
         for m in _PRODUCTS_RE.finditer(text):
             for name in _split_names(m.group("list")):
-                if len(name.split()) > 4:
+                if len(name.split()) > 4 or not name[0].isupper():
                     continue
                 pid = slugify(name, prefix="prod_")
                 ents.append(
