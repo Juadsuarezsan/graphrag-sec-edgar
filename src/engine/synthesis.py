@@ -24,13 +24,14 @@ _CTRL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 
 
 def sanitize_text(text: str, max_chars: int = 4000) -> str:
-    """Strip HTML tags, control characters and escape what is left.
+    """Strip HTML tags and control characters from model or template output.
 
-    The demo renders answers with ``textContent`` anyway; this keeps the API
-    safe for clients that do not.
+    The API returns plain text (JSON); the demo renders it with ``textContent``.
+    Tags are removed rather than escaped so ``->`` arrows and ``&`` in company
+    names survive intact.
     """
     cleaned = _CTRL_RE.sub("", _TAG_RE.sub("", text))
-    return html.escape(cleaned, quote=False)[:max_chars]
+    return html.unescape(cleaned)[:max_chars]
 
 
 class Synthesizer(Protocol):

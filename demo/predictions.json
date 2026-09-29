@@ -1,86 +1,2876 @@
 {
-  "project": "graphrag-sec-edgar",
-  "generated_at": "2026-05-16T00:00:00Z",
-  "predictions": [
-    {
-      "ticket": "Which companies in the portfolio compete with NVIDIA in AI accelerators?",
-      "top_intent": "multi-entity competitive lookup",
-      "confidence": 0.91,
-      "alternatives": [
-        {
-          "intent": "2 companies traced (MSFT, GOOGL)",
-          "confidence": 0.0
-        },
-        {
-          "intent": "3 graph hops",
-          "confidence": 0.0
-        }
+ "project": "graphrag-sec-edgar",
+ "generated_at": "2026-09-29T02:23:05+00:00",
+ "synthesis": "template (deterministic, no LLM)",
+ "graph": {
+  "nodes": 279,
+  "edges": 451
+ },
+ "predictions": [
+  {
+   "id": "lk-01",
+   "category": "lookup",
+   "question": "Who is the CEO of Apple?",
+   "expected_ids": [
+    "tim_cook"
+   ],
+   "expected_count": null,
+   "graph": {
+    "question": "Who is the CEO of Apple?",
+    "mode": "graph",
+    "answer": "Tim Cook [tim_cook]. Evidence: Tim Cook [tim_cook] -CEO_OF-&gt; Apple Inc. [apple].",
+    "classified_kind": "lookup",
+    "answer_ids": [
+     "tim_cook"
+    ],
+    "count": null,
+    "seeds": [
+     "apple"
+    ],
+    "plan": [
+     {
+      "edge_types": [
+       "CEO_OF"
       ],
-      "inference_ms": 2840.0
+      "direction": "in"
+     }
+    ],
+    "cited_nodes": [
+     {
+      "id": "apple",
+      "type": "Company",
+      "name": "Apple Inc.",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "tim_cook",
+      "type": "Person",
+      "name": "Tim Cook",
+      "similarity": null,
+      "hops_from_seed": 1
+     }
+    ],
+    "reasoning_path": [
+     "apple",
+     "tim_cook"
+    ],
+    "subgraph": {
+     "nodes": [
+      {
+       "id": "apple",
+       "type": "Company",
+       "name": "Apple Inc.",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "tim_cook",
+       "type": "Person",
+       "name": "Tim Cook",
+       "hops": 1,
+       "stale": false
+      }
+     ],
+     "edges": [
+      {
+       "from": "tim_cook",
+       "to": "apple",
+       "type": "CEO_OF"
+      }
+     ]
     },
-    {
-      "ticket": "What are Apple's stated supply-chain risks in their latest 10-K?",
-      "top_intent": "single-entity risk traversal",
-      "confidence": 0.94,
-      "alternatives": [
-        {
-          "intent": "3 risks extracted",
-          "confidence": 0.0
-        },
-        {
-          "intent": "1 graph hop",
-          "confidence": 0.0
-        }
-      ],
-      "inference_ms": 1980.0
-    },
-    {
-      "ticket": "Compare data-center revenue trajectories between META and GOOGL.",
-      "top_intent": "multi-entity financial comparison",
-      "confidence": 0.83,
-      "alternatives": [
-        {
-          "intent": "2 companies traced",
-          "confidence": 0.0
-        },
-        {
-          "intent": "4 product nodes touched",
-          "confidence": 0.0
-        }
-      ],
-      "inference_ms": 3120.0
-    },
-    {
-      "ticket": "Who is Tesla's CFO and what risks did they call out in 2024?",
-      "top_intent": "person-entity + risk join",
-      "confidence": 0.88,
-      "alternatives": [
-        {
-          "intent": "TSLA entity resolved",
-          "confidence": 0.0
-        },
-        {
-          "intent": "2 graph hops",
-          "confidence": 0.0
-        }
-      ],
-      "inference_ms": 2410.0
-    },
-    {
-      "ticket": "Which companies in this set list LLM models as a strategic product?",
-      "top_intent": "category-wide product scan",
-      "confidence": 0.87,
-      "alternatives": [
-        {
-          "intent": "3 companies match (MSFT, GOOGL, META)",
-          "confidence": 0.0
-        },
-        {
-          "intent": "1 graph hop",
-          "confidence": 0.0
-        }
-      ],
-      "inference_ms": 2680.0
+    "synthesizer": "template",
+    "metrics": {
+     "trace_id": "c2da3cd584a544df",
+     "latency_ms": 1,
+     "tokens_in": 0,
+     "tokens_out": 0,
+     "cost_usd": 0.0,
+     "llm_calls": 0
     }
-  ]
+   },
+   "vector": {
+    "answer": "Tim Cook [tim_cook]. Evidence: Apple Inc. (Company). ticker: AAPL; sector: Technology; in_sp500: True; cik: 0000320193; hq_state: CA; stale: False. Apple Inc. offers the product iPhone. Apple Inc. offers the product Mac. Apple Inc. Apple Watch (Product). category: Wearable; company: apple; stale: False. Apple Watch is a product of Apple Inc.. Apple Operations International Limited (Subsidiary). jurisdiction: Ireland; parent: apple; stale: False. Apple Operations International Limited is a subsidiary of Apple Inc.. Tim Cook (Person). role: CEO; company: apple; since: 2011; stale: False. Tim Cook is the CEO of Apple Inc..",
+    "answer_ids": [
+     "tim_cook"
+    ],
+    "count": null,
+    "latency_ms": 62
+   }
+  },
+  {
+   "id": "lk-18",
+   "category": "lookup",
+   "question": "Which companies are supplied by TSMC?",
+   "expected_ids": [
+    "apple",
+    "nvidia",
+    "amd",
+    "qualcomm",
+    "broadcom",
+    "intel"
+   ],
+   "expected_count": null,
+   "graph": {
+    "question": "Which companies are supplied by TSMC?",
+    "mode": "graph",
+    "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], NVIDIA Corporation [nvidia], Qualcomm Incorporated [qualcomm]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Qualcomm Incorporated [qualcomm] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc].",
+    "classified_kind": "lookup",
+    "answer_ids": [
+     "amd",
+     "apple",
+     "broadcom",
+     "intel",
+     "nvidia",
+     "qualcomm"
+    ],
+    "count": null,
+    "seeds": [
+     "tsmc"
+    ],
+    "plan": [
+     {
+      "edge_types": [
+       "SUPPLIED_BY"
+      ],
+      "direction": "in"
+     }
+    ],
+    "cited_nodes": [
+     {
+      "id": "tsmc",
+      "type": "Company",
+      "name": "Taiwan Semiconductor Manufacturing Company",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "amd",
+      "type": "Company",
+      "name": "Advanced Micro Devices, Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "apple",
+      "type": "Company",
+      "name": "Apple Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "broadcom",
+      "type": "Company",
+      "name": "Broadcom Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "intel",
+      "type": "Company",
+      "name": "Intel Corporation",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "nvidia",
+      "type": "Company",
+      "name": "NVIDIA Corporation",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "qualcomm",
+      "type": "Company",
+      "name": "Qualcomm Incorporated",
+      "similarity": null,
+      "hops_from_seed": 1
+     }
+    ],
+    "reasoning_path": [
+     "tsmc",
+     "amd",
+     "apple",
+     "broadcom",
+     "intel",
+     "nvidia",
+     "qualcomm"
+    ],
+    "subgraph": {
+     "nodes": [
+      {
+       "id": "tsmc",
+       "type": "Company",
+       "name": "Taiwan Semiconductor Manufacturing Company",
+       "hops": 0,
+       "stale": true
+      },
+      {
+       "id": "apple",
+       "type": "Company",
+       "name": "Apple Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "nvidia",
+       "type": "Company",
+       "name": "NVIDIA Corporation",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "amd",
+       "type": "Company",
+       "name": "Advanced Micro Devices, Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "qualcomm",
+       "type": "Company",
+       "name": "Qualcomm Incorporated",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "broadcom",
+       "type": "Company",
+       "name": "Broadcom Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "intel",
+       "type": "Company",
+       "name": "Intel Corporation",
+       "hops": 1,
+       "stale": false
+      }
+     ],
+     "edges": [
+      {
+       "from": "apple",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "nvidia",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "amd",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "qualcomm",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "broadcom",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "intel",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      }
+     ]
+    },
+    "synthesizer": "template",
+    "metrics": {
+     "trace_id": "ee5d3feb90284465",
+     "latency_ms": 1,
+     "tokens_in": 0,
+     "tokens_out": 0,
+     "cost_usd": 0.0,
+     "llm_calls": 0
+    }
+   },
+   "vector": {
+    "answer": "Adobe Inc. [adobe], Amazon.com, Inc. [amazon], Apple Inc. [apple], The Boeing Company [boeing], Bank of America Corporation [bofa], Chevron Corporation [chevron], Costco Wholesale Corporation [costco], Ford Motor Company [ford], General Motors Company [gm], The Goldman Sachs Group, Inc. [goldman], Alphabet Inc. [google], JPMorgan Chase &amp; Co. [jpm] (+13 more). Evidence: TSMC Arizona Corporation (Subsidiary). jurisdiction: Delaware; parent: tsmc; stale: True. TSMC Arizona Corporation is a subsidiary of Taiwan Semiconductor Manufacturing Company. 737 MAX (Product). category: Aircraft; company: boeing; stale: False. 737 MAX is a product of The Boeing Company. N3 process (Product). category: Foundry node; company: tsmc; stale: True. N3 process is a product of Taiwan Semiconductor Manufacturing Company. Climate regulation (Risk). stale: False. Climate regulation is a risk mentioned by Exxon Mobil Corporation. Climate regulation is a risk mentioned by Chevron Corporation. Climate regulation is a risk ",
+    "answer_ids": [
+     "adobe",
+     "amazon",
+     "apple",
+     "boeing",
+     "bofa",
+     "chevron",
+     "costco",
+     "ford",
+     "gm",
+     "goldman",
+     "google",
+     "jpm",
+     "ko",
+     "mastercard",
+     "meta",
+     "microsoft",
+     "oracle",
+     "pep",
+     "salesforce",
+     "tesla",
+     "tsmc",
+     "unh",
+     "visa",
+     "walmart",
+     "xom"
+    ],
+    "count": null,
+    "latency_ms": 22
+   }
+  },
+  {
+   "id": "2h-01",
+   "category": "two_hop",
+   "question": "Who is the CEO of the parent company of LinkedIn?",
+   "expected_ids": [
+    "satya_nadella"
+   ],
+   "expected_count": null,
+   "graph": {
+    "question": "Who is the CEO of the parent company of LinkedIn?",
+    "mode": "graph",
+    "answer": "Satya Nadella [satya_nadella]. Evidence: LinkedIn Corporation [sub_linkedin] -SUBSIDIARY_OF-&gt; Microsoft Corporation [microsoft]. Satya Nadella [satya_nadella] -CEO_OF-&gt; Microsoft Corporation [microsoft].",
+    "classified_kind": "multi_hop",
+    "answer_ids": [
+     "satya_nadella"
+    ],
+    "count": null,
+    "seeds": [
+     "sub_linkedin"
+    ],
+    "plan": [
+     {
+      "edge_types": [
+       "SUBSIDIARY_OF"
+      ],
+      "direction": "out"
+     },
+     {
+      "edge_types": [
+       "CEO_OF"
+      ],
+      "direction": "in"
+     }
+    ],
+    "cited_nodes": [
+     {
+      "id": "sub_linkedin",
+      "type": "Subsidiary",
+      "name": "LinkedIn Corporation",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "microsoft",
+      "type": "Company",
+      "name": "Microsoft Corporation",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "satya_nadella",
+      "type": "Person",
+      "name": "Satya Nadella",
+      "similarity": null,
+      "hops_from_seed": 2
+     }
+    ],
+    "reasoning_path": [
+     "sub_linkedin",
+     "microsoft",
+     "satya_nadella"
+    ],
+    "subgraph": {
+     "nodes": [
+      {
+       "id": "sub_linkedin",
+       "type": "Subsidiary",
+       "name": "LinkedIn Corporation",
+       "hops": 0,
+       "stale": true
+      },
+      {
+       "id": "microsoft",
+       "type": "Company",
+       "name": "Microsoft Corporation",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "satya_nadella",
+       "type": "Person",
+       "name": "Satya Nadella",
+       "hops": 2,
+       "stale": true
+      }
+     ],
+     "edges": [
+      {
+       "from": "sub_linkedin",
+       "to": "microsoft",
+       "type": "SUBSIDIARY_OF"
+      },
+      {
+       "from": "satya_nadella",
+       "to": "microsoft",
+       "type": "CEO_OF"
+      }
+     ]
+    },
+    "synthesizer": "template",
+    "metrics": {
+     "trace_id": "6808c961f15a49a6",
+     "latency_ms": 0,
+     "tokens_in": 0,
+     "tokens_out": 0,
+     "cost_usd": 0.0,
+     "llm_calls": 0
+    }
+   },
+   "vector": {
+    "answer": "Brian Moynihan [brian_moynihan], James Quincey [james_quincey], Jim Farley [jim_farley], Kelly Ortberg [kelly_ortberg]. Evidence: LinkedIn Corporation (Subsidiary). jurisdiction: Delaware; parent: microsoft; stale: True. LinkedIn Corporation is a subsidiary of Microsoft Corporation. The Boeing Company (Company). ticker: BA; sector: Aerospace &amp; Defense; in_sp500: True; cik: 0000012927; hq_state: VA; stale: False. The Boeing Company offers the product 737 MAX. The Boeing Company of Brian Moynihan (Person). role: CEO; company: bofa; since: 2010; stale: False. Brian Moynihan is the CEO of Bank of America Corporation. Jim Farley (Person). role: CEO; company: ford; since: 2020; stale: False. Jim Farley is the CEO of Ford Motor Company.",
+    "answer_ids": [
+     "brian_moynihan",
+     "james_quincey",
+     "jim_farley",
+     "kelly_ortberg"
+    ],
+    "count": null,
+    "latency_ms": 24
+   }
+  },
+  {
+   "id": "2h-21",
+   "category": "two_hop",
+   "question": "Which companies share a supplier with NVIDIA?",
+   "expected_ids": [
+    "apple",
+    "amd",
+    "qualcomm",
+    "broadcom",
+    "intel"
+   ],
+   "expected_count": null,
+   "graph": {
+    "question": "Which companies share a supplier with NVIDIA?",
+    "mode": "graph",
+    "answer": "Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], Broadcom Inc. [broadcom], Intel Corporation [intel], Qualcomm Incorporated [qualcomm]. Evidence: NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; SK hynix Inc. [sk_hynix]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Micron Technology, Inc. [micron]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn].",
+    "classified_kind": "multi_hop",
+    "answer_ids": [
+     "amd",
+     "apple",
+     "broadcom",
+     "intel",
+     "qualcomm"
+    ],
+    "count": null,
+    "seeds": [
+     "nvidia"
+    ],
+    "plan": [
+     {
+      "edge_types": [
+       "SUPPLIED_BY"
+      ],
+      "direction": "out"
+     },
+     {
+      "edge_types": [
+       "SUPPLIED_BY"
+      ],
+      "direction": "in"
+     }
+    ],
+    "cited_nodes": [
+     {
+      "id": "nvidia",
+      "type": "Company",
+      "name": "NVIDIA Corporation",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "foxconn",
+      "type": "Company",
+      "name": "Hon Hai Precision Industry Co., Ltd.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "micron",
+      "type": "Company",
+      "name": "Micron Technology, Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "sk_hynix",
+      "type": "Company",
+      "name": "SK hynix Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "tsmc",
+      "type": "Company",
+      "name": "Taiwan Semiconductor Manufacturing Company",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "amd",
+      "type": "Company",
+      "name": "Advanced Micro Devices, Inc.",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "apple",
+      "type": "Company",
+      "name": "Apple Inc.",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "broadcom",
+      "type": "Company",
+      "name": "Broadcom Inc.",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "intel",
+      "type": "Company",
+      "name": "Intel Corporation",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "qualcomm",
+      "type": "Company",
+      "name": "Qualcomm Incorporated",
+      "similarity": null,
+      "hops_from_seed": 2
+     }
+    ],
+    "reasoning_path": [
+     "nvidia",
+     "foxconn",
+     "micron",
+     "sk_hynix",
+     "tsmc",
+     "amd",
+     "apple",
+     "broadcom",
+     "intel",
+     "qualcomm"
+    ],
+    "subgraph": {
+     "nodes": [
+      {
+       "id": "nvidia",
+       "type": "Company",
+       "name": "NVIDIA Corporation",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "tsmc",
+       "type": "Company",
+       "name": "Taiwan Semiconductor Manufacturing Company",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "sk_hynix",
+       "type": "Company",
+       "name": "SK hynix Inc.",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "micron",
+       "type": "Company",
+       "name": "Micron Technology, Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "foxconn",
+       "type": "Company",
+       "name": "Hon Hai Precision Industry Co., Ltd.",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "apple",
+       "type": "Company",
+       "name": "Apple Inc.",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "amd",
+       "type": "Company",
+       "name": "Advanced Micro Devices, Inc.",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "qualcomm",
+       "type": "Company",
+       "name": "Qualcomm Incorporated",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "broadcom",
+       "type": "Company",
+       "name": "Broadcom Inc.",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "intel",
+       "type": "Company",
+       "name": "Intel Corporation",
+       "hops": 2,
+       "stale": false
+      }
+     ],
+     "edges": [
+      {
+       "from": "nvidia",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "nvidia",
+       "to": "sk_hynix",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "nvidia",
+       "to": "micron",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "nvidia",
+       "to": "foxconn",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "apple",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "amd",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "qualcomm",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "broadcom",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "intel",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "apple",
+       "to": "foxconn",
+       "type": "SUPPLIED_BY"
+      }
+     ]
+    },
+    "synthesizer": "template",
+    "metrics": {
+     "trace_id": "ef0d8ad35c8f4700",
+     "latency_ms": 0,
+     "tokens_in": 0,
+     "tokens_out": 0,
+     "cost_usd": 0.0,
+     "llm_calls": 0
+    }
+   },
+   "vector": {
+    "answer": "Amazon.com, Inc. [amazon], Advanced Micro Devices, Inc. [amd], Apple Inc. [apple], The Boeing Company [boeing], Broadcom Inc. [broadcom], Ford Motor Company [ford], Hon Hai Precision Industry Co., Ltd. [foxconn], General Motors Company [gm], Alphabet Inc. [google], Intel Corporation [intel], Meta Platforms, Inc. [meta], Micron Technology, Inc. [micron] (+7 more). Evidence: NVIDIA Corporation (Company). ticker: NVDA; sector: Semiconductors; in_sp500: True; cik: 0001045810; hq_state: CA; stale: False. NVIDIA Corporation offers the product GeForce. NVIDIA Corporation offer Supplier concentration (Risk). stale: False. Supplier concentration is a risk mentioned by Apple Inc.. Supplier concentration is a risk mentioned by NVIDIA Corporation. Supplier concentration is a ris GeForce (Product). category: GPU; company: nvidia; stale: False. GeForce is a product of NVIDIA Corporation. CUDA (Product). category: Software platform; company: nvidia; stale: False. CUDA is a product of NVIDIA Corporation.",
+    "answer_ids": [
+     "amazon",
+     "amd",
+     "apple",
+     "boeing",
+     "broadcom",
+     "ford",
+     "foxconn",
+     "gm",
+     "google",
+     "intel",
+     "meta",
+     "micron",
+     "microsoft",
+     "nvidia",
+     "oracle",
+     "qualcomm",
+     "sk_hynix",
+     "tesla",
+     "tsmc"
+    ],
+    "count": null,
+    "latency_ms": 23
+   }
+  },
+  {
+   "id": "3h-01",
+   "category": "three_hop",
+   "question": "Which CEOs lead companies that share a supplier with Apple?",
+   "expected_ids": [
+    "jensen_huang",
+    "lisa_su",
+    "cristiano_amon",
+    "hock_tan",
+    "lip_bu_tan",
+    "sundar_pichai",
+    "mark_zuckerberg",
+    "jim_farley",
+    "mary_barra"
+   ],
+   "expected_count": null,
+   "graph": {
+    "question": "Which CEOs lead companies that share a supplier with Apple?",
+    "mode": "graph",
+    "answer": "Cristiano Amon [cristiano_amon], Hock Tan [hock_tan], Jensen Huang [jensen_huang], Jim Farley [jim_farley], Lip-Bu Tan [lip_bu_tan], Lisa Su [lisa_su], Mark Zuckerberg [mark_zuckerberg], Mary Barra [mary_barra], Sundar Pichai [sundar_pichai]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Hon Hai Precision Industry Co., Ltd. [foxconn]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Samsung Electronics Co., Ltd. [samsung]. Apple Inc. [apple] -SUPPLIED_BY-&gt; Broadcom Inc. [broadcom].",
+    "classified_kind": "multi_hop",
+    "answer_ids": [
+     "cristiano_amon",
+     "hock_tan",
+     "jensen_huang",
+     "jim_farley",
+     "lip_bu_tan",
+     "lisa_su",
+     "mark_zuckerberg",
+     "mary_barra",
+     "sundar_pichai"
+    ],
+    "count": null,
+    "seeds": [
+     "apple"
+    ],
+    "plan": [
+     {
+      "edge_types": [
+       "SUPPLIED_BY"
+      ],
+      "direction": "out"
+     },
+     {
+      "edge_types": [
+       "SUPPLIED_BY"
+      ],
+      "direction": "in"
+     },
+     {
+      "edge_types": [
+       "CEO_OF"
+      ],
+      "direction": "in"
+     }
+    ],
+    "cited_nodes": [
+     {
+      "id": "apple",
+      "type": "Company",
+      "name": "Apple Inc.",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "broadcom",
+      "type": "Company",
+      "name": "Broadcom Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "foxconn",
+      "type": "Company",
+      "name": "Hon Hai Precision Industry Co., Ltd.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "qualcomm",
+      "type": "Company",
+      "name": "Qualcomm Incorporated",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "samsung",
+      "type": "Company",
+      "name": "Samsung Electronics Co., Ltd.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "tsmc",
+      "type": "Company",
+      "name": "Taiwan Semiconductor Manufacturing Company",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "amd",
+      "type": "Company",
+      "name": "Advanced Micro Devices, Inc.",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "ford",
+      "type": "Company",
+      "name": "Ford Motor Company",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "gm",
+      "type": "Company",
+      "name": "General Motors Company",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "google",
+      "type": "Company",
+      "name": "Alphabet Inc.",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "intel",
+      "type": "Company",
+      "name": "Intel Corporation",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "meta",
+      "type": "Company",
+      "name": "Meta Platforms, Inc.",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "nvidia",
+      "type": "Company",
+      "name": "NVIDIA Corporation",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "cristiano_amon",
+      "type": "Person",
+      "name": "Cristiano Amon",
+      "similarity": null,
+      "hops_from_seed": 3
+     },
+     {
+      "id": "hock_tan",
+      "type": "Person",
+      "name": "Hock Tan",
+      "similarity": null,
+      "hops_from_seed": 3
+     },
+     {
+      "id": "jensen_huang",
+      "type": "Person",
+      "name": "Jensen Huang",
+      "similarity": null,
+      "hops_from_seed": 3
+     },
+     {
+      "id": "jim_farley",
+      "type": "Person",
+      "name": "Jim Farley",
+      "similarity": null,
+      "hops_from_seed": 3
+     },
+     {
+      "id": "lip_bu_tan",
+      "type": "Person",
+      "name": "Lip-Bu Tan",
+      "similarity": null,
+      "hops_from_seed": 3
+     },
+     {
+      "id": "lisa_su",
+      "type": "Person",
+      "name": "Lisa Su",
+      "similarity": null,
+      "hops_from_seed": 3
+     },
+     {
+      "id": "mark_zuckerberg",
+      "type": "Person",
+      "name": "Mark Zuckerberg",
+      "similarity": null,
+      "hops_from_seed": 3
+     },
+     {
+      "id": "mary_barra",
+      "type": "Person",
+      "name": "Mary Barra",
+      "similarity": null,
+      "hops_from_seed": 3
+     },
+     {
+      "id": "sundar_pichai",
+      "type": "Person",
+      "name": "Sundar Pichai",
+      "similarity": null,
+      "hops_from_seed": 3
+     }
+    ],
+    "reasoning_path": [
+     "apple",
+     "broadcom",
+     "foxconn",
+     "qualcomm",
+     "samsung",
+     "tsmc",
+     "amd",
+     "ford",
+     "gm",
+     "google",
+     "intel",
+     "meta",
+     "nvidia",
+     "cristiano_amon",
+     "hock_tan",
+     "jensen_huang",
+     "jim_farley",
+     "lip_bu_tan",
+     "lisa_su",
+     "mark_zuckerberg",
+     "mary_barra",
+     "sundar_pichai"
+    ],
+    "subgraph": {
+     "nodes": [
+      {
+       "id": "apple",
+       "type": "Company",
+       "name": "Apple Inc.",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "tsmc",
+       "type": "Company",
+       "name": "Taiwan Semiconductor Manufacturing Company",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "foxconn",
+       "type": "Company",
+       "name": "Hon Hai Precision Industry Co., Ltd.",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "samsung",
+       "type": "Company",
+       "name": "Samsung Electronics Co., Ltd.",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "broadcom",
+       "type": "Company",
+       "name": "Broadcom Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "qualcomm",
+       "type": "Company",
+       "name": "Qualcomm Incorporated",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "ford",
+       "type": "Company",
+       "name": "Ford Motor Company",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "gm",
+       "type": "Company",
+       "name": "General Motors Company",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "google",
+       "type": "Company",
+       "name": "Alphabet Inc.",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "meta",
+       "type": "Company",
+       "name": "Meta Platforms, Inc.",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "nvidia",
+       "type": "Company",
+       "name": "NVIDIA Corporation",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "amd",
+       "type": "Company",
+       "name": "Advanced Micro Devices, Inc.",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "intel",
+       "type": "Company",
+       "name": "Intel Corporation",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "jensen_huang",
+       "type": "Person",
+       "name": "Jensen Huang",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "cristiano_amon",
+       "type": "Person",
+       "name": "Cristiano Amon",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "sundar_pichai",
+       "type": "Person",
+       "name": "Sundar Pichai",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "mary_barra",
+       "type": "Person",
+       "name": "Mary Barra",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "hock_tan",
+       "type": "Person",
+       "name": "Hock Tan",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "mark_zuckerberg",
+       "type": "Person",
+       "name": "Mark Zuckerberg",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "lisa_su",
+       "type": "Person",
+       "name": "Lisa Su",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "lip_bu_tan",
+       "type": "Person",
+       "name": "Lip-Bu Tan",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "jim_farley",
+       "type": "Person",
+       "name": "Jim Farley",
+       "hops": 3,
+       "stale": false
+      }
+     ],
+     "edges": [
+      {
+       "from": "apple",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "apple",
+       "to": "foxconn",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "apple",
+       "to": "samsung",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "apple",
+       "to": "broadcom",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "apple",
+       "to": "qualcomm",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "ford",
+       "to": "qualcomm",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "gm",
+       "to": "qualcomm",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "google",
+       "to": "broadcom",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "meta",
+       "to": "broadcom",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "nvidia",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "amd",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "qualcomm",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "broadcom",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "intel",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "qualcomm",
+       "to": "samsung",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "nvidia",
+       "to": "foxconn",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "jensen_huang",
+       "to": "nvidia",
+       "type": "CEO_OF"
+      },
+      {
+       "from": "cristiano_amon",
+       "to": "qualcomm",
+       "type": "CEO_OF"
+      },
+      {
+       "from": "sundar_pichai",
+       "to": "google",
+       "type": "CEO_OF"
+      },
+      {
+       "from": "mary_barra",
+       "to": "gm",
+       "type": "CEO_OF"
+      },
+      {
+       "from": "hock_tan",
+       "to": "broadcom",
+       "type": "CEO_OF"
+      },
+      {
+       "from": "mark_zuckerberg",
+       "to": "meta",
+       "type": "CEO_OF"
+      },
+      {
+       "from": "lisa_su",
+       "to": "amd",
+       "type": "CEO_OF"
+      },
+      {
+       "from": "lip_bu_tan",
+       "to": "intel",
+       "type": "CEO_OF"
+      },
+      {
+       "from": "jim_farley",
+       "to": "ford",
+       "type": "CEO_OF"
+      }
+     ]
+    },
+    "synthesizer": "template",
+    "metrics": {
+     "trace_id": "6105cb429470480f",
+     "latency_ms": 4,
+     "tokens_in": 0,
+     "tokens_out": 0,
+     "cost_usd": 0.0,
+     "llm_calls": 0
+    }
+   },
+   "vector": {
+    "answer": "Tim Cook [tim_cook]. Evidence: Apple Inc. (Company). ticker: AAPL; sector: Technology; in_sp500: True; cik: 0000320193; hq_state: CA; stale: False. Apple Inc. offers the product iPhone. Apple Inc. offers the product Mac. Apple Inc. Apple Watch (Product). category: Wearable; company: apple; stale: False. Apple Watch is a product of Apple Inc.. Apple Operations International Limited (Subsidiary). jurisdiction: Ireland; parent: apple; stale: False. Apple Operations International Limited is a subsidiary of Apple Inc.. Supplier concentration (Risk). stale: False. Supplier concentration is a risk mentioned by Apple Inc.. Supplier concentration is a risk mentioned by NVIDIA Corporation. Supplier concentration is a ris",
+    "answer_ids": [
+     "tim_cook"
+    ],
+    "count": null,
+    "latency_ms": 22
+   }
+  },
+  {
+   "id": "3h-04",
+   "category": "three_hop",
+   "question": "Which directors sit on the boards of companies that compete with a company supplied by TSMC?",
+   "expected_ids": [
+    "dir_petrov",
+    "dir_abernathy",
+    "dir_nakamura"
+   ],
+   "expected_count": null,
+   "graph": {
+    "question": "Which directors sit on the boards of companies that compete with a company supplied by TSMC?",
+    "mode": "graph",
+    "answer": "Ruth Abernathy [dir_abernathy], Keiko Nakamura [dir_nakamura], Yelena Petrov [dir_petrov]. Evidence: Apple Inc. [apple] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. NVIDIA Corporation [nvidia] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Advanced Micro Devices, Inc. [amd] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc]. Qualcomm Incorporated [qualcomm] -SUPPLIED_BY-&gt; Taiwan Semiconductor Manufacturing Company [tsmc].",
+    "classified_kind": "multi_hop",
+    "answer_ids": [
+     "dir_abernathy",
+     "dir_nakamura",
+     "dir_petrov"
+    ],
+    "count": null,
+    "seeds": [
+     "tsmc"
+    ],
+    "plan": [
+     {
+      "edge_types": [
+       "SUPPLIED_BY"
+      ],
+      "direction": "in"
+     },
+     {
+      "edge_types": [
+       "COMPETES_WITH"
+      ],
+      "direction": "both"
+     },
+     {
+      "edge_types": [
+       "DIRECTOR_OF"
+      ],
+      "direction": "in"
+     }
+    ],
+    "cited_nodes": [
+     {
+      "id": "tsmc",
+      "type": "Company",
+      "name": "Taiwan Semiconductor Manufacturing Company",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "amd",
+      "type": "Company",
+      "name": "Advanced Micro Devices, Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "apple",
+      "type": "Company",
+      "name": "Apple Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "broadcom",
+      "type": "Company",
+      "name": "Broadcom Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "intel",
+      "type": "Company",
+      "name": "Intel Corporation",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "nvidia",
+      "type": "Company",
+      "name": "NVIDIA Corporation",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "qualcomm",
+      "type": "Company",
+      "name": "Qualcomm Incorporated",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "google",
+      "type": "Company",
+      "name": "Alphabet Inc.",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "samsung",
+      "type": "Company",
+      "name": "Samsung Electronics Co., Ltd.",
+      "similarity": null,
+      "hops_from_seed": 2
+     },
+     {
+      "id": "dir_abernathy",
+      "type": "Person",
+      "name": "Ruth Abernathy",
+      "similarity": null,
+      "hops_from_seed": 3
+     },
+     {
+      "id": "dir_nakamura",
+      "type": "Person",
+      "name": "Keiko Nakamura",
+      "similarity": null,
+      "hops_from_seed": 3
+     },
+     {
+      "id": "dir_petrov",
+      "type": "Person",
+      "name": "Yelena Petrov",
+      "similarity": null,
+      "hops_from_seed": 3
+     }
+    ],
+    "reasoning_path": [
+     "tsmc",
+     "amd",
+     "apple",
+     "broadcom",
+     "intel",
+     "nvidia",
+     "qualcomm",
+     "google",
+     "samsung",
+     "dir_abernathy",
+     "dir_nakamura",
+     "dir_petrov"
+    ],
+    "subgraph": {
+     "nodes": [
+      {
+       "id": "tsmc",
+       "type": "Company",
+       "name": "Taiwan Semiconductor Manufacturing Company",
+       "hops": 0,
+       "stale": true
+      },
+      {
+       "id": "apple",
+       "type": "Company",
+       "name": "Apple Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "nvidia",
+       "type": "Company",
+       "name": "NVIDIA Corporation",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "amd",
+       "type": "Company",
+       "name": "Advanced Micro Devices, Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "qualcomm",
+       "type": "Company",
+       "name": "Qualcomm Incorporated",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "broadcom",
+       "type": "Company",
+       "name": "Broadcom Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "intel",
+       "type": "Company",
+       "name": "Intel Corporation",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "samsung",
+       "type": "Company",
+       "name": "Samsung Electronics Co., Ltd.",
+       "hops": 2,
+       "stale": true
+      },
+      {
+       "id": "google",
+       "type": "Company",
+       "name": "Alphabet Inc.",
+       "hops": 2,
+       "stale": false
+      },
+      {
+       "id": "dir_nakamura",
+       "type": "Person",
+       "name": "Keiko Nakamura",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "dir_petrov",
+       "type": "Person",
+       "name": "Yelena Petrov",
+       "hops": 3,
+       "stale": false
+      },
+      {
+       "id": "dir_abernathy",
+       "type": "Person",
+       "name": "Ruth Abernathy",
+       "hops": 3,
+       "stale": false
+      }
+     ],
+     "edges": [
+      {
+       "from": "apple",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "nvidia",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "amd",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "qualcomm",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "broadcom",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "intel",
+       "to": "tsmc",
+       "type": "SUPPLIED_BY"
+      },
+      {
+       "from": "nvidia",
+       "to": "amd",
+       "type": "COMPETES_WITH"
+      },
+      {
+       "from": "nvidia",
+       "to": "intel",
+       "type": "COMPETES_WITH"
+      },
+      {
+       "from": "apple",
+       "to": "samsung",
+       "type": "COMPETES_WITH"
+      },
+      {
+       "from": "apple",
+       "to": "google",
+       "type": "COMPETES_WITH"
+      },
+      {
+       "from": "amd",
+       "to": "intel",
+       "type": "COMPETES_WITH"
+      },
+      {
+       "from": "tsmc",
+       "to": "intel",
+       "type": "COMPETES_WITH"
+      },
+      {
+       "from": "dir_nakamura",
+       "to": "nvidia",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_petrov",
+       "to": "google",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_nakamura",
+       "to": "tsmc",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_abernathy",
+       "to": "amd",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_abernathy",
+       "to": "intel",
+       "type": "DIRECTOR_OF"
+      }
+     ]
+    },
+    "synthesizer": "template",
+    "metrics": {
+     "trace_id": "b381fccc20ae478f",
+     "latency_ms": 0,
+     "tokens_in": 0,
+     "tokens_out": 0,
+     "cost_usd": 0.0,
+     "llm_calls": 0
+    }
+   },
+   "vector": {
+    "answer": "Irene Castellanos [dir_castellanos], Keiko Nakamura [dir_nakamura], Helle Rasmussen [dir_rasmussen]. Evidence: TSMC Arizona Corporation (Subsidiary). jurisdiction: Delaware; parent: tsmc; stale: True. TSMC Arizona Corporation is a subsidiary of Taiwan Semiconductor Manufacturing Company. N3 process (Product). category: Foundry node; company: tsmc; stale: True. N3 process is a product of Taiwan Semiconductor Manufacturing Company. Apple Inc. (Company). ticker: AAPL; sector: Technology; in_sp500: True; cik: 0000320193; hq_state: CA; stale: False. Apple Inc. offers the product iPhone. Apple Inc. offers the product Mac. Apple Inc. The Boeing Company (Company). ticker: BA; sector: Aerospace &amp; Defense; in_sp500: True; cik: 0000012927; hq_state: VA; stale: False. The Boeing Company offers the product 737 MAX. The Boeing Company of",
+    "answer_ids": [
+     "dir_castellanos",
+     "dir_nakamura",
+     "dir_rasmussen"
+    ],
+    "count": null,
+    "latency_ms": 23
+   }
+  },
+  {
+   "id": "ag-02",
+   "category": "aggregation",
+   "question": "How many S&P 500 companies mention China exposure as a risk?",
+   "expected_ids": [
+    "apple",
+    "microsoft",
+    "nvidia",
+    "amd",
+    "intel",
+    "qualcomm",
+    "broadcom",
+    "micron",
+    "tesla",
+    "boeing",
+    "walmart",
+    "ford",
+    "gm"
+   ],
+   "expected_count": 13,
+   "graph": {
+    "question": "How many S&P 500 companies mention China exposure as a risk?",
+    "mode": "graph",
+    "answer": "count = 13 — Advanced Micro Devices, Inc., Apple Inc., The Boeing Company, Broadcom Inc., Ford Motor Company, General Motors Company, Intel Corporation, Micron Technology, Inc. (+5 more)",
+    "classified_kind": "aggregation",
+    "answer_ids": [
+     "amd",
+     "apple",
+     "boeing",
+     "broadcom",
+     "ford",
+     "gm",
+     "intel",
+     "micron",
+     "microsoft",
+     "nvidia",
+     "qualcomm",
+     "tesla",
+     "walmart"
+    ],
+    "count": 13,
+    "seeds": [
+     "risk_china_exposure"
+    ],
+    "plan": [
+     {
+      "edge_types": [
+       "MENTIONS_RISK"
+      ],
+      "direction": "in"
+     }
+    ],
+    "cited_nodes": [
+     {
+      "id": "risk_china_exposure",
+      "type": "Risk",
+      "name": "China exposure",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "amd",
+      "type": "Company",
+      "name": "Advanced Micro Devices, Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "apple",
+      "type": "Company",
+      "name": "Apple Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "asml",
+      "type": "Company",
+      "name": "ASML Holding N.V.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "boeing",
+      "type": "Company",
+      "name": "The Boeing Company",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "broadcom",
+      "type": "Company",
+      "name": "Broadcom Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "ford",
+      "type": "Company",
+      "name": "Ford Motor Company",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "gm",
+      "type": "Company",
+      "name": "General Motors Company",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "intel",
+      "type": "Company",
+      "name": "Intel Corporation",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "micron",
+      "type": "Company",
+      "name": "Micron Technology, Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "microsoft",
+      "type": "Company",
+      "name": "Microsoft Corporation",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "nvidia",
+      "type": "Company",
+      "name": "NVIDIA Corporation",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "qualcomm",
+      "type": "Company",
+      "name": "Qualcomm Incorporated",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "tesla",
+      "type": "Company",
+      "name": "Tesla, Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "tsmc",
+      "type": "Company",
+      "name": "Taiwan Semiconductor Manufacturing Company",
+      "similarity": null,
+      "hops_from_seed": 1
+     },
+     {
+      "id": "walmart",
+      "type": "Company",
+      "name": "Walmart Inc.",
+      "similarity": null,
+      "hops_from_seed": 1
+     }
+    ],
+    "reasoning_path": [
+     "risk_china_exposure",
+     "amd",
+     "apple",
+     "asml",
+     "boeing",
+     "broadcom",
+     "ford",
+     "gm",
+     "intel",
+     "micron",
+     "microsoft",
+     "nvidia",
+     "qualcomm",
+     "tesla",
+     "tsmc",
+     "walmart"
+    ],
+    "subgraph": {
+     "nodes": [
+      {
+       "id": "risk_china_exposure",
+       "type": "Risk",
+       "name": "China exposure",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "apple",
+       "type": "Company",
+       "name": "Apple Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "microsoft",
+       "type": "Company",
+       "name": "Microsoft Corporation",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "nvidia",
+       "type": "Company",
+       "name": "NVIDIA Corporation",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "amd",
+       "type": "Company",
+       "name": "Advanced Micro Devices, Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "intel",
+       "type": "Company",
+       "name": "Intel Corporation",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "qualcomm",
+       "type": "Company",
+       "name": "Qualcomm Incorporated",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "broadcom",
+       "type": "Company",
+       "name": "Broadcom Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "micron",
+       "type": "Company",
+       "name": "Micron Technology, Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "tesla",
+       "type": "Company",
+       "name": "Tesla, Inc.",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "boeing",
+       "type": "Company",
+       "name": "The Boeing Company",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "walmart",
+       "type": "Company",
+       "name": "Walmart Inc.",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "tsmc",
+       "type": "Company",
+       "name": "Taiwan Semiconductor Manufacturing Company",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "asml",
+       "type": "Company",
+       "name": "ASML Holding N.V.",
+       "hops": 1,
+       "stale": true
+      },
+      {
+       "id": "ford",
+       "type": "Company",
+       "name": "Ford Motor Company",
+       "hops": 1,
+       "stale": false
+      },
+      {
+       "id": "gm",
+       "type": "Company",
+       "name": "General Motors Company",
+       "hops": 1,
+       "stale": false
+      }
+     ],
+     "edges": [
+      {
+       "from": "apple",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "microsoft",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "nvidia",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "amd",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "intel",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "qualcomm",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "broadcom",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "micron",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "tesla",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "boeing",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "walmart",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "tsmc",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "asml",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "ford",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      },
+      {
+       "from": "gm",
+       "to": "risk_china_exposure",
+       "type": "MENTIONS_RISK"
+      }
+     ]
+    },
+    "synthesizer": "template",
+    "metrics": {
+     "trace_id": "300589e142f74d7b",
+     "latency_ms": 1,
+     "tokens_in": 0,
+     "tokens_out": 0,
+     "cost_usd": 0.0,
+     "llm_calls": 0
+    }
+   },
+   "vector": {
+    "answer": "count = 19 — Advanced Micro Devices, Inc., Apple Inc., The Boeing Company, Broadcom Inc., Chevron Corporation, Costco Wholesale Corporation, Ford Motor Company, General Motors Company (+11 more)",
+    "answer_ids": [
+     "amd",
+     "apple",
+     "boeing",
+     "broadcom",
+     "chevron",
+     "costco",
+     "ford",
+     "gm",
+     "intel",
+     "ko",
+     "micron",
+     "microsoft",
+     "nvidia",
+     "pep",
+     "qualcomm",
+     "tesla",
+     "visa",
+     "walmart",
+     "xom"
+    ],
+    "count": 19,
+    "latency_ms": 23
+   }
+  },
+  {
+   "id": "ag-12",
+   "category": "aggregation",
+   "question": "How many directors serve on more than one board?",
+   "expected_ids": [
+    "dir_whitfield",
+    "dir_oyelaran",
+    "dir_castellanos",
+    "dir_lindqvist",
+    "dir_nakamura",
+    "dir_okafor",
+    "dir_rasmussen",
+    "dir_petrov",
+    "dir_sandoval",
+    "dir_abernathy",
+    "dir_kowalczyk",
+    "dir_mbeki",
+    "dir_haddad",
+    "dir_ferreira"
+   ],
+   "expected_count": 14,
+   "graph": {
+    "question": "How many directors serve on more than one board?",
+    "mode": "graph",
+    "answer": "count = 14 — Ruth Abernathy, Irene Castellanos, Beatriz Ferreira, Samir Haddad, Piotr Kowalczyk, Anders Lindqvist, Naledi Mbeki, Keiko Nakamura (+6 more)",
+    "classified_kind": "aggregation",
+    "answer_ids": [
+     "dir_abernathy",
+     "dir_castellanos",
+     "dir_ferreira",
+     "dir_haddad",
+     "dir_kowalczyk",
+     "dir_lindqvist",
+     "dir_mbeki",
+     "dir_nakamura",
+     "dir_okafor",
+     "dir_oyelaran",
+     "dir_petrov",
+     "dir_rasmussen",
+     "dir_sandoval",
+     "dir_whitfield"
+    ],
+    "count": 14,
+    "seeds": [],
+    "plan": [],
+    "cited_nodes": [
+     {
+      "id": "dir_abernathy",
+      "type": "Person",
+      "name": "Ruth Abernathy",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_castellanos",
+      "type": "Person",
+      "name": "Irene Castellanos",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_ferreira",
+      "type": "Person",
+      "name": "Beatriz Ferreira",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_haddad",
+      "type": "Person",
+      "name": "Samir Haddad",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_kowalczyk",
+      "type": "Person",
+      "name": "Piotr Kowalczyk",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_lindqvist",
+      "type": "Person",
+      "name": "Anders Lindqvist",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_mbeki",
+      "type": "Person",
+      "name": "Naledi Mbeki",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_nakamura",
+      "type": "Person",
+      "name": "Keiko Nakamura",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_okafor",
+      "type": "Person",
+      "name": "Chidi Okafor",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_oyelaran",
+      "type": "Person",
+      "name": "Marcus Oyelaran",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_petrov",
+      "type": "Person",
+      "name": "Yelena Petrov",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_rasmussen",
+      "type": "Person",
+      "name": "Helle Rasmussen",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_sandoval",
+      "type": "Person",
+      "name": "Tomas Sandoval",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "dir_whitfield",
+      "type": "Person",
+      "name": "Dana Whitfield",
+      "similarity": null,
+      "hops_from_seed": 0
+     },
+     {
+      "id": "abbvie",
+      "type": "Company",
+      "name": "AbbVie Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "amd",
+      "type": "Company",
+      "name": "Advanced Micro Devices, Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "apple",
+      "type": "Company",
+      "name": "Apple Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "boeing",
+      "type": "Company",
+      "name": "The Boeing Company",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "bofa",
+      "type": "Company",
+      "name": "Bank of America Corporation",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "chevron",
+      "type": "Company",
+      "name": "Chevron Corporation",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "costco",
+      "type": "Company",
+      "name": "Costco Wholesale Corporation",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "ford",
+      "type": "Company",
+      "name": "Ford Motor Company",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "gm",
+      "type": "Company",
+      "name": "General Motors Company",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "goldman",
+      "type": "Company",
+      "name": "The Goldman Sachs Group, Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "google",
+      "type": "Company",
+      "name": "Alphabet Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "intel",
+      "type": "Company",
+      "name": "Intel Corporation",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "jnj",
+      "type": "Company",
+      "name": "Johnson & Johnson",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "jpm",
+      "type": "Company",
+      "name": "JPMorgan Chase & Co.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "ko",
+      "type": "Company",
+      "name": "The Coca-Cola Company",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "lilly",
+      "type": "Company",
+      "name": "Eli Lilly and Company",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "merck",
+      "type": "Company",
+      "name": "Merck & Co., Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "meta",
+      "type": "Company",
+      "name": "Meta Platforms, Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "microsoft",
+      "type": "Company",
+      "name": "Microsoft Corporation",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "nvidia",
+      "type": "Company",
+      "name": "NVIDIA Corporation",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "pep",
+      "type": "Company",
+      "name": "PepsiCo, Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "pfizer",
+      "type": "Company",
+      "name": "Pfizer Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "salesforce",
+      "type": "Company",
+      "name": "Salesforce, Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "tsmc",
+      "type": "Company",
+      "name": "Taiwan Semiconductor Manufacturing Company",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "unh",
+      "type": "Company",
+      "name": "UnitedHealth Group Incorporated",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "visa",
+      "type": "Company",
+      "name": "Visa Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "walmart",
+      "type": "Company",
+      "name": "Walmart Inc.",
+      "similarity": null,
+      "hops_from_seed": null
+     },
+     {
+      "id": "xom",
+      "type": "Company",
+      "name": "Exxon Mobil Corporation",
+      "similarity": null,
+      "hops_from_seed": null
+     }
+    ],
+    "reasoning_path": [
+     "dir_abernathy",
+     "dir_castellanos",
+     "dir_ferreira",
+     "dir_haddad",
+     "dir_kowalczyk",
+     "dir_lindqvist",
+     "dir_mbeki",
+     "dir_nakamura",
+     "dir_okafor",
+     "dir_oyelaran",
+     "dir_petrov",
+     "dir_rasmussen",
+     "dir_sandoval",
+     "dir_whitfield",
+     "abbvie",
+     "amd",
+     "apple",
+     "boeing",
+     "bofa",
+     "chevron",
+     "costco",
+     "ford",
+     "gm",
+     "goldman",
+     "google",
+     "intel",
+     "jnj",
+     "jpm",
+     "ko",
+     "lilly",
+     "merck",
+     "meta",
+     "microsoft",
+     "nvidia",
+     "pep",
+     "pfizer",
+     "salesforce",
+     "tsmc",
+     "unh",
+     "visa"
+    ],
+    "subgraph": {
+     "nodes": [
+      {
+       "id": "pfizer",
+       "type": "Company",
+       "name": "Pfizer Inc.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "merck",
+       "type": "Company",
+       "name": "Merck & Co., Inc.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_whitfield",
+       "type": "Person",
+       "name": "Dana Whitfield",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "jnj",
+       "type": "Company",
+       "name": "Johnson & Johnson",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "abbvie",
+       "type": "Company",
+       "name": "AbbVie Inc.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_oyelaran",
+       "type": "Person",
+       "name": "Marcus Oyelaran",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "apple",
+       "type": "Company",
+       "name": "Apple Inc.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "jpm",
+       "type": "Company",
+       "name": "JPMorgan Chase & Co.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_castellanos",
+       "type": "Person",
+       "name": "Irene Castellanos",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "microsoft",
+       "type": "Company",
+       "name": "Microsoft Corporation",
+       "hops": null,
+       "stale": true
+      },
+      {
+       "id": "visa",
+       "type": "Company",
+       "name": "Visa Inc.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_lindqvist",
+       "type": "Person",
+       "name": "Anders Lindqvist",
+       "hops": 0,
+       "stale": true
+      },
+      {
+       "id": "nvidia",
+       "type": "Company",
+       "name": "NVIDIA Corporation",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "tsmc",
+       "type": "Company",
+       "name": "Taiwan Semiconductor Manufacturing Company",
+       "hops": null,
+       "stale": true
+      },
+      {
+       "id": "dir_nakamura",
+       "type": "Person",
+       "name": "Keiko Nakamura",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "ford",
+       "type": "Company",
+       "name": "Ford Motor Company",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "gm",
+       "type": "Company",
+       "name": "General Motors Company",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_okafor",
+       "type": "Person",
+       "name": "Chidi Okafor",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "xom",
+       "type": "Company",
+       "name": "Exxon Mobil Corporation",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "boeing",
+       "type": "Company",
+       "name": "The Boeing Company",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_rasmussen",
+       "type": "Person",
+       "name": "Helle Rasmussen",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "google",
+       "type": "Company",
+       "name": "Alphabet Inc.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "ko",
+       "type": "Company",
+       "name": "The Coca-Cola Company",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_petrov",
+       "type": "Person",
+       "name": "Yelena Petrov",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "walmart",
+       "type": "Company",
+       "name": "Walmart Inc.",
+       "hops": null,
+       "stale": true
+      },
+      {
+       "id": "costco",
+       "type": "Company",
+       "name": "Costco Wholesale Corporation",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_sandoval",
+       "type": "Person",
+       "name": "Tomas Sandoval",
+       "hops": 0,
+       "stale": true
+      },
+      {
+       "id": "amd",
+       "type": "Company",
+       "name": "Advanced Micro Devices, Inc.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "intel",
+       "type": "Company",
+       "name": "Intel Corporation",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_abernathy",
+       "type": "Person",
+       "name": "Ruth Abernathy",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "bofa",
+       "type": "Company",
+       "name": "Bank of America Corporation",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "goldman",
+       "type": "Company",
+       "name": "The Goldman Sachs Group, Inc.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_kowalczyk",
+       "type": "Person",
+       "name": "Piotr Kowalczyk",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "meta",
+       "type": "Company",
+       "name": "Meta Platforms, Inc.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "salesforce",
+       "type": "Company",
+       "name": "Salesforce, Inc.",
+       "hops": null,
+       "stale": true
+      },
+      {
+       "id": "dir_mbeki",
+       "type": "Person",
+       "name": "Naledi Mbeki",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "lilly",
+       "type": "Company",
+       "name": "Eli Lilly and Company",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "unh",
+       "type": "Company",
+       "name": "UnitedHealth Group Incorporated",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_haddad",
+       "type": "Person",
+       "name": "Samir Haddad",
+       "hops": 0,
+       "stale": false
+      },
+      {
+       "id": "pep",
+       "type": "Company",
+       "name": "PepsiCo, Inc.",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "chevron",
+       "type": "Company",
+       "name": "Chevron Corporation",
+       "hops": null,
+       "stale": false
+      },
+      {
+       "id": "dir_ferreira",
+       "type": "Person",
+       "name": "Beatriz Ferreira",
+       "hops": 0,
+       "stale": false
+      }
+     ],
+     "edges": [
+      {
+       "from": "dir_whitfield",
+       "to": "pfizer",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_whitfield",
+       "to": "merck",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_oyelaran",
+       "to": "jnj",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_oyelaran",
+       "to": "abbvie",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_castellanos",
+       "to": "apple",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_castellanos",
+       "to": "jpm",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_lindqvist",
+       "to": "microsoft",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_lindqvist",
+       "to": "visa",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_nakamura",
+       "to": "nvidia",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_nakamura",
+       "to": "tsmc",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_okafor",
+       "to": "ford",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_okafor",
+       "to": "gm",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_rasmussen",
+       "to": "xom",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_rasmussen",
+       "to": "boeing",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_petrov",
+       "to": "google",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_petrov",
+       "to": "ko",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_sandoval",
+       "to": "walmart",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_sandoval",
+       "to": "costco",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_abernathy",
+       "to": "amd",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_abernathy",
+       "to": "intel",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_kowalczyk",
+       "to": "bofa",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_kowalczyk",
+       "to": "goldman",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_mbeki",
+       "to": "meta",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_mbeki",
+       "to": "salesforce",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_haddad",
+       "to": "lilly",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_haddad",
+       "to": "unh",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_ferreira",
+       "to": "pep",
+       "type": "DIRECTOR_OF"
+      },
+      {
+       "from": "dir_ferreira",
+       "to": "chevron",
+       "type": "DIRECTOR_OF"
+      }
+     ]
+    },
+    "synthesizer": "template",
+    "metrics": {
+     "trace_id": "8eb55ea40c8f45c0",
+     "latency_ms": 1,
+     "tokens_in": 0,
+     "tokens_out": 0,
+     "cost_usd": 0.0,
+     "llm_calls": 0
+    }
+   },
+   "vector": {
+    "answer": "count = 2 — Beatriz Ferreira, Chidi Okafor",
+    "answer_ids": [
+     "dir_ferreira",
+     "dir_okafor"
+    ],
+    "count": 2,
+    "latency_ms": 23
+   }
+  }
+ ]
 }

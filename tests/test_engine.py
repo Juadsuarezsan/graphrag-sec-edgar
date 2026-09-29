@@ -131,5 +131,5 @@ def test_template_synthesizer_and_sanitize() -> None:
         t.synthesize("q", [], count=0, property_value=None, path_sentences=[], metrics=m)
         == "count = 0"
     )
-    assert sanitize_text("<script>alert(1)</script>Tim & Cook\x00") == "alert(1)Tim &amp; Cook"
+    assert sanitize_text("<script>alert(1)</script>Tim &amp; Cook\x00") == "alert(1)Tim & Cook"
     assert len(sanitize_text("x" * 5000)) == 4000
