@@ -17,3 +17,7 @@ models/checkpoints/
 *.parquet
 logs/
 .ipynb_checkpoints/
+
+.coverage
+coverage.xml
+htmlcov/
